@@ -2,83 +2,83 @@
 
 {% block head %}
 
-    <title>{{food.title}}
-        | Foodfy</title>
+<title>{{food.title}} | Foodfy</title>
+    <link href="/css/recipe.css" rel="stylesheet">
+
 
 {% endblock %}
 
 {% block content %}
-    <section class="recipes">
+<section class="recipes">
 
-        <div class="recipe">
+    <div class="recipe">
 
-            {% for food in foods %}
-                <div class="food-image">
-                    <img src="{{food.image}}" alt="Image of {{food.title}}">
+        {% for food in foods %}
+            <div class="food-image">
+                <img src="{{food.image}}" alt="Image of {{food.title}}">
+            </div>
+
+            <div class="food-information">
+
+                <div class="top_info">
+
+                    <h3>{{food.title}}</h3>
+                    <p>Por {{food.author}}</p>
+
                 </div>
 
-                <div class="food-information">
+                <div class="mid_info">
 
-                    <div class="top_info">
-
-                        <h3>{{food.title}}</h3>
-                        <p>Por
-                            {{food.author}}</p>
-
-                    </div>
-
-                    <div class="mid_info">
-
-                        <div class="ingredients">
-
-                            <div class="subject">
-                                <h1>Ingredientes</h1>
-                                <button>Esconder</button>
-                            </div>
-
-                            <div class="content show">
-                                {% for ingredient in food.ingredients %}
-                                    <li>{{ingredient}}</li>
-                                {% endfor %}
-                            </div>
-
-                        </div>
-
-                        <div class="preparation">
-
-                            <div class="subject">
-                                <h1>Modo de preparo</h1>
-                                <button>Esconder</button>
-                            </div>
-
-                            <div class="content show">
-                                {% for preparation in food.preparation %}
-                                    <li>{{preparation}}</li>
-                                {% endfor %}
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <div class="food_info">
+                    <div class="ingredients">
 
                         <div class="subject">
-                            <h1>Informações adicionais</h1>
+                            <h1>Ingredientes</h1>
                             <button>Esconder</button>
                         </div>
 
                         <div class="content show">
-                            <p>{{food.information}}</p>
+                            {% for ingredient in food.ingredients %}
+                                <li>{{ingredient}}</li>
+                            {% endfor %}
                         </div>
 
                     </div>
 
+                    <div class="preparation">
+
+                        <div class="subject">
+                            <h1>Modo de preparo</h1>
+                            <button>Esconder</button>
+                        </div>
+
+                        <div class="content show">
+                            {% for preparation in food.preparation %}
+                                <li>{{preparation}}</li>
+                            {% endfor %}
+                        </div>
+
+                    </div>
                 </div>
-            {% endfor %}
-        </div>
 
-    </section>
+                <div class="food_info">
 
-    <script src="/script.js"></script>
+                    <div class="subject">
+                        <h1>Informações adicionais</h1>
+                        <button>Esconder</button>
+                    </div>
+
+                    <div class="content show">
+                        <p>{{food.information}}</p>
+                    </div>
+
+                </div>
+
+            </div>
+        {% endfor %}
+    </div>
+
+</section>
+
+<script src="/js/script.js"></script>
 
 {% endblock %}

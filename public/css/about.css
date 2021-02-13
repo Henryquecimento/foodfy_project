@@ -1,0 +1,56 @@
+/*ABOUT - Content*/
+
+.page-content {
+    margin: 0 15%;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    text-align: left;
+}
+
+.about h1 {
+    font-size: 24px;
+    line-height: 28px;
+}
+
+.about p {
+    font-size: 18px;
+    line-height: 28px;
+    text-align: justify;
+    color: #444444;
+    margin-top: 10px;
+}
+
+.began h2 {
+    font-size: 18px;
+    line-height: 28px;
+    margin-top: 40px;
+}
+
+.began p {
+    font-size: 18px;
+    line-height: 28px;
+    text-align: justify;
+    color: #444444;
+    margin-top: 10px;
+}
+
+
+.recipes h2 {
+    font-size: 18px;
+    line-height: 28px;
+    margin-top: 40px;
+}
+.recipes p {
+    font-size: 18px;
+    line-height: 28px;
+    text-align: justify;
+    color: #444444;
+    margin-top: 10px;
+}
+
+.about p:last-child, 
+.began p:last-child, 
+.recipes p:last-child {
+    margin-top: 24px;
+ }
+ 

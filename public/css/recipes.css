@@ -1,0 +1,111 @@
+
+/*----FOOD PAGE -------*/
+
+.recipe {
+    max-width: 1400px;
+    text-align: justify;
+}
+
+.food-image img {
+    width: 300px;
+    height: 140px;
+    border-radius: 15px;
+    margin: 0 15%;
+    margin-top: 50px;
+}
+
+.food-information {
+    margin: 0 15%;
+}
+
+.top_info {
+    margin-left: 30%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+.top_info h3 {
+    font-size: 36px;
+    line-height: 42px;
+    color: #111111;
+    font-family: Roboto-Bold;
+}
+
+.top_info p {
+    margin-left: 15%;
+    font-size: 20px;
+    line-height: 24px;
+    color: #777777;
+    font-family: Roboto-Regular;
+}
+
+.subject {
+    display: flex;
+    gap: 20px;
+}
+
+.ingredients h1 {
+    margin-bottom: 2%;
+    color: #111111;
+    font-size: 24px;
+    line-height: 28px;
+    font-family: Roboto-Bold;
+}
+
+.ingredients li {
+    font-size: 18px;
+    line-height: 28px;
+    color: #444444;
+    font-family: Roboto-Regular;
+    
+}
+
+.preparation {
+    margin-top: 2%;
+}
+
+.preparation h1{
+    margin-bottom: 2%;
+    color: #111111;
+    font-size: 24px;
+    line-height: 28px;
+    font-family: Roboto-Bold;
+}
+.preparation li {
+    font-size: 18px;
+    line-height: 28px;
+    color: #444444;
+    font-family: Roboto-Regular;
+}
+
+.food_info {
+    margin-top: 2%;
+}
+
+.food_info h1{
+    margin-bottom: 2%;
+    color: #111111;
+    font-size: 24px;
+    line-height: 28px;
+    font-family: Roboto-Bold;
+}
+
+.food_info p {
+    font-size: 18px;
+    line-height: 28px;
+    color: #444444;
+    font-family: Roboto-Regular;
+    white-space: pre-line;
+}
+
+/* hide buttom */
+button {
+    font-size: 12px;
+    line-height: 14px;
+    background: none;
+    color: #999999;
+    font-family: Roboto-Bold;
+}
+.content.hide{
+    display: none;
+}

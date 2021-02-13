@@ -1,29 +1,38 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="pt-BR">
     <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
         {% block head %}
 
             <title>Foodfy</title>
-            <link rel="icon" href="/assets/chef.png" type="image/x-icon"/>
+            <link rel="icon" href="/assets/img/chef.png" type="image/x-icon"/>
 
         {% endblock %}
 
-            <link href="/styles.css" rel="stylesheet">
-    
+            <link href="/css/styles.css" rel="stylesheet">
     </head>
 
     <body>
         <header>
+            <section class="header-container">
+                <div class="links">
+                    <div class='logo'>
+                        <a href="/">
+                            <img src="/assets/img/logo.png">
+                        </a>
+                    </div>
 
-            <div class="links">
-                <a href="/">
-                    <img src="/assets/logo.png">
-                </a>
-
-                <a href="/about">Sobre</a>
-                <a href="/recipes">Receitas</a>
-            </div>
+                    <div class="path">
+                        <a href="/about">Sobre</a>
+                        <a href="/recipes">Receitas</a>
+                    </div>
+                
+                </div>
+            </section>
+            
 
         </header>
 
@@ -34,5 +43,6 @@
     <footer>
         <h2>Foodfy Receitas - 2020 - All Rights Reserved</h2>
     </footer>
+
 
 </html>
