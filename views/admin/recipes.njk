@@ -1,0 +1,41 @@
+{% extends "admin/layout.njk" %}
+
+{% block head %}
+
+    <title>Foodfy Manager</title>
+    <link href="/css/adminCss/recipeManager.css" rel="stylesheet">
+
+{% endblock %}
+
+{% block content %}
+
+    <section class="manager-container">
+        
+        <div class="recipes-container">
+            <h1>Gerenciar Receitas</h1>
+
+            <div class="recipes-grid">
+
+                {% for food in foods %}
+                    
+                    {% if loop.index <= 6 %}
+                    <div class="recipe">
+
+                        <div class="recipe-img">
+                            <img src="{{food.image}}" alt="Image of {{food.image}}">
+                        </div>
+
+                        <div class="recipe-content">
+                            <h3>{{food.title}}</h3>
+                            <p>Por {{food.author}}</p>
+                            <p><a href="#">Visualizar</a></p>
+                        </div>
+
+                    </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

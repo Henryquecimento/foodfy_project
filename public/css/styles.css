@@ -11,23 +11,15 @@
 body {
     background: white;
     font-family: 'Roboto', sans-serif;
-    text-align: center;
 }
 
 header {
-    margin: 34px 0;
+    padding: 24px 0;
+    text-align: center;
 }
 
 .header-container {
     display: inline-block;
-    margin-right: 16%;
-    text-align: center;
-}
-
-.links {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 32px;
 }
 
 .links a {
@@ -46,7 +38,12 @@ header {
 }
 
 .links .logo {
-    margin-right: 54%;
+    position: absolute;
+    right: 77%;
+}
+
+.links .path {
+    margin-right: 200px;
 }
 
 .links .path a {  

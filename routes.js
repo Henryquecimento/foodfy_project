@@ -1,6 +1,7 @@
 const express = require('express');
 const routes = express.Router();
 const foods = require('./data'); 
+const recipes = require('./controllers/recipes');
 const data = require('./data.json');
 
 routes.get('/', (req, res) => {
@@ -21,5 +22,10 @@ routes.get("/recipes/:index", (req, res) => {
 
     return res.render('recipe', { foods: [recipes[recipeIndex]]});
 });
+
+/* -- RECIPE MANAGER */
+
+routes.get("/admin/recipes", recipes.index);
+
 
 module.exports = routes;

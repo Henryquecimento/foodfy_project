@@ -1,9 +1,11 @@
 /*CARDS*/
 
 .card-container {
+    text-align: center;
+}
+.card-section {
     display: inline-block;
 }
-
 .cards {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -15,7 +17,7 @@
 .card-img img{
     width: 300px;
     height: 140px;
-    border-radius: 15px;
+    border-radius: 8px;
 }
 
 .card-content {

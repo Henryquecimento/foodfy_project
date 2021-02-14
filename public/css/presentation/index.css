@@ -1,5 +1,10 @@
+.body-container {
+    text-align: center;
+}
+
 .bodyIndex {
     display: inline-block;
+    margin-top: 32px;
 }
 
 .bodyIntro {
@@ -61,7 +66,7 @@
 .card-img img{
     width: 300px;
     height: 140px;
-    border-radius: 15px;
+    border-radius: 8px;
 }
 .card-content {
     text-align: left;

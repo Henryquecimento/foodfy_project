@@ -3,28 +3,31 @@
 {% block head %}
 
     <title>Receitas | Foodfy</title>
-    <link href="/css/cards.css" rel="stylesheet">
+    <link href="/css/presentation/cards.css" rel="stylesheet">
     
 {% endblock %}
 
 {% block content %}
     <section class='card-container'>
-        <div class="cards">
-       
-        {% for food in foods %}
-            <div class="card" id='{{food.image}}'>
+        <div class="card-section">
 
-                <div class="card-img">
-                    <img src="{{food.image}}" alt="Image of {{food.image}}">
+            <div class="cards">
+        
+            {% for food in foods %}
+                <div class="card" id='{{food.image}}'>
+
+                    <div class="card-img">
+                        <img src="{{food.image}}" alt="Image of {{food.image}}">
+                    </div>
+
+                    <div class="card-content">
+                        <h3>{{food.title}}</h3>
+                        <p>Por {{food.author}}</p>
+                    </div>
+
                 </div>
-
-                <div class="card-content">
-                    <h3>{{food.title}}</h3>
-                    <p>{{food.author}}</p>
-                </div>
-
+            {% endfor %}
             </div>
-        {% endfor %}
         </div>
     </section>
 

@@ -1,4 +1,7 @@
 /*----FOOD PAGE -------*/
+.recipes {
+    display: inline-block;
+}
 
 .recipe {
     max-width: 1400px;

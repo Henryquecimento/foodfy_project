@@ -1,0 +1,16 @@
+header {
+    background-color: #111111;
+    margin: 0 0 34px 0;
+    padding-top: 24px;
+    padding-bottom: 48px;
+}
+
+.header-container {
+  margin-right: 0;
+  text-align: unset;
+  display: initial;
+}
+
+.links a {
+    color: #FFFFFF;
+}

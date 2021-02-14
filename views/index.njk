@@ -3,48 +3,52 @@
 {% block head %}
 
     <title> Home | Foodfy</title>
-    <link href="/css/index.css" rel="stylesheet">
-   {#  <link href="/css/cards.css" rel="stylesheet"> #}
+    <link href="/css/presentation/index.css" rel="stylesheet">
 
 {% endblock %}
 
 {% block content %}
 
-    <section class="bodyIndex">
-        <div class="bodyIntro">
-            <div class="bodyIntro-texts">
-                <h1>As melhores receitas</h1>
-                <p>Aprenda a construir os melhores pratos com receitas criadas por profissionais do mundo inteiro.</p>
+    <section class="body-container">
+        <div class="bodyIndex">
+        
+            <div class="bodyIntro">
+                <div class="bodyIntro-texts">
+                    <h1>As melhores receitas</h1>
+                    <p>Aprenda a construir os melhores pratos com receitas criadas por profissionais do mundo inteiro.</p>
+                </div>
+                <div class="bodyIntro-img">
+                    <img src="/assets/img/chef.png" alt="no Image">
+                </div>
             </div>
-            <div class="bodyIntro-img">
-                <img src="/assets/img/chef.png" alt="no Image">
-            </div>
+
+            <section class="accessedElements">
+                <h1>Mais acessados</h1>
+
+                <div class="cards">
+
+                    {% for food in foods %}
+                        
+                        {% if loop.index <= 6 %}
+                        <div class="card">
+
+                            <div class="card-img">
+                                <img src="{{food.image}}" alt="Image of {{food.image}}">
+                            </div>
+
+                            <div class="card-content">
+                                <h3>{{food.title}}</h3>
+                                <p>{{food.author}}</p>
+                            </div>
+
+                        </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </section>
+
         </div>
 
-        <section class="accessedElements">
-            <h1>Mais acessados</h1>
-
-            <div class="cards">
-
-                {% for food in foods %}
-                    
-                    {% if loop.index <= 6 %}
-                    <div class="card">
-
-                        <div class="card-img">
-                            <img src="{{food.image}}" alt="Image of {{food.image}}">
-                        </div>
-
-                        <div class="card-content">
-                            <h3>{{food.title}}</h3>
-                            <p>{{food.author}}</p>
-                        </div>
-
-                    </div>
-                    {% endif %}
-                {% endfor %}
-            </div>
-        </section>
     </section>
 
     <script src="/js/script.js"></script>
