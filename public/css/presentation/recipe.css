@@ -1,9 +1,9 @@
 /*----FOOD PAGE -------*/
-.recipes {
+/* .recipes {
     display: inline-block;
 }
-
-.recipe {
+ */
+.recipe-fields {
     max-width: 1400px;
     text-align: justify;
 }
@@ -21,9 +21,8 @@
 }
 
 .top_info {
-    margin-left: 30%;
-    margin-top: 5%;
-    margin-bottom: 5%;
+    margin: 5% 0;
+    text-align: center;
 }
 
 .top_info h3 {
@@ -34,7 +33,6 @@
 }
 
 .top_info p {
-    margin-left: 15%;
     font-size: 20px;
     line-height: 24px;
     color: #777777;

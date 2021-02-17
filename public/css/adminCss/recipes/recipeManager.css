@@ -4,8 +4,7 @@
 
 .recipes-container {
     display: inline-block;
-    margin-top: 32px;
-    margin-bottom: 32px;
+    margin: 32px 0;
 }
 
 .recipes-container h1 {
@@ -48,7 +47,7 @@
     padding-top: 5px;
 }
 
-.recipe-content p:last-child a {
+.recipe-content p:last-child button {
     text-decoration: none;
     color: #6558C3;
     font-weight: Bold;

@@ -1,0 +1,30 @@
+{% extends "admin/layout.njk" %}
+
+{% block head %}
+
+    <title>Foodfy Manager</title>
+    <link href="/css/adminCss/recipes/create.css" rel="stylesheet">
+
+{% endblock %}
+
+{% block content %}
+
+    <form method='POST' action="">
+        <section class="manager-container">
+            
+            <div class="create">
+                <div class="create-grid">
+                    <h1>Criando receitas</h1>   
+                    <button type="submit">Salvar receita</button>
+                </div>
+
+                {% include 'admin/recipes/fields.njk' %}
+
+                </div>
+            </div>
+        </section>
+    </form>
+    
+    <script src="/js/scriptManager.js"></script>
+
+{% endblock %}

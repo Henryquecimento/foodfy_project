@@ -1,0 +1,72 @@
+/* FORM */
+
+.manager-container {
+    text-align: center;
+}
+
+.create {
+    display: inline-block;
+    margin: 32px 0;
+}
+
+.create h1 {
+    font-weight: bold;
+    color: #111111;
+    font-size: 24px;
+    line-height: 28px;
+    text-align: left;
+    margin-bottom: 8px;
+}
+
+.create-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.create-grid button {
+    text-align: center;
+    background-color: #6558C3;
+    color: #FFFFFF;
+    padding: 8px;
+    border-radius: 4px;
+    width: 139px;
+    height: 37px;
+    font-size: 16px;
+    line-height: 19px;
+    position: absolute;
+    left: 75%;
+}
+
+.item {
+    text-align: left;
+    margin: 24px 0;
+}
+
+.item div:first-child {
+    font-size: 16px;
+    line-height: 19px;
+    color: #111111;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.item:last-child input {
+    height: 257px;
+}
+
+input {
+    border: 1px solid #DDDDDD;
+    width: 940px;
+    height: 49px;
+    border-radius: 4px;
+    font-size: 16px;
+    line-height: 19px;
+}
+
+.add-ingredient,
+.add-step {
+    color: #6558C3;
+    font-weight: Bold;
+    cursor: pointer;
+    margin-top: 8px;
+}

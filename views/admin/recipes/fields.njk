@@ -1,0 +1,48 @@
+
+<div class="item">
+    <div>Imagem da receita</div>
+    <div>
+        <input 
+            type = "url",
+            name = 'recipe_url'
+            value = '{{ food.recipe_url }}'
+            >
+    </div>
+</div>
+
+<div class="item">
+    <div>Ingredientes</div>
+    <div id="ingredients">
+        <div class="ingredient">
+            <input 
+                type = "text",
+                name = 'ingredients[]',
+                value = ''>
+        </div>
+    </div>
+    <button type= 'button' class = 'add-ingredient'>Adicionar novo ingrediente</button>
+</div>
+
+<div class="item">
+    <div>Modo de Preparo</div>
+    <div id="steps">
+        <div class = "step">
+            <input 
+                type = "text",
+                name = 'steps[]',
+                value = ''>
+        </div>
+    </div>
+    <button type= 'button' class = 'add-step'>Adicionar novo passo</button>
+</div>
+
+<div class="item">
+    <div>Informações adicionais</div>
+    <div>
+        <input 
+            type = "url",
+            name = 'recipe_url'
+            value = '{{ food.recipe_url }}'
+            >
+    </div>
+</div>

@@ -3,7 +3,7 @@
 {% block head %}
 
     <title>Foodfy Manager</title>
-    <link href="/css/adminCss/recipeManager.css" rel="stylesheet">
+    <link href="/css/adminCss/recipes/recipeManager.css" rel="stylesheet">
 
 {% endblock %}
 
@@ -28,7 +28,10 @@
                         <div class="recipe-content">
                             <h3>{{food.title}}</h3>
                             <p>Por {{food.author}}</p>
-                            <p><a href="#">Visualizar</a></p>
+
+                            {# <p><a href="recipes/show">Visualizar</a></p> #}
+                            <p><button>Visualizar</button></p>
+
                         </div>
 
                     </div>
@@ -37,5 +40,7 @@
             </div>
         </div>
     </section>
+
+    <script src="/js/scriptManager.js"></script>
 
 {% endblock %}

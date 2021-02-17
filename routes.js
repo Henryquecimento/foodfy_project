@@ -26,6 +26,8 @@ routes.get("/recipes/:index", (req, res) => {
 /* -- RECIPE MANAGER */
 
 routes.get("/admin/recipes", recipes.index);
-
+routes.get("/admin/recipes/create", recipes.create );
+routes.get("/admin/recipes/:id", recipes.show);
+/* routes.get("/admin/recipes/:id/edit", recipes.edit); */
 
 module.exports = routes;
