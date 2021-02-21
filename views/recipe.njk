@@ -33,7 +33,7 @@
 
                         <div class="subject">
                             <h1>Ingredientes</h1>
-                            <button>Esconder</button>
+                            <button class='hide-button'>Esconder</button>
                         </div>
 
                         <div class="content show">
@@ -48,29 +48,29 @@
 
                         <div class="subject">
                             <h1>Modo de preparo</h1>
-                            <button>Esconder</button>
+                            <button class='hide-button'>Esconder</button>
                         </div>
 
                         <div class="content show">
-                            {% for preparation in food.preparation %}
-                                <li>{{preparation}}</li>
+                            {% for steps in food.steps %}
+                                <li>{{steps}}</li>
                             {% endfor %}
                         </div>
 
                     </div>
-                </div>
 
-                <div class="food_info">
+                    <div class="info">
 
-                    <div class="subject">
-                        <h1>Informações adicionais</h1>
-                        <button>Esconder</button>
+                        <div class="subject">
+                            <h1>Informações adicionais</h1>
+                            <button class='hide-button'>Esconder</button>
+                        </div>
+
+                        <div class="content show">
+                            <p>{{food.information}}</p>
+                        </div>
+
                     </div>
-
-                    <div class="content show">
-                        <p>{{food.information}}</p>
-                    </div>
-
                 </div>
 
             </div>

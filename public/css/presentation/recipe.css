@@ -1,23 +1,41 @@
 /*----FOOD PAGE -------*/
-/* .recipes {
-    display: inline-block;
+.recipes-container {
+    text-align: center;
+    min-height: 1221.410px;
 }
- */
+
 .recipe-fields {
     max-width: 1400px;
-    text-align: justify;
+    display: inline-block;
+}
+
+.recipe-head {
+    display: inline-flex;
+    width: 940px;
+    margin-top: 32px;
+    margin-bottom: 16px;
+    text-align: left;
+}
+
+.recipe-head button {
+    width: 136px;
+    height: 37px;
+    border-radius: 4px;
+    background-color: #6558C3;
+    color: #FFFFFF;
+    font-size: 16px;
+    line-height: 19px;
+    margin-left: 56%;
 }
 
 .food-image img {
     width: 940px;
     height: 280px;
-    margin: 0 15%;
-    margin-top: 50px;
     border-radius: 15px;
 }
 
 .food-information {
-    margin: 0 15%;
+    text-align: justify;
 }
 
 .top_info {
@@ -40,8 +58,13 @@
 }
 
 .subject {
-    display: flex;
-    gap: 20px;
+    display: inline-grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.mid_info {
+    max-width: 940px;
 }
 
 .ingredients h1 {
@@ -78,11 +101,11 @@
     font-family: Roboto-Regular;
 }
 
-.food_info {
+.info {
     margin-top: 2%;
 }
 
-.food_info h1{
+.info h1{
     margin-bottom: 2%;
     color: #111111;
     font-size: 24px;
@@ -90,7 +113,7 @@
     font-family: Roboto-Bold;
 }
 
-.food_info p {
+.info p {
     font-size: 18px;
     line-height: 28px;
     color: #444444;
@@ -99,12 +122,13 @@
 }
 
 /* hide buttom */
-button {
+.hide-button {
     font-size: 12px;
     line-height: 14px;
     background: none;
     color: #999999;
     font-family: Roboto-Bold;
+    text-align: left;
 }
 .content.hide{
     display: none;

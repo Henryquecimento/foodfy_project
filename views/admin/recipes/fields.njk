@@ -1,12 +1,11 @@
-
 <div class="item">
     <div>Imagem da receita</div>
     <div>
         <input 
             type = "url",
-            name = 'recipe_url'
-            value = '{{ food.recipe_url }}'
-            >
+            name = 'image',
+            value = '{{ food.image }}'
+        >
     </div>
 </div>
 
@@ -17,7 +16,8 @@
             <input 
                 type = "text",
                 name = 'ingredients[]',
-                value = ''>
+                value = ''
+            >
         </div>
     </div>
     <button type= 'button' class = 'add-ingredient'>Adicionar novo ingrediente</button>
@@ -30,7 +30,8 @@
             <input 
                 type = "text",
                 name = 'steps[]',
-                value = ''>
+                value = ''
+            >
         </div>
     </div>
     <button type= 'button' class = 'add-step'>Adicionar novo passo</button>
@@ -40,9 +41,13 @@
     <div>Informações adicionais</div>
     <div>
         <input 
-            type = "url",
-            name = 'recipe_url'
-            value = '{{ food.recipe_url }}'
-            >
+            type = "text",
+            name = 'information',
+            value = '{{ food.information }}'
+        >
     </div>
 </div>
+
+<button class="save-button" type="submit">Salvar receita</button>
+
+<script src="/js/dynamicFields.js"></script>

@@ -11,7 +11,7 @@ module.exports = [
         '3 colheres (sopa) de tempero caseiro: feito com alho, sal, cebola, pimenta e cheiro verde processados no liquidificador',
         '30 ml de água gelada'
         ],
-        preparation: [
+        steps: [
         'Misture todos os ingredientes muito bem e amasse para que fique tudo muito bem misturado.',
         'Faça porções de 90 g a 100 g.',
         'Forre um plástico molhado em uma bancada e modele os hambúrgueres utilizando um aro como base.',
@@ -40,7 +40,7 @@ module.exports = [
         'azeitona picada',
         'orégano a gosto'
         ],
-        preparation: [
+        steps: [
         'No liquidificador bata o leite, o ovo, o sal, o açúcar, a margarina, a farinha de trigo e o fermento em pó até que tudo esteja encorporado.',
         'Despeje a massa em uma assadeira para pizza untada com margarina e leve ao forno preaquecido por 20 minutos.',
         'Retire do forno e despeje o molho de tomate.',
@@ -59,7 +59,7 @@ module.exports = [
         '1/2 xícara (chá) de óleo',
         '1 xícara de molho barbecue'
         ],
-        preparation: [
+        steps: [
         'Em uma tigela coloque o encontro de asinha de galinha e polvilhe a farinha de trigo e misture com as mãos.',
         'Em uma frigideira ou assador coloque o óleo quando estiver quente frite até ficarem douradas.',
         'Para servir fica bonito com salada, ou abuse da criatividade.'
@@ -77,7 +77,7 @@ module.exports = [
         '2 copos de requeijão',
         '150 g de mussarela para gratinar'
         ],
-        preparation: [
+        steps: [
         'Em uma panela, coloque a manteiga para derreter.',
         'Acrescente a farinha de trigo e misture bem com auxílio de um fouet.',
         'Adicione o leite e misture até formar um creme homogêneo.',
@@ -101,7 +101,7 @@ module.exports = [
         'gengibre em pó a gosto',
         '1 folha de louro'
         ],
-        preparation: [
+        steps: [
         'Quando faltar mais ou menos 5 minutos para ficar no ponto de escorrer o macarrão, comece o preparo da receita.',
         'Na frigideira quente coloque a manteiga, o azeite, a folha de louro, e o alho granulado.',
         'Nesta hora um pouco de agilidade, pois o macarrão escorrido vai para a frigideira, sendo mexido e dosado com sal a gosto, as ervas, o gengibre em pó a gosto também.',
@@ -124,7 +124,7 @@ module.exports = [
         'manteiga para untar',
         'açúcar de confeiteiro'
         ],
-        preparation: [
+        steps: [
         'Cozinhe a batata-doce numa panela de pressão, com meio litro de água, por cerca de 20 minutos. Descasque e passe pelo espremedor, ainda quente.',
         'Junte a manteiga,os ovos, o coco ralado,o açúcar, o Leite Moça e o fermento em pó, mexendo bem após cada adição.',
         'Despeje em assadeira retangular média, untada e leve ao forno médio (180°C), por aproximadamente 45 minutos. Depois de frio, polvilhe, com o',
@@ -148,7 +148,7 @@ module.exports = [
         'gengibre em pó a gosto',
         '1 folha de louro'
         ],
-        preparation: [
+        steps: [
         'Quando faltar mais ou menos 5 minutos para ficar no ponto de escorrer o macarrão, comece o preparo da receita.',
         'Na frigideira quente coloque a manteiga, o azeite, a folha de louro, e o alho granulado.',
         'Nesta hora um pouco de agilidade, pois o macarrão escorrido vai para a frigideira, sendo mexido e dosado com sal a gosto, as ervas, o gengibre em pó a gosto também.',
@@ -175,7 +175,7 @@ module.exports = [
         'azeitona picada',
         'orégano a gosto'
         ],
-        preparation: [
+        steps: [
         'No liquidificador bata o leite, o ovo, o sal, o açúcar, a margarina, a farinha de trigo e o fermento em pó até que tudo esteja encorporado.',
         'Despeje a massa em uma assadeira para pizza untada com margarina e leve ao forno preaquecido por 20 minutos.',
         'Retire do forno e despeje o molho de tomate.',
@@ -196,7 +196,7 @@ module.exports = [
         '3 colheres (sopa) de tempero caseiro: feito com alho, sal, cebola, pimenta e cheiro verde processados no liquidificador',
         '30 ml de água gelada'
         ],
-        preparation: [
+        steps: [
         'Misture todos os ingredientes muito bem e amasse para que fique tudo muito bem misturado.',
         'Faça porções de 90 g a 100 g.',
         'Forre um plástico molhado em uma bancada e modele os hambúrgueres utilizando um aro como base.',
@@ -221,7 +221,7 @@ module.exports = [
         'manteiga para untar',
         'açúcar de confeiteiro'
         ],
-        preparation: [
+        steps: [
         'Cozinhe a batata-doce numa panela de pressão, com meio litro de água, por cerca de 20 minutos. Descasque e passe pelo espremedor, ainda quente.',
         'Junte a manteiga,os ovos, o coco ralado,o açúcar, o Leite Moça e o fermento em pó, mexendo bem após cada adição.',
         'Despeje em assadeira retangular média, untada e leve ao forno médio (180°C), por aproximadamente 45 minutos. Depois de frio, polvilhe, com o',
@@ -239,7 +239,7 @@ module.exports = [
         '1/2 xícara (chá) de óleo',
         '1 xícara de molho barbecue'
         ],
-        preparation: [
+        steps: [
         'Em uma tigela coloque o encontro de asinha de galinha e polvilhe a farinha de trigo e misture com as mãos.',
         'Em uma frigideira ou assador coloque o óleo quando estiver quente frite até ficarem douradas.',
         'Para servir fica bonito com salada, ou abuse da criatividade.'
@@ -257,7 +257,7 @@ module.exports = [
         '2 copos de requeijão',
         '150 g de mussarela para gratinar'
         ],
-        preparation: [
+        steps: [
         'Em uma panela, coloque a manteiga para derreter.',
         'Acrescente a farinha de trigo e misture bem com auxílio de um fouet.',
         'Adicione o leite e misture até formar um creme homogêneo.',

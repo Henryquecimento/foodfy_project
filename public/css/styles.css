@@ -38,8 +38,9 @@ header {
 }
 
 .links .logo {
-    position: absolute;
-    right: 77%;
+    position: relative;
+    right: 398px;
+    top: 25px;
 }
 
 .links .path {
