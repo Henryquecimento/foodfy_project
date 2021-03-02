@@ -1,10 +1,10 @@
-{% extends "admin/layout.njk" %}
+{% extends "publicAccess/layout.njk" %}
 
 {% block head %}
 
     <title>{{food.title}}
         | Foodfy</title>
-    <link href="/css/presentation/recipe.css" rel="stylesheet">
+    <link href="/css/publicAccess/recipe.css" rel="stylesheet">
 
 {% endblock %}
 
@@ -14,15 +14,8 @@
         <div class="recipe-fields">
 
             {% for food in foods %}
-
-                <div class="recipe-head">
-                    <h1>Receita:
-                        {{ food.title }}</h1>
-                    <button type="submit">Editar receita</button>
-                </div>
-
                 <div class="food-image">
-                    <img src="{{ food.image }}" alt="Image of {{food.title}}">
+                    <img src="{{food.image}}" alt="Image of {{food.title}}">
                 </div>
 
                 <div class="food-information">
@@ -46,7 +39,7 @@
 
                             <div class="content show">
                                 {% for ingredient in food.ingredients %}
-                                    <li>{{ ingredient }}</li>
+                                    <li>{{ingredient}}</li>
                                 {% endfor %}
                             </div>
 
@@ -60,8 +53,8 @@
                             </div>
 
                             <div class="content show">
-                                {% for step in food.steps %}
-                                    <li>{{ step }}</li>
+                                {% for steps in food.steps %}
+                                    <li>{{steps}}</li>
                                 {% endfor %}
                             </div>
 
@@ -81,14 +74,12 @@
                         </div>
                     </div>
 
-                    
-
                 </div>
             {% endfor %}
         </div>
 
     </section>
 
-    <script src="/js/scriptManager.js"></script>
+    <script src="/js/script.js"></script>
 
 {% endblock %}

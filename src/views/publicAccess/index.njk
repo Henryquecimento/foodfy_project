@@ -1,9 +1,10 @@
-{% extends "layout.njk" %}
+{% extends "publicAccess/layout.njk" %}
 
 {% block head %}
 
-    <title> Home | Foodfy</title>
-    <link href="/css/presentation/index.css" rel="stylesheet">
+    <title>
+        Home | Foodfy</title>
+    <link href="/css/publicAccess/index.css" rel="stylesheet">
 
 {% endblock %}
 
@@ -11,7 +12,7 @@
 
     <section class="body-container">
         <div class="bodyIndex">
-        
+
             <div class="bodyIntro">
                 <div class="bodyIntro-texts">
                     <h1>As melhores receitas</h1>
@@ -28,20 +29,20 @@
                 <div class="cards">
 
                     {% for food in foods %}
-                        
+
                         {% if loop.index <= 6 %}
-                        <div class="card">
+                            <div class="card">
 
-                            <div class="card-img">
-                                <img src="{{food.image}}" alt="Image of {{food.image}}">
+                                <div class="card-img">
+                                    <img src="{{food.image}}" alt="Image of {{food.image}}">
+                                </div>
+
+                                <div class="card-content">
+                                    <h3>{{food.title}}</h3>
+                                    <p>{{food.author}}</p>
+                                </div>
+
                             </div>
-
-                            <div class="card-content">
-                                <h3>{{food.title}}</h3>
-                                <p>{{food.author}}</p>
-                            </div>
-
-                        </div>
                         {% endif %}
                     {% endfor %}
                 </div>

@@ -1,0 +1,49 @@
+{% extends "admin/layout.njk" %}
+
+{% block head %}
+
+    <title>Foodfy Manager</title>
+    <link href="/css/privateAccess/recipes/recipeManager.css" rel="stylesheet">
+
+{% endblock %}
+
+{% block content %}
+
+    <section class="manager-container">
+
+        <div class="recipes-container">
+            <h1>Gerenciar Receitas</h1>
+            <button type="submit">Criar</button>
+            <div class="recipes-grid">
+
+                {% for food in foods %}
+
+                    {% if loop.index <= 10 %}
+                        <div class="recipe">
+
+                            <div class="recipe-img">
+                                <img src="{{food.image}}" alt="Image of {{food.image}}">
+                            </div>
+
+                            <div class="recipe-content">
+                                <h3>{{food.title}}</h3>
+                                <p>Por
+                                    {{food.author}}</p>
+
+                                {# <p><a href="recipes/show">Visualizar</a></p> #}
+                                <p>
+                                    <button>Visualizar</button>
+                                </p>
+
+                            </div>
+
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <script src="/js/scriptManager.js"></script>
+
+{% endblock %}

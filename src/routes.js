@@ -4,22 +4,22 @@ const foods = require('./data');
 const recipes = require('./controllers/recipes');
 
 routes.get('/', (req, res) => {
-    return res.render('index', { foods });
+    return res.render('publicAccess/index', { foods }); //{ foods });src\views\publicAccess\index.njk
 });
 
 routes.get('/about', (req, res) => {
-    return res.render('about');
+    return res.render('publicAccess/about');
 });
 
 routes.get('/recipes', (req, res) => {
-    return res.render('recipes', { foods });
+    return res.render('publicAccess/recipes', { foods });
 });
 
 routes.get("/recipes/:index", (req, res) => {
     const recipes = foods;
     const recipeIndex = req.params.index;
 
-    return res.render('recipe', { foods: [recipes[recipeIndex]]});
+    return res.render('publicAccess/recipe', { foods: [recipes[recipeIndex]]});
 });
 
 /* -- RECIPE MANAGER */

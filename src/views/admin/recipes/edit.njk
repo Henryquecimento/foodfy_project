@@ -3,7 +3,7 @@
 {% block head %}
 
     <title>Foodfy Manager</title>
-    <link href="/css/adminCss/recipes/create.css" rel="stylesheet">
+    <link href="/css/privateAccess/recipes/create.css" rel="stylesheet">
 
 {% endblock %}
 
@@ -11,11 +11,11 @@
 
     <form method='POST' action="">
         <section class="manager-container">
-            
+
             <div class="create">
                 <div class="create-grid">
                     <h1>Editando receitas</h1>
-                    
+
                     <button type="submit">Salvar receita</button>
                 </div>
 
@@ -23,11 +23,11 @@
 
                 <input type="hidden" name="id" value="{{  }}">
 
-                </div>
             </div>
-        </section>
-    </form>
-    
-    <script src="/js/scriptManager.js"></script>
+        </div>
+    </section>
+</form>
+
+<script src="/js/scriptManager.js"></script>
 
 {% endblock %}

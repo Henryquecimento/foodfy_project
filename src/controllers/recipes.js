@@ -1,5 +1,4 @@
 const fs = require('fs');
-const foods = require('../data'); 
 const data = require('../data.json');
 
 exports.index = (req, res) => {
@@ -23,6 +22,8 @@ exports.post = (req, res) => {
         }
     };
 
+    const lastRecipe = data.recipes.length; // it'll represent my id/index
+
     data.recipes.push({
         ...req.body
     })
@@ -30,7 +31,7 @@ exports.post = (req, res) => {
     fs.writeFile('data.json', JSON.stringify(data, null, 2), err => {
         if(err) return res.send("Write file error -- line 37, recipes.js");
 
-        return res.render(`admin/recipes/${[data.recipes.length - 1]}`);
+        return res.redirect(`/admin/recipes/${lastRecipe}`);
     });
 
 };
