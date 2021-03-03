@@ -1,11 +1,21 @@
 <div class="item">
     <div>Imagem da receita</div>
     <div>
-        <input 
-            type = "url",
-            name = 'image',
-            value = '{{ food.image }}'
-        >
+        <input type="url" ,="," name='image' value='{{ food.image }}'>
+    </div>
+</div>
+
+<div class="item">
+    <div>Nome da receita</div>
+    <div>
+        <input type="text" ,="," name='title' value='{{ food.title }}'>
+    </div>
+</div>
+
+<div class="item">
+    <div>Nome do(a) chef</div>
+    <div>
+        <input type="text" ,="," name='author' value='{{ food.author }}'>
     </div>
 </div>
 
@@ -13,41 +23,30 @@
     <div>Ingredientes</div>
     <div id="ingredients">
         <div class="ingredient">
-            <input 
-                type = "text",
-                name = 'ingredients[]',
-                value = ''
-            >
+            <input type="text" ,="," name='ingredients[]' value=''>
         </div>
     </div>
-    <button type= 'button' class = 'add-ingredient'>Adicionar novo ingrediente</button>
+    <button type='button' class='add-ingredient'>Adicionar novo ingrediente</button>
 </div>
 
 <div class="item">
     <div>Modo de Preparo</div>
     <div id="steps">
-        <div class = "step">
-            <input 
-                type = "text",
-                name = 'steps[]',
-                value = ''
-            >
+        <div class="step">
+            <input type="text" ,="," name='steps[]' value=''>
         </div>
     </div>
-    <button type= 'button' class = 'add-step'>Adicionar novo passo</button>
+    <button type='button' class='add-step'>Adicionar novo passo</button>
 </div>
 
 <div class="item">
     <div>Informações adicionais</div>
     <div>
-        <input 
-            type = "text",
-            name = 'information',
-            value = '{{ food.information }}'
-        >
+        <textarea class="text" name="information" value='{{ food.information }}'></textarea>
     </div>
 </div>
 
 <button class="save-button" type="submit">Salvar receita</button>
 
 <script src="/js/dynamicFields.js"></script>
+{#      <input type="text" ,="," name='information' value='{{ food.information }}'> #}

@@ -12,8 +12,15 @@
     <section class="manager-container">
 
         <div class="recipes-container">
-            <h1>Gerenciar Receitas</h1>
-            <button type="submit">Criar</button>
+
+            <div class="title-grid">
+                <h1>Gerenciar Receitas</h1>
+
+                <button>
+                    <a class="create-button" href="/admin/recipes/create">Criar receita</a>
+                </button>
+            </div>
+
             <div class="recipes-grid">
 
                 {% for food in foods %}

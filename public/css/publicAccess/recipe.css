@@ -1,135 +1,141 @@
 /*----FOOD PAGE -------*/
 .recipes-container {
-    text-align: center;
-    min-height: 1221.410px;
+  text-align: center;
+  min-height: 1221.41px;
 }
 
 .recipe-fields {
-    max-width: 1400px;
-    display: inline-block;
+  max-width: 1400px;
+  display: inline-block;
 }
 
 .recipe-head {
-    display: inline-flex;
-    width: 940px;
-    margin-top: 32px;
-    margin-bottom: 16px;
-    text-align: left;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 940px;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  text-align: left;
 }
 
 .recipe-head button {
-    width: 136px;
-    height: 37px;
-    border-radius: 4px;
-    background-color: #6558C3;
-    color: #FFFFFF;
-    font-size: 16px;
-    line-height: 19px;
-    margin-left: 56%;
+  text-align: center;
+  background-color: #6558c3;
+  padding: 8px;
+  border-radius: 4px;
+  width: 136px;
+  height: 37px;
+  font-size: 16px;
+  line-height: 19px;
+  margin-left: 332px;
+}
+
+.recipe-head .edit-button {
+  color: #ffffff;
+  text-decoration: none;
 }
 
 .food-image img {
-    width: 940px;
-    height: 280px;
-    border-radius: 15px;
+  width: 940px;
+  height: 280px;
+  border-radius: 15px;
 }
 
 .food-information {
-    text-align: justify;
+  text-align: justify;
 }
 
 .top_info {
-    margin: 5% 0;
-    text-align: center;
+  margin: 5% 0;
+  text-align: center;
 }
 
 .top_info h3 {
-    font-size: 36px;
-    line-height: 42px;
-    color: #111111;
-    font-family: Roboto-Bold;
+  font-size: 36px;
+  line-height: 42px;
+  color: #111111;
+  font-family: Roboto-Bold;
 }
 
 .top_info p {
-    font-size: 20px;
-    line-height: 24px;
-    color: #777777;
-    font-family: Roboto-Regular;
+  font-size: 20px;
+  line-height: 24px;
+  color: #777777;
+  font-family: Roboto-Regular;
 }
 
 .subject {
-    display: inline-grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
+  display: inline-grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
 }
 
 .mid_info {
-    max-width: 940px;
+  max-width: 940px;
 }
 
 .ingredients h1 {
-    margin-bottom: 2%;
-    color: #111111;
-    font-size: 24px;
-    line-height: 28px;
-    font-family: Roboto-Bold;
+  margin-bottom: 2%;
+  color: #111111;
+  font-size: 24px;
+  line-height: 28px;
+  font-family: Roboto-Bold;
 }
 
 .ingredients li {
-    font-size: 18px;
-    line-height: 28px;
-    color: #444444;
-    font-family: Roboto-Regular;
-    
+  font-size: 18px;
+  line-height: 28px;
+  color: #444444;
+  font-family: Roboto-Regular;
 }
 
 .preparation {
-    margin-top: 2%;
+  margin-top: 2%;
 }
 
-.preparation h1{
-    margin-bottom: 2%;
-    color: #111111;
-    font-size: 24px;
-    line-height: 28px;
-    font-family: Roboto-Bold;
+.preparation h1 {
+  margin-bottom: 2%;
+  color: #111111;
+  font-size: 24px;
+  line-height: 28px;
+  font-family: Roboto-Bold;
 }
 .preparation li {
-    font-size: 18px;
-    line-height: 28px;
-    color: #444444;
-    font-family: Roboto-Regular;
+  font-size: 18px;
+  line-height: 28px;
+  color: #444444;
+  font-family: Roboto-Regular;
 }
 
 .info {
-    margin-top: 2%;
+  margin-top: 2%;
 }
 
-.info h1{
-    margin-bottom: 2%;
-    color: #111111;
-    font-size: 24px;
-    line-height: 28px;
-    font-family: Roboto-Bold;
+.info h1 {
+  margin-bottom: 2%;
+  color: #111111;
+  font-size: 24px;
+  line-height: 28px;
+  font-family: Roboto-Bold;
 }
 
 .info p {
-    font-size: 18px;
-    line-height: 28px;
-    color: #444444;
-    font-family: Roboto-Regular;
-    white-space: pre-line;
+  font-size: 18px;
+  line-height: 28px;
+  color: #444444;
+  font-family: Roboto-Regular;
+  white-space: pre-line;
 }
 
 /* hide buttom */
 .hide-button {
-    font-size: 12px;
-    line-height: 14px;
-    background: none;
-    color: #999999;
-    font-family: Roboto-Bold;
-    text-align: left;
+  font-size: 12px;
+  line-height: 14px;
+  background: none;
+  color: #999999;
+  font-family: Roboto-Bold;
+  text-align: left;
 }
-.content.hide{
-    display: none;
+.content.hide {
+  display: none;
 }

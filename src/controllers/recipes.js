@@ -23,6 +23,7 @@ exports.post = (req, res) => {
     };
 
     const lastRecipe = data.recipes.length; // it'll represent my id/index
+    
 
     data.recipes.push({
         ...req.body
@@ -41,22 +42,14 @@ exports.show = (req, res) => {
     const recipes = data.recipes;
     const recipeId = req.params.id;
 
-
     return res.render('admin/recipes/show', { foods: [recipes[recipeId]]});
 };
 
 // Edit
 exports.edit = (req, res) => {
-    return res.send('everything is ok')
-    /* const { id } = req.body;
-
-    const findRecipe = foods.find(recipe => {
-        return id == recipe.id
-    });
-
-    if (!findRecipe) {
-        return res.send("Recipe not found!");
-    };
-
-    fs.writeFile() */
+    const recipes = data.recipes;
+    const recipeId = req.params.id;
+    
+    //Define - food.Variable
+    return res.render('admin/recipes/edit', { foods: [recipes[recipeId]]});
 };

@@ -1,70 +1,70 @@
 @import "https://fonts.googleapis.com/css2?family=Roboto&display=swap";
 
-*{
-    margin: 0;
-    border: 0;
-    padding: 0;
+* {
+  margin: 0;
+  border: 0;
+  padding: 0;
 }
 
 /* -- LAYOUT --  */
 
 body {
-    background: white;
-    font-family: 'Roboto', sans-serif;
+  background: white;
+  font-family: "Roboto", sans-serif;
 }
 
 header {
-    padding: 24px 0;
-    text-align: center;
+  padding: 24px 0;
+  text-align: center;
 }
 
 .header-container {
-    display: inline-block;
+  display: inline-block;
 }
 
 .links a {
-    color: #111111;
-    text-decoration: none;
-    font-weight: bold;
+  color: #111111;
+  text-decoration: none;
+  font-weight: bold;
 }
 
 .links a:last-child {
-    margin-left: 8px;
+  margin-left: 8px;
 }
 
-.links a:hover{
-    color: rgb(7, 182, 66);
-    transition: color 120ms;
+.links a:hover {
+  color: rgb(7, 182, 66);
+  transition: color 120ms;
 }
 
 .links .logo {
-    position: relative;
-    right: 398px;
-    top: 25px;
+  position: relative;
+  right: 424px;
+  top: 25px;
 }
 
 .links .path {
-    margin-right: 200px;
+  margin-right: 200px;
 }
 
-.links .path a {  
-    font-size: 16px;
-    line-height: 24px;
-    padding-top: 4px;
+.links .path a {
+  font-size: 16px;
+  line-height: 24px;
+  padding-top: 4px;
 }
 
 /* -- FOOTER -- */
 
 footer {
-    background-color: #EEEEEE;
-    padding: 20px;
-    margin-bottom: 5px;
-    margin-top: 10%;
+  background-color: #eeeeee;
+  padding: 20px;
+  margin-bottom: 5px;
+  margin-top: 10%;
 }
 
-footer h2{
-    font-size: 14px;
-    line-height: 16px;
-    color: #999999;
-    text-align: center;
+footer h2 {
+  font-size: 14px;
+  line-height: 16px;
+  color: #999999;
+  text-align: center;
 }

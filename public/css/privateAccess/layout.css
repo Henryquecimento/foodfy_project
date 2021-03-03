@@ -1,8 +1,8 @@
 header {
-    background-color: #111111;
-    margin: 0 0 34px 0;
-    padding-top: 24px;
-    padding-bottom: 48px;
+  background-color: #111111;
+  margin: 0 0 34px 0;
+  padding-top: 24px;
+  padding-bottom: 48px;
 }
 
 .header-container {
@@ -12,5 +12,5 @@ header {
 }
 
 .links a {
-    color: #FFFFFF;
+  color: #ffffff;
 }
