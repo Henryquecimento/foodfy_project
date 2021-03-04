@@ -70,7 +70,7 @@
   padding-top: 5px;
 }
 
-.recipe-content p:last-child button {
+.recipe-content p:last-child a {
   text-decoration: none;
   color: #6558c3;
   font-weight: Bold;

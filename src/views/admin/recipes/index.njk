@@ -25,27 +25,24 @@
 
                 {% for food in foods %}
 
-                    {% if loop.index <= 10 %}
-                        <div class="recipe">
+                    <div class="recipe">
 
-                            <div class="recipe-img">
-                                <img src="{{food.image}}" alt="Image of {{food.image}}">
-                            </div>
+                        <div class="recipe-img">
+                            <img src="{{food.image}}" alt="Image of {{food.image}}">
+                        </div>
 
-                            <div class="recipe-content">
-                                <h3>{{food.title}}</h3>
-                                <p>Por
-                                    {{food.author}}</p>
-
-                                {# <p><a href="recipes/show">Visualizar</a></p> #}
-                                <p>
-                                    <button>Visualizar</button>
-                                </p>
-
-                            </div>
+                        <div class="recipe-content">
+                            <h3>{{food.title}}</h3>
+                            <p>Por
+                                {{food.author}}</p>
+                            <p>
+                                <a href="recipes/{{ food.id }}">Visualizar</a>
+                            </p>
 
                         </div>
-                    {% endif %}
+
+                    </div>
+
                 {% endfor %}
             </div>
         </div>

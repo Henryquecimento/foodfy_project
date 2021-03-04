@@ -15,19 +15,14 @@
             <div class="create">
                 <div class="create-grid">
                     <h1>Editando receitas</h1>
-
-                    <button type="submit">Salvar receita</button>
+                    <button class="save-button edit" type="submit">Salvar</button>
                 </div>
 
                 {% include 'admin/recipes/fields.njk' %}
-
-                {# <input type="hidden" name="id" value="{{  }}"> #}
 
             </div>
         </div>
     </section>
 </form>
-
-<script src="/js/scriptManager.js"></script>
 
 {% endblock %}

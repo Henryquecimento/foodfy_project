@@ -23,6 +23,10 @@
   grid-template-columns: 1fr 1fr;
 }
 
+button.save-button.edit {
+  margin-left: 335px;
+}
+
 .item {
   text-align: left;
   margin: 24px 0;

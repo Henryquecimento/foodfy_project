@@ -1,55 +1,81 @@
-const fs = require('fs');
-const data = require('../data.json');
+const fs = require("fs");
+const data = require("../data.json");
 
 exports.index = (req, res) => {
-    const recipes = data.recipes;
+  const recipes = data.recipes;
 
-    return res.render('admin/recipes/index', { foods: recipes });
+  return res.render("admin/recipes/index", { foods: recipes });
 };
 
 // Create
 exports.create = (req, res) => {
-    return res.render('admin/recipes/create');
+  return res.render("admin/recipes/create");
 };
 
 // Post - Create
 exports.post = (req, res) => {
-    const keys = Object.keys(req.body);
+  const keys = Object.keys(req.body);
 
-    for (key of keys) {
-        if(req.body[key] == "") {
-            return res.send("Please, fill all the fields!");
-        }
-    };
+  for (key of keys) {
+    if (req.body[key] == "") {
+      return res.send("Please, fill all the fields!");
+    }
+  }
 
-    const lastRecipe = data.recipes.length; // it'll represent my id/index
-    
+  let id = 1;
+  const lastRecipe = data.recipes[data.recipes.length - 1];
 
-    data.recipes.push({
-        ...req.body
-    })
+  if (lastRecipe) {
+    id = lastRecipe.id + 1;
+  }
 
-    fs.writeFile('data.json', JSON.stringify(data, null, 2), err => {
-        if(err) return res.send("Write file error -- line 37, recipes.js");
+  data.recipes.push({
+    ...req.body,
+    id,
+  });
 
-        return res.redirect(`/admin/recipes/${lastRecipe}`);
-    });
+  fs.writeFile("./src/data.json", JSON.stringify(data, null, 2), (err) => {
+    if (err) return res.send("Write file error -- line 37, recipes.js");
 
+    return res.redirect(`/admin/recipes/${id}`);
+  });
 };
 
 // Show
 exports.show = (req, res) => {
-    const recipes = data.recipes;
-    const recipeId = req.params.id;
+  const { id } = req.params;
 
-    return res.render('admin/recipes/show', { foods: [recipes[recipeId]]});
+  const foundRecipe = data.recipes.find((recipe) => {
+    return recipe.id == id;
+  });
+
+  if (!foundRecipe) {
+    return res.send("Recipe not found!");
+  }
+
+  const recipe = {
+    ...foundRecipe,
+  };
+
+  return res.render("admin/recipes/show", { foods: recipe });
 };
 
 // Edit
 exports.edit = (req, res) => {
-    const recipes = data.recipes;
-    const recipeId = req.params.id;
-    
-    //Define - food.Variable
-    return res.render('admin/recipes/edit', { foods: [recipes[recipeId]]});
+  const { id } = req.params;
+
+  const foundRecipe = data.recipes.find((recipe) => {
+    return recipe.id == id;
+  });
+
+  if (!foundRecipe) {
+    return res.send("Recipe not found!");
+  }
+
+  const recipe = {
+    ...foundRecipe,
+  };
+
+  //Define - food.Variable
+  return res.render(`admin/recipes/edit`, { foods: recipe });
 };

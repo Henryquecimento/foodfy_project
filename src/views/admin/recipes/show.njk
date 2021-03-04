@@ -2,7 +2,7 @@
 
 {% block head %}
 
-    <title>{{food.title}}
+    <title>{{foods.title}}
         | Foodfy</title>
     <link href="/css/publicAccess/recipe.css" rel="stylesheet">
 
@@ -13,79 +13,75 @@
 
         <div class="recipe-fields">
 
-            {% for food in foods %}
+            <div class="recipe-head">
+                <h1>Receita:
+                    {{ foods.title }}</h1>
 
-                <div class="recipe-head">
-                    <h1>Receita:
-                        {{ food.title }}</h1>
-                        
-                    <button>
-                        <a class="edit-button" href="#">Editar receita</a>
-                    </button>
+                <a class="edit-button" href="/admin/recipes/{{foods.id}}/edit">Editar receita</a>
+            </div>
+
+            <div class="food-image">
+                <img src="{{ foods.image }}" alt="Image of {{foods.title}}">
+            </div>
+
+            <div class="food-information">
+
+                <div class="top_info">
+
+                    <h3>{{foods.title}}</h3>
+                    <p>Por
+                        {{foods.author}}</p>
+
                 </div>
 
-                <div class="food-image">
-                    <img src="{{ food.image }}" alt="Image of {{food.title}}">
-                </div>
+                <div class="mid_info">
 
-                <div class="food-information">
+                    <div class="ingredients">
 
-                    <div class="top_info">
+                        <div class="subject">
+                            <h1>Ingredientes</h1>
+                            <button class='hide-button'>Esconder</button>
+                        </div>
 
-                        <h3>{{food.title}}</h3>
-                        <p>Por
-                            {{food.author}}</p>
+                        <div class="content show">
+                            {% for ingredient in foods.ingredients %}
+                                <li>{{ ingredient }}</li>
+                            {% endfor %}
+                        </div>
 
                     </div>
 
-                    <div class="mid_info">
+                    <div class="preparation">
 
-                        <div class="ingredients">
-
-                            <div class="subject">
-                                <h1>Ingredientes</h1>
-                                <button class='hide-button'>Esconder</button>
-                            </div>
-
-                            <div class="content show">
-                                {% for ingredient in food.ingredients %}
-                                    <li>{{ ingredient }}</li>
-                                {% endfor %}
-                            </div>
-
+                        <div class="subject">
+                            <h1>Modo de preparo</h1>
+                            <button class='hide-button'>Esconder</button>
                         </div>
 
-                        <div class="preparation">
-
-                            <div class="subject">
-                                <h1>Modo de preparo</h1>
-                                <button class='hide-button'>Esconder</button>
-                            </div>
-
-                            <div class="content show">
-                                {% for step in food.steps %}
-                                    <li>{{ step }}</li>
-                                {% endfor %}
-                            </div>
-
+                        <div class="content show">
+                            {% for step in foods.steps %}
+                                <li>{{ step }}</li>
+                            {% endfor %}
                         </div>
 
-                        <div class="info">
-
-                            <div class="subject">
-                                <h1>Informações adicionais</h1>
-                                <button class='hide-button'>Esconder</button>
-                            </div>
-
-                            <div class="content show">
-                                <p>{{food.information}}</p>
-                            </div>
-
-                        </div>
                     </div>
 
+                    <div class="info">
+
+                        <div class="subject">
+                            <h1>Informações adicionais</h1>
+                            <button class='hide-button'>Esconder</button>
+                        </div>
+
+                        <div class="content show">
+                            <p>{{foods.information}}</p>
+                        </div>
+
+                    </div>
                 </div>
-            {% endfor %}
+
+            </div>
+
         </div>
 
     </section>
