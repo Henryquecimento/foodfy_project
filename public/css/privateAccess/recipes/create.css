@@ -91,3 +91,19 @@ textarea.text {
   font-weight: bold;
   padding: 4px;
 }
+
+/* DELETE BUTTON */
+button.delete {
+  text-align: center;
+  background-color: #e63e73;
+  color: #ffffff;
+  padding: 8px;
+  border-radius: 4px;
+  width: 139px;
+  height: 37px;
+  font-size: 16px;
+  line-height: 19px;
+  margin-left: 178px;
+  top: 168px;
+  position: absolute;
+}

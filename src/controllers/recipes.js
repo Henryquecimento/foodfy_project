@@ -76,6 +76,51 @@ exports.edit = (req, res) => {
     ...foundRecipe,
   };
 
-  //Define - food.Variable
   return res.render(`admin/recipes/edit`, { foods: recipe });
+};
+
+exports.put = (req, res) => {
+  const { id } = req.body;
+  let index = 0;
+
+  const foundRecipe = data.recipes.find((recipe, foundIndex) => {
+    if (id == recipe.id) {
+      index = foundIndex;
+
+      return true;
+    }
+  });
+
+  if (!foundRecipe) {
+    return res.send("Recipe not found!");
+  }
+
+  const recipe = {
+    ...foundRecipe,
+    ...req.body,
+  };
+
+  data.recipes[index] = recipe;
+
+  fs.writeFile("./src/data.json", JSON.stringify(data, null, 2), (err) => {
+    if (err) return res.send("Write error! - line 108");
+
+    return res.redirect(`/admin/recipes/${id}`);
+  });
+};
+
+exports.delete = (req, res) => {
+  const { id } = req.body;
+
+  const filtredRecipes = data.recipes.filter((recipe) => {
+    return recipe.id != id;
+  });
+
+  data.recipes = filtredRecipes;
+
+  fs.writeFile("./src/data.json", JSON.stringify(data, null, 2), (err) => {
+    if (err) return res.send("Write error! -- line 124");
+
+    return res.redirect("/admin/recipes");
+  });
 };

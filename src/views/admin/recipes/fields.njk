@@ -1,30 +1,39 @@
 <div class="item">
     <div>Imagem da receita</div>
     <div>
-        <input type="url" ,="," name='image' value='{{ foods.image }}'>
+        <input type="url" ,="," name='image' placeholder="https://..." value='{{ foods.image }}'>
     </div>
 </div>
 
 <div class="item">
-    <div>Nome da receita</div>
+    <div>Receita</div>
     <div>
-        <input type="text" ,="," name='title' value='{{ foods.title }}'>
+        <input type="text" ,="," name='title' placeholder="Qual o nome da receita?" value='{{ foods.title }}'>
     </div>
 </div>
 
 <div class="item">
-    <div>Nome do(a) chef</div>
+    <div>Chef</div>
     <div>
-        <input type="text" ,="," name='author' value='{{ foods.author }}'>
+        <input type="text" ,="," name='author' placeholder="Qual o seu nome?" value='{{ foods.author }}'>
     </div>
 </div>
 
 <div class="item">
     <div>Ingredientes</div>
+    {% if not foods.ingredients %}
+        <div id="ingredients">
+            <div class="ingredient">
+                <input type="text" name='ingredients[]' placeholder="Adicione um novo ingrediente">
+            </div>
+        </div>
+
+    {% endif %}
+
     {% for ingredient in foods.ingredients%}
         <div id="ingredients">
             <div class="ingredient">
-                <input type="text" ,="," name='ingredients[]' value='{{ingredient}}'>
+                <input type="text" name='ingredients[]' value='{{ingredient}}'>
             </div>
         </div>
     {% endfor %}
@@ -33,10 +42,19 @@
 
 <div class="item">
     <div>Modo de Preparo</div>
+    {% if not foods.steps%}
+
+        <div id="steps">
+            <div class="step">
+                <input type="text" name='steps[]' placeholder="Adicione um novo passo" value=''>
+            </div>
+        </div>
+
+    {% endif %}
     {% for step in foods.steps%}
         <div id="steps">
             <div class="step">
-                <input type="text" ,="," name='steps[]' value='{{step}}'>
+                <input type="text" name='steps[]' value='{{step}}'>
             </div>
         </div>
         {% endfor%}

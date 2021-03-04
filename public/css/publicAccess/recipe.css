@@ -30,7 +30,7 @@
   margin-left: 332px;
 }
 
-.recipe-head .edit-button {
+.recipe-head a.edit-button {
   color: #ffffff;
   text-decoration: none;
 }
