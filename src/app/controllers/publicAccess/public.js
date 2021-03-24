@@ -1,4 +1,4 @@
-const data = require("../../data.json");
+const data = require("../../../data.json");
 
 exports.index = (req, res) => {
   return res.render("publicAccess/index", { foods: data.recipes });

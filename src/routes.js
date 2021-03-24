@@ -1,8 +1,8 @@
 const express = require("express");
 const routes = express.Router();
 /* const data = require("./data.json"); */
-const recipes = require("./controllers/recipes");
-const public = require("./controllers/publicAccess/public");
+const recipes = require("./app/controllers/recipes");
+const public = require("./app/controllers/publicAccess/public");
 
 /* -- Public Access -- */
 
