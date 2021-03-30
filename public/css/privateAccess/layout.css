@@ -1,16 +1,37 @@
 header {
   background-color: #111111;
   margin: 0 0 34px 0;
-  padding-top: 24px;
-  padding-bottom: 48px;
+  padding: 16px;
 }
 
 .header-container {
-  margin-right: 0;
-  text-align: unset;
+  margin-right: 690px;
+  text-align: start;
   display: initial;
 }
 
+.links {
+  display: inline-flex;
+  gap: 40px;
+}
+
+.links .logo {
+  position: initial;
+}
+
+.links .path {
+  margin-right: 0;
+}
+
+.links .path a:last-child {
+  margin-left: 16px;
+}
+
 .links a {
+  color: #999999;
+}
+
+.links a:hover {
   color: #ffffff;
+  transition: color 300ms;
 }

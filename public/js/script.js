@@ -1,13 +1,7 @@
-/* const cards = document.querySelectorAll(".card"); */
+/* -- Hide and Show buttons functionality -- */
 
-const buttons = document.querySelectorAll("button");
+const buttons = document.querySelectorAll("button.hide-button");
 const content = document.querySelectorAll(".content");
-
-/* for (let index = 0; cards.length; index++) {
-  cards[index].addEventListener("click", () => {
-    window.location.href = `/recipes/${index}`;
-  });
-} */
 
 for (let [i, button] of buttons.entries()) {
   button.addEventListener("click", () => {
@@ -22,3 +16,6 @@ for (let [i, button] of buttons.entries()) {
     }
   });
 }
+
+/* -- Selected Links -- */
+const currentPage = location.pathname;

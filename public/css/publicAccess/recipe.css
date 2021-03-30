@@ -135,6 +135,7 @@
   color: #999999;
   font-family: Roboto-Bold;
   text-align: left;
+  outline: none;
 }
 .content.hide {
   display: none;
