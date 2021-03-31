@@ -1,0 +1,34 @@
+{% extends "admin/layout.njk" %}
+
+{% block head %}
+
+    <title>Foodfy Manager</title>
+    <link href="/css/privateAccess/recipes/create.css" rel="stylesheet">
+
+{% endblock %}
+
+{% block content %}
+    <section class="manager-container">
+
+        <form method='POST' action="/admin/recipes?_method=PUT">
+
+            <div class="create">
+                <div class="create-grid">
+                    <h1>Editando receitas</h1>
+                    <button class="save-button edit" type="submit">Salvar receita</button>
+                </div>
+
+                {% include 'admin/recipes/fields.njk' %}
+
+                <input type="hidden" name="id" value="{{ foods.id }}">
+            </div>
+
+        </form>
+
+        <form id='form-delete' method="POST" action="/admin/recipes?_method=DELETE">
+            <input type="hidden" name="id" value="{{ foods.id }}">
+            <button class="delete" type="submit">Deletar receita</button>
+        </form>
+
+    </section>
+{% endblock %}

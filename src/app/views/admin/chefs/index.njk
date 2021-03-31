@@ -14,10 +14,10 @@
         <div class="recipes-container">
 
             <div class="title-grid">
-                <h1>Gerenciar Receitas</h1>
+                <h1>Gerenciar chefs</h1>
 
                 <button>
-                    <a class="create-button" href="/admin/recipes/create">Criar receita</a>
+                    <a class="create-button" href="/admin/chefs/create">Criar Chef</a>
                 </button>
             </div>
 
@@ -28,26 +28,26 @@
                     <div class="recipe">
 
                         <div class="recipe-img">
-                            <img src="{{food.image}}" alt="Image of {{food.image}}">
+                            <img src="#" alt="Image of #">
                         </div>
 
                         <div class="recipe-content">
-                            <h3>{{food.title}}</h3>
+                            {# <h3>{{food.title}}</h3>
                             <p>Por
-                                {{food.chef_name}}</p>
-                            <p>
-                                <a href="recipes/{{ food.id }}">Visualizar</a>
-                            </p>
-
-                        </div>
+                                {{food.author}}</p>
+                            <p> #}
+                            <a href="recipes/#">Visualizar</a>
+                        </p>
 
                     </div>
 
-                {% endfor %}
-            </div>
-        </div>
-    </section>
+                </div>
 
-    <script src="/js/script.js"></script>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<script src="/js/script.js"></script>
 
 {% endblock %}

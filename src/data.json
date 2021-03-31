@@ -4,7 +4,7 @@
       "id": 2,
       "image": "https://rocketseat-cdn.s3-sa-east-1.amazonaws.com/launchbase/receitas/pizza.png",
       "title": "Pizza 4 estações",
-      "author": "Fabiana Melo",
+      "chef_name": "Fabiana Melo",
       "ingredients": [
         "1 xícara (chá) de leite",
         "1 ovo",
@@ -32,7 +32,7 @@
       "id": "3",
       "image": "https://rocketseat-cdn.s3-sa-east-1.amazonaws.com/launchbase/receitas/lasanha.png",
       "title": "Lasanha mac 'n' cheese",
-      "author": "Juliano Vieira",
+      "chef_name": "Juliano Vieira",
       "ingredients": [
         "massa pronta de lasanha",
         "400 g de presunto",
@@ -53,7 +53,7 @@
       "id": 4,
       "image": "https://rocketseat-cdn.s3-sa-east-1.amazonaws.com/launchbase/receitas/doce.png",
       "title": "Docinhos pão-do-céu",
-      "author": "Ricardo Golvea",
+      "chef_name": "Ricardo Golvea",
       "ingredients": [
         "1 kg de batata - doce",
         "100 g de manteiga",
@@ -76,7 +76,7 @@
       "id": 5,
       "image": "https://rocketseat-cdn.s3-sa-east-1.amazonaws.com/launchbase/receitas/asinha.png",
       "title": "Asinhas de frango ao barbecue",
-      "author": "Vania Steroski",
+      "chef_name": "Vania Steroski",
       "ingredients": [
         "12 encontros de asinha de galinha, temperados a gosto",
         "2 colheres de sopa de farinha de trigo",

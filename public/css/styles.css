@@ -28,6 +28,11 @@ header {
   display: inline-flex;
   gap: 40px;
 }
+
+.links .active {
+  color: #eeeeee;
+}
+
 .links a {
   color: #111111;
   text-decoration: none;
