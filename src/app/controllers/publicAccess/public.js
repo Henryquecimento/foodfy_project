@@ -1,7 +1,7 @@
-const data = require("../../../data.json");
+
 
 exports.index = (req, res) => {
-  return res.render("publicAccess/index", { foods: data.recipes });
+  return res.render("publicAccess/index");
 };
 
 exports.about = (req, res) => {
@@ -9,12 +9,11 @@ exports.about = (req, res) => {
 };
 
 exports.recipes = (req, res) => {
-  return res.render("publicAccess/recipes", { foods: data.recipes });
+  return res.render("publicAccess/recipes");
 };
 
 // Show
 exports.recipe = (req, res) => {
-  const { id } = req.params;
 
-  return res.render("publicAccess/recipe", { foods: [data.recipes[id - 1]] });
+  return res.render("publicAccess/recipe");
 };

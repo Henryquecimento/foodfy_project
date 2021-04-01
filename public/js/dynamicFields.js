@@ -17,8 +17,8 @@ document
 
 // Dynamic Preparation fields
 function addStep() {
-  const steps = document.querySelector("#steps");
-  const fieldContainer = document.querySelectorAll(".step");
+  const steps = document.querySelector("#preparation");
+  const fieldContainer = document.querySelectorAll(".preparation");
 
   const newField = fieldContainer[fieldContainer.length - 1].cloneNode(true);
 
