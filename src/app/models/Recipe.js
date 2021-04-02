@@ -21,7 +21,7 @@ module.exports = {
             data.ingredients,
             data.preparation,
             data.information,
-            Date.now()
+            date(Date.now()).iso
         ]
 
         db.query(query, values, (err, results) => {
