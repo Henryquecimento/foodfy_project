@@ -30,10 +30,15 @@ module.exports = {
         });
     },
     edit(req, res) {
-        return res.render('admin/chefs/edit');
+        Chef.find(req.params.id, (chef) => {
+            return res.render('admin/chefs/edit', { chef });
+        });
     },
     put(req, res) {
-        return res.render('admin/chefs');
+        Chef.update(req.body, (chef) => {
+
+            return res.redirect('/admin/chefs');
+        });
     },
     delete(req, res) {
         return res.render('admin/chefs/delete');
