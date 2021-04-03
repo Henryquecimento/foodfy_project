@@ -33,44 +33,40 @@
   text-decoration: none;
 }
 
-.recipes-grid {
+.chefs-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  row-gap: 16px;
   margin: 34px 0 34px 0;
   width: 940px;
 }
 
-.recipe {
+.chef {
   display: inline-flex;
 }
 
-.recipe-img img {
-  width: 172px;
-  height: 80px;
-  border-radius: 8.57px;
+.chef_avatar img {
+  width: 64px;
+  height: 64px;
+  border-radius: 40px;
 }
 
-.recipe-content {
+.chef-content {
   text-align: left;
-  padding: 0 8px 0 8px;
+  padding: 8px;
+  margin-left: 8px;
 }
 
-.recipe-content h3 {
+.chef-content h3 {
   font-size: 18px;
   line-height: 21px;
-  font-weight: bold;
-  padding-top: 5px;
+  font-weight: normal;
+  margin-bottom: 4px;
 }
 
-.recipe-content p {
+.chef-content:last-child a {
   font-size: 14px;
   line-height: 16px;
-  color: #777777;
-  padding-top: 5px;
-}
-
-.recipe-content p:last-child a {
   text-decoration: none;
   color: #6558c3;
   font-weight: Bold;

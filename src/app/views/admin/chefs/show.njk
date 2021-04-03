@@ -13,81 +13,21 @@
 
         <div class="recipe-fields">
 
-            <div class="recipe-head">
-                <h1>Receita:
-                    {{ foods.title }}</h1>
+            <div class="chef">
 
-                <button>
-                    <a class="edit-button" href="/admin/chefs/{{foods.id}}/edit">Editar receita</a>
-                </button>
-            </div>
-
-            <div class="food-image">
-                <img src="{{ foods.image }}" alt="Image of {{foods.title}}">
-            </div>
-
-            <div class="food-information">
-
-                <div class="top_info">
-
-                    <h3>{{foods.title}}</h3>
-                    <p>Por
-                        {{foods.author}}</p>
-
+                <div class="chef_avatar">
+                    <img src="{{chef.avatar_url}}" alt="Image of {{chef.avatar_url}}">
                 </div>
 
-                <div class="mid_info">
-
-                    <div class="ingredients">
-
-                        <div class="subject">
-                            <h1>Ingredientes</h1>
-                            <button class='hide-button'>Esconder</button>
-                        </div>
-
-                        <div class="content show">
-                            {% for ingredient in foods.ingredients %}
-                                <li>{{ ingredient }}</li>
-                            {% endfor %}
-                        </div>
-
-                    </div>
-
-                    <div class="preparation">
-
-                        <div class="subject">
-                            <h1>Modo de preparo</h1>
-                            <button class='hide-button'>Esconder</button>
-                        </div>
-
-                        <div class="content show">
-                            {% for step in foods.steps %}
-                                <li>{{ step }}</li>
-                            {% endfor %}
-                        </div>
-
-                    </div>
-
-                    <div class="info">
-
-                        <div class="subject">
-                            <h1>Informações adicionais</h1>
-                            <button class='hide-button'>Esconder</button>
-                        </div>
-
-                        <div class="content show">
-                            <p>{{foods.information}}</p>
-                        </div>
-
-                    </div>
-                </div>
+                <div class="chef-content">
+                    <h3>{{chef.name}}</h3>
+                    <p>X Receitas</p>
+                </p>
 
             </div>
 
-        </div>
+        </section>
 
-    </section>
+        <script src="/js/script.js"></script>
 
-    <script src="/js/script.js"></script>
-
-{% endblock %}
+    {% endblock %}

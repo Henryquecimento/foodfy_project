@@ -3,7 +3,7 @@
 {% block head %}
 
     <title>Foodfy Manager</title>
-    <link href="/css/privateAccess/recipes/recipeManager.css" rel="stylesheet">
+    <link href="/css/privateAccess/chefs/chefsManager.css" rel="stylesheet">
 
 {% endblock %}
 
@@ -11,7 +11,7 @@
 
     <section class="manager-container">
 
-        <div class="recipes-container">
+        <div class="body-container">
 
             <div class="title-grid">
                 <h1>Gerenciar chefs</h1>
@@ -21,22 +21,19 @@
                 </button>
             </div>
 
-            <div class="recipes-grid">
+            <div class="chefs-grid">
 
-                {% for food in foods %}
+                {% for chef in chefs %}
 
-                    <div class="recipe">
+                    <div class="chef">
 
-                        <div class="recipe-img">
-                            <img src="#" alt="Image of #">
+                        <div class="chef_avatar">
+                            <img src="{{chef.avatar_url}}" alt="Image of {{chef.avatar_url}}">
                         </div>
 
-                        <div class="recipe-content">
-                            {# <h3>{{food.title}}</h3>
-                            <p>Por
-                                {{food.author}}</p>
-                            <p> #}
-                            <a href="recipes/#">Visualizar</a>
+                        <div class="chef-content">
+                            <h3>{{chef.name}}</h3>
+                            <a href="/admin/chefs/{{ chef.id }}">Visualizar</a>
                         </p>
 
                     </div>
