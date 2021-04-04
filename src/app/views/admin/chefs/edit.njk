@@ -15,7 +15,7 @@
             <div class="create">
                 <div class="create-grid">
                     <h1>Editando chef</h1>
-                    <button class="save-button edit" type="submit">Salvar receita</button>
+                    <button class="save-button edit" type="submit">Salvar chef</button>
                 </div>
 
                 {% include 'admin/chefs/fields.njk' %}
@@ -27,7 +27,7 @@
 
         <form id='form-delete' method="POST" action="/admin/chefs?_method=DELETE">
             <input type="hidden" name="id" value="{{ chef.id }}">
-            <button class="delete" type="submit">Deletar receita</button>
+            <button class="delete" type="submit">Deletar chef</button>
         </form>
 
     </section>

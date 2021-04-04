@@ -29,5 +29,6 @@ routes.get("/admin/chefs/:id/edit", chefs.edit);
 
 routes.post("/admin/chefs", chefs.post);
 routes.put("/admin/chefs", chefs.put);
+routes.delete("/admin/chefs", chefs.delete);
 
 module.exports = routes;

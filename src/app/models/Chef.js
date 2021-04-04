@@ -4,8 +4,9 @@ const { date } = require('../../lib/utils');
 module.exports = {
     all(callback) {
         db.query(`
-            SELECT * 
+            SELECT *
             FROM chefs
+            ORDER BY id
         `, (err, results) => {
             if (err) throw `Database error! ${err}`;
 
@@ -68,5 +69,12 @@ module.exports = {
 
             return callback();
         });
+    },
+    delete(id, callback) {
+        db.query(`DELETE FROM chefs WHERE id = $1`, [id], (err, results) => {
+            if (err) throw `Database error! ${err}`;
+
+            return callback();
+        })
     }
 }
