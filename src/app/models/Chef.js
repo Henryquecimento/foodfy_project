@@ -55,7 +55,7 @@ module.exports = {
             UPDATE chefs SET
                 name = ($1),
                 avatar_url = ($2)
-            WHERE id = ($3)
+            WHERE id = $3
         `;
 
         const values = [

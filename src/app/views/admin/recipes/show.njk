@@ -2,37 +2,37 @@
 
 {% block head %}
 
-    <title>{{foods.title}}
+    <title>{{recipe.title}}
         | Foodfy</title>
     <link href="/css/publicAccess/recipe.css" rel="stylesheet">
 
 {% endblock %}
 
 {% block content %}
-    <section class="recipes-container">
+    <section class="recipe-container">
 
         <div class="recipe-fields">
 
             <div class="recipe-head">
                 <h1>Receita:
-                    {{ foods.title }}</h1>
+                    {{ recipe.title }}</h1>
 
                 <button>
-                    <a class="edit-button" href="/admin/recipes/{{foods.id}}/edit">Editar receita</a>
+                    <a class="edit-button" href="/admin/recipes/{{recipe.id}}/edit">Editar receita</a>
                 </button>
             </div>
 
             <div class="food-image">
-                <img src="{{ foods.image }}" alt="Image of {{foods.title}}">
+                <img src="{{ recipe.image }}" alt="Image of {{recipe.title}}">
             </div>
 
             <div class="food-information">
 
                 <div class="top_info">
 
-                    <h3>{{foods.title}}</h3>
+                    <h3>{{recipe.title}}</h3>
                     <p>Por
-                        {{foods.chef_name}}</p>
+                        {{recipe.chef_name}}</p>
 
                 </div>
 
@@ -46,7 +46,7 @@
                         </div>
 
                         <div class="content show">
-                            {% for ingredient in foods.ingredients %}
+                            {% for ingredient in recipe.ingredients %}
                                 <li>{{ ingredient }}</li>
                             {% endfor %}
                         </div>
@@ -61,7 +61,7 @@
                         </div>
 
                         <div class="content show">
-                            {% for preparation in foods.preparation %}
+                            {% for preparation in recipe.preparation %}
                                 <li>{{ preparation }}</li>
                             {% endfor %}
                         </div>
@@ -76,7 +76,7 @@
                         </div>
 
                         <div class="content show">
-                            <p>{{foods.information}}</p>
+                            <p>{{recipe.information}}</p>
                         </div>
 
                     </div>

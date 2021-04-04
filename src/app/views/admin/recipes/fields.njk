@@ -2,7 +2,7 @@
     <div>Chef</div>
     <div>
         <select name="name">
-            {%for chef of chefOptions%}
+            {%for chef in chefOptions%}
                 <option value="{{chef.id}}" {% if recipe.chef_id == chef.id %} selected="selected" {%endif%}>{{chef.name}}</option>
                 {%endfor%}
             </select>
@@ -12,20 +12,20 @@
     <div class="item">
         <div>Imagem da receita</div>
         <div>
-            <input type="url" ,="," name='image' placeholder="https://..." value='{{ foods.image }}'>
+            <input type="url" ,="," name='image' placeholder="https://..." value='{{ recipe.image }}'>
         </div>
     </div>
 
     <div class="item">
         <div>Receita</div>
         <div>
-            <input type="text" ,="," name='title' placeholder="Qual o nome da receita?" value='{{ foods.title }}'>
+            <input type="text" ,="," name='title' placeholder="Qual o nome da receita?" value='{{ recipe.title }}'>
         </div>
     </div>
 
     <div class="item">
         <div>Ingredientes</div>
-        {% if not foods.ingredients %}
+        {% if not recipe.ingredients %}
             <div id="ingredients">
                 <div class="ingredient">
                     <input type="text" name='ingredients[]' placeholder="Adicione um novo ingrediente">
@@ -34,7 +34,7 @@
 
         {% endif %}
 
-        {% for ingredient in foods.ingredients%}
+        {% for ingredient in recipe.ingredients%}
             <div id="ingredients">
                 <div class="ingredient">
                     <input type="text" name='ingredients[]' value='{{ingredient}}'>
@@ -46,7 +46,7 @@
 
     <div class="item">
         <div>Modo de Preparo</div>
-        {% if not foods.preparation%}
+        {% if not recipe.preparation%}
 
             <div id="preparation">
                 <div class="preparation">
@@ -55,7 +55,7 @@
             </div>
 
         {% endif %}
-        {% for preparation in foods.preparation%}
+        {% for preparation in recipe.preparation%}
             <div id="preparation">
                 <div class="preparation">
                     <input type="text" name='preparation[]' value='{{preparation}}'>
@@ -68,7 +68,7 @@
         <div class="item">
             <div>Informações adicionais</div>
             <div>
-                <textarea class="text" name="information">{{ foods.information }}</textarea>
+                <textarea class="text" name="information">{{ recipe.information }}</textarea>
             </div>
         </div>
 

@@ -3,7 +3,9 @@ const Recipe = require('../../models/Recipe');
 module.exports = {
   index(req, res) {
 
-    return res.render("admin/recipes/index");
+    Recipe.all((recipes) => {
+      return res.render("admin/recipes/index", { recipes });
+    });
   },
   create(req, res) {
     return res.render("admin/recipes/create");
@@ -24,13 +26,20 @@ module.exports = {
 
   },
   show(req, res) {
-    return res.render("admin/recipes/show");
+    Recipe.find(req.params.id, (recipe) => {
+      return res.render("admin/recipes/show", { recipe });
+    });
   },
   edit(req, res) {
-    return res.render(`admin/recipes/edit`);
+    Recipe.find(req.params.id, (recipe) => {
+      return res.render("admin/recipes/edit", { recipe });
+    })
   },
   put(req, res) {
-    return res.redirect(`/admin/recipes`);
+    Recipe.update(req.body, () => {
+      return res.redirect(`/admin/recipes`);
+    })
+
   },
   delete(req, res) {
     return res.redirect("/admin/recipes");

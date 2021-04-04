@@ -20,7 +20,7 @@ module.exports = {
             }
         }
 
-        Chef.create(req.body, (chef) => {
+        Chef.create(req.body, () => {
             return res.redirect('/admin/chefs');
         });
     },
@@ -35,13 +35,13 @@ module.exports = {
         });
     },
     put(req, res) {
-        Chef.update(req.body, (chef) => {
+        Chef.update(req.body, () => {
 
             return res.redirect('/admin/chefs');
         });
     },
     delete(req, res) {
-        Chef.delete(req.body.id, (chef) => {
+        Chef.delete(req.body.id, () => {
             return res.redirect('/admin/chefs');
         })
 

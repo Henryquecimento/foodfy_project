@@ -23,26 +23,24 @@
 
             <div class="recipes-grid">
 
-                {% for food in foods %}
-
+                {% for recipe in recipes %}
                     <div class="recipe">
 
                         <div class="recipe-img">
-                            <img src="{{food.image}}" alt="Image of {{food.image}}">
+                            <img src="{{recipe.image}}" alt="Image of {{recipe.image}}">
                         </div>
 
                         <div class="recipe-content">
-                            <h3>{{food.title}}</h3>
+                            <h3>{{recipe.title}}</h3>
                             <p>Por
-                                {{food.chef_name}}</p>
+                                {{recipe.chef_name}}</p>
                             <p>
-                                <a href="recipes/{{ food.id }}">Visualizar</a>
+                                <a href="recipes/{{ recipe.id }}">Visualizar</a>
                             </p>
 
                         </div>
 
                     </div>
-
                 {% endfor %}
             </div>
         </div>

@@ -20,13 +20,13 @@
 
                 {% include 'admin/recipes/fields.njk' %}
 
-                <input type="hidden" name="id" value="{{ foods.id }}">
+                <input type="hidden" name="id" value="{{ recipes.id }}">
             </div>
 
         </form>
 
         <form id='form-delete' method="POST" action="/admin/recipes?_method=DELETE">
-            <input type="hidden" name="id" value="{{ foods.id }}">
+            <input type="hidden" name="id" value="{{ recipes.id }}">
             <button class="delete" type="submit">Deletar receita</button>
         </form>
 
