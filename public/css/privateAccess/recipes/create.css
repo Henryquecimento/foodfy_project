@@ -33,10 +33,16 @@ button.save-button.edit {
 }
 
 select {
-  width: 296px;
-  height: 30px;
   border: 1px solid #dddddd;
+  width: 950px;
+  height: 49px;
   border-radius: 4px;
+  font-size: 16px;
+  line-height: 19px;
+  padding: 4px;
+  color: #555;
+  font-weight: bold;
+  outline: none;
 }
 
 .item div:first-child {

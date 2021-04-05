@@ -1,0 +1,60 @@
+/*----FOOD PAGE -------*/
+.body-container {
+  text-align: center;
+  min-height: 1221.41px;
+}
+
+.body-fields {
+  max-width: 1400px;
+  display: inline-block;
+}
+
+.body-header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 940px;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  text-align: left;
+}
+
+.body-header h1 {
+  align-self: center;
+}
+
+.body-header button {
+  text-align: center;
+  background-color: #6558c3;
+  padding: 8px;
+  border-radius: 4px;
+  width: 136px;
+  height: 37px;
+  font-size: 16px;
+  line-height: 19px;
+  margin-left: 332px;
+}
+
+.body-header a.edit-button {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.chef_avatar img {
+  width: 200px;
+  height: 200px;
+  border-radius: 100px;
+}
+
+.chef-content {
+  margin-top: 32px;
+}
+
+.chef-content h1 {
+  font-size: 32px;
+  line-height: 42px;
+}
+
+.chef-content p {
+  font-size: 20px;
+  line-height: 24px;
+}

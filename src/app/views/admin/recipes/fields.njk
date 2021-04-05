@@ -1,19 +1,18 @@
 <div class="item">
-    <div>Chef</div>
+    <div>Imagem da receita</div>
     <div>
-        <select name="chef_id">
-            {% for chef in chefOptions %}
-                <option value="{{ chef.id }}">{{ chef_name }}</option>
-            {% endfor %}
-        </select>
-        {# {%if recipe.chef_id == chef.id %} selected="selected" {%endif%} }="}" #}
+        <input type="url" ,="," name='image' placeholder="https://..." value='{{ recipe.image }}'>
     </div>
 </div>
 
 <div class="item">
-    <div>Imagem da receita</div>
+    <div>Chef</div>
     <div>
-        <input type="url" ,="," name='image' placeholder="https://..." value='{{ recipe.image }}'>
+        <select name="chef_id">
+            {% for chef in chefOptions %}
+                <option value="{{ chef.id }}" placeholder='Selecione um chef' {%if recipe.chef_id == chef.id %} selected="selected" {%endif%}>{{ chef.name }}</option>
+            {% endfor %}
+        </select>
     </div>
 </div>
 
