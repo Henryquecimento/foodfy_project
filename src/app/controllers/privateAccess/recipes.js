@@ -8,7 +8,11 @@ module.exports = {
     });
   },
   create(req, res) {
-    return res.render("admin/recipes/create");
+
+    Recipe.chefSelectedOptions((options) => {
+
+      return res.render("admin/recipes/create", { chefOptions: options });
+    });
   },
   post(req, res) {
 
@@ -27,21 +31,35 @@ module.exports = {
   },
   show(req, res) {
     Recipe.find(req.params.id, (recipe) => {
+      if (!recipe) return res.send('Recipe not found!');
+
       return res.render("admin/recipes/show", { recipe });
     });
   },
   edit(req, res) {
     Recipe.find(req.params.id, (recipe) => {
-      return res.render("admin/recipes/edit", { recipe });
+      if (!recipe) return res.send('Recipe not found!');
+
+      Recipe.chefSelectedOptions((options) => {
+
+        return res.render("admin/recipes/edit", {
+          recipe,
+          chefOptions: options,
+        });
+      });
     })
   },
   put(req, res) {
+
     Recipe.update(req.body, () => {
       return res.redirect(`/admin/recipes`);
     })
-
   },
   delete(req, res) {
-    return res.redirect("/admin/recipes");
+
+    Recipe.delete(req.body.id, () => {
+
+      return res.redirect("/admin/recipes");
+    })
   }
 }

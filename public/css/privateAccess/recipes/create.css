@@ -32,6 +32,13 @@ button.save-button.edit {
   margin: 24px 0;
 }
 
+select {
+  width: 296px;
+  height: 30px;
+  border: 1px solid #dddddd;
+  border-radius: 4px;
+}
+
 .item div:first-child {
   font-size: 16px;
   line-height: 19px;
