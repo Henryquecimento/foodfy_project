@@ -14,7 +14,7 @@
         <div class="body-fields">
             <div class="body-header">
                 <h1>Chef:
-                    {{chef.name}}</h1>
+                    {{ chef.name }}</h1>
                 <button>
                     <a class="edit-button" href="/admin/chefs/{{chef.id}}/edit">Editar chef</a>
                 </button>
@@ -27,8 +27,9 @@
                 </div>
 
                 <div class="chef-content">
-                    <h1>{{chef.name}}</h1>
-                    <p>X Receitas</p>
+                    <h1>{{ chef.name }}</h1>
+                    <p>{{ chef.total_recipes }}
+                        Receitas</p>
                 </p>
 
             </div>

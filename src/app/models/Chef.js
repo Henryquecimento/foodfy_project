@@ -38,9 +38,11 @@ module.exports = {
     },
     find(id, callback) {
         const query = `
-            SELECT *
+            SELECT chefs.*, 
+            (SELECT count (*) FROM recipes WHERE recipes.chef_id = $1) AS total_recipes
             FROM chefs
-            WHERE id = $1
+            LEFT JOIN recipes ON (chefs.id = recipes.chef_id)
+            WHERE chefs.id = $1
         `;
 
         db.query(query, [id], (err, results) => {
