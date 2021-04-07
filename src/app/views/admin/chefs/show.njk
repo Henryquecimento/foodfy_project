@@ -34,6 +34,34 @@
 
             </div>
 
+            <div class="recipes-container">
+                <h1>Receitas:
+                </h1>
+
+                <div class="recipes-grid">
+
+                    <div class="recipe">
+
+                        <div class="recipe-img">
+                            <img src="{{recipes.image}}" alt="Image of {{recipe.image}}">
+                        </div>
+
+                        <div class="recipe-content">
+                            <h3>{{recipes.title}}</h3>
+                            <p>Por
+                                {{recipes.chef_name}}</p>
+                            <p>
+                                <a href="recipes/{{ recipe.id }}">Visualizar</a>
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
         </section>
 
         <script src="/js/script.js"></script>

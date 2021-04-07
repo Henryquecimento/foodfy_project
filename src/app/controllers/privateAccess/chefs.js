@@ -26,7 +26,10 @@ module.exports = {
     },
     show(req, res) {
         Chef.find(req.params.id, (chef) => {
-            return res.render('admin/chefs/show', { chef });
+            Chef.findRecipe(req.params.id, (recipes) => {
+
+                return res.render('admin/chefs/show', { chef, recipes });
+            })
         });
     },
     edit(req, res) {
