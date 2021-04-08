@@ -54,14 +54,14 @@ module.exports = {
     },
     findRecipe(id, callback) {
         db.query(`
-        SELECT recipes.*
-        FROM chefs
-        LEFT JOIN recipes ON (chefs.id = recipes.chef_id)
+        SELECT recipes.image, recipes.title, chefs.name AS chef_name
+        FROM recipes
+        LEFT JOIN chefs ON (recipes.chef_id = chefs.id)
         WHERE chefs.id = $1
         `, [id], (err, results) => {
             if (err) throw `Database error! ${err}`;
 
-            return callback(results.rows[0]);
+            return callback(results.rows);
         });
     },
     update(data, callback) {

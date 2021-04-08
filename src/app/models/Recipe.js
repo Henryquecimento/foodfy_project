@@ -89,7 +89,11 @@ module.exports = {
         })
     },
     chefSelectedOptions(callback) {
-        db.query(`SELECT id, name FROM chefs`, (err, results) => {
+        db.query(`
+        SELECT id, name 
+        FROM chefs
+        ORDER BY id
+        `, (err, results) => {
             if (err) throw `Database Error!`
             return callback(results.rows);
         })

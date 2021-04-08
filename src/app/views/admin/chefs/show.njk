@@ -39,25 +39,25 @@
                 </h1>
 
                 <div class="recipes-grid">
+                    {% for recipes in recipes %}
+                        <div class="recipe">
 
-                    <div class="recipe">
+                            <div class="recipe-img">
+                                <img src="{{recipes.image}}" alt="Image of {{recipes.image}}">
+                            </div>
 
-                        <div class="recipe-img">
-                            <img src="{{recipes.image}}" alt="Image of {{recipe.image}}">
+                            <div class="recipe-content">
+                                <h3>{{recipes.title}}</h3>
+                                <p>Por
+                                    {{recipes.chef_name}}</p>
+                                <p>
+                                    <a href="recipes/{{ recipe.id }}">Visualizar</a>
+                                </p>
+
+                            </div>
+
                         </div>
-
-                        <div class="recipe-content">
-                            <h3>{{recipes.title}}</h3>
-                            <p>Por
-                                {{recipes.chef_name}}</p>
-                            <p>
-                                <a href="recipes/{{ recipe.id }}">Visualizar</a>
-                            </p>
-
-                        </div>
-
-                    </div>
-
+                    {% endfor %}
                 </div>
 
             </div>
