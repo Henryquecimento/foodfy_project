@@ -1,0 +1,11 @@
+<script>
+    const formDelete = document.querySelector('#form-delete');
+
+    formDelete.addEventListener('submit', (event) => {
+        const confirmation = confirm('Deseja deletar mesmo?');
+
+        if (!confirmation) {
+            event.preventDefault();
+        }
+    });
+</script>
