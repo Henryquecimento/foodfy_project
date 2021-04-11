@@ -6,7 +6,8 @@ module.exports = {
         db.query(`
             SELECT recipes.*, chefs.name AS chef_name
             FROM recipes
-            LEFT JOIN chefs ON (recipes.chef_id = chefs.id)     
+            LEFT JOIN chefs ON (recipes.chef_id = chefs.id)
+            ORDER BY id     
         `, (err, results) => {
             if (err) throw `Database error! ${err}`;
 

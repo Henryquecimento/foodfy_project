@@ -34,6 +34,7 @@ module.exports = {
     },
     edit(req, res) {
         Chef.find(req.params.id, (chef) => {
+
             return res.render('admin/chefs/edit', { chef });
         });
     },
@@ -44,9 +45,19 @@ module.exports = {
         });
     },
     delete(req, res) {
-        Chef.delete(req.body.id, () => {
-            return res.redirect('/admin/chefs');
-        })
+        Chef.find(req.body.id, (chef) => {
+            if (chef.total_recipes != 0) {
+                return res.send('Chef possui receitas! Você não pode apagá-lo(a)!');
+            } else {
+                Chef.delete(req.body.id, () => {
+
+                    return res.redirect('/admin/chefs');
+                });
+            }
+
+
+
+        });
 
     }
 }
