@@ -10,6 +10,8 @@ routes.get("/", public.index);
 routes.get("/about", public.about);
 routes.get("/recipes", public.recipes);
 routes.get("/recipes/:id", public.recipe);
+routes.get("/chefs", public.chefs);
+/* routes.get("/recipes/:id", public.recipe); */
 
 /* -- Private Access -- */
 

@@ -20,13 +20,15 @@ header {
 }
 
 .header-container {
-  display: inline-block;
-  margin-right: 432px;
+  display: inline-grid;
+  grid-template-columns: 1fr 380px;
+  width: 940px;
 }
 
 .links {
   display: inline-flex;
   gap: 40px;
+  align-self: center;
 }
 
 .links .active {
@@ -48,14 +50,37 @@ header {
   transition: color 300ms;
 }
 
-.links .path {
-  margin-right: 200px;
-}
-
 .links .path a {
   font-size: 16px;
   line-height: 24px;
-  padding-top: 4px;
+  margin-left: 16px;
+}
+
+.filter {
+  display: grid;
+  grid-template-columns: 1fr 120px;
+  gap: 8px;
+}
+
+.filter input {
+  width: 246px;
+  height: 37px;
+  border-radius: 6px;
+  color: #999999;
+  outline: none;
+  border: 1px solid #dddddd;
+  padding: 0 2px 0 2px;
+  box-sizing: border-box;
+}
+
+button[type="submit"] {
+  font-size: 16px;
+  line-height: 24px;
+  height: 36px;
+  color: white;
+  background-color: #6558c3;
+  border-radius: 6px;
+  box-sizing: border-box;
 }
 
 /* -- FOOTER -- */

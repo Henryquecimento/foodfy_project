@@ -17,3 +17,7 @@ exports.recipe = (req, res) => {
 
   return res.render("publicAccess/recipe");
 };
+
+exports.chefs = (req, res) => {
+  return res.render("publicAccess/chefs");
+}
