@@ -33,10 +33,13 @@
 
                 </div>
 
-                <div class="filter">
-                    <input type="text" name="filter" placeholder="Buscar uma receitas">
-                    <button type="submit">Filtrar</button>
-                </div>
+                <form action="/recipes" method="GET">
+                    <div class="filter">
+                        <input type="text" name="filter" placeholder="Buscar uma receita">
+                        <button type="submit">Filtrar</button>
+                    </div>
+                </form>
+
             </section>
 
         </header>

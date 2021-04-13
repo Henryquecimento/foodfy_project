@@ -9,9 +9,9 @@ const chefs = require("./app/controllers/privateAccess/chefs");
 routes.get("/", public.index);
 routes.get("/about", public.about);
 routes.get("/recipes", public.recipes);
-routes.get("/recipes/:id", public.recipe);
+routes.get("/recipes/:id", public.show);
 routes.get("/chefs", public.chefs);
-/* routes.get("/recipes/:id", public.recipe); */
+routes.get("/chefs/:id", public.showChef);
 
 /* -- Private Access -- */
 

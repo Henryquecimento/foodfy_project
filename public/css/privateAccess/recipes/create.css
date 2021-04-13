@@ -122,3 +122,8 @@ button.delete {
   top: 129px;
   position: absolute;
 }
+
+button.delete:hover {
+  background-color: #eb628d;
+  transition: background-color 300ms;
+}

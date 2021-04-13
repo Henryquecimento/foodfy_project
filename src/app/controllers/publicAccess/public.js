@@ -1,23 +1,48 @@
+const Chef = require('../../models/Chef');
+const Recipe = require('../../models/Recipe');
 
+module.exports = {
 
-exports.index = (req, res) => {
-  return res.render("publicAccess/index");
-};
+  index(req, res) {
+    Recipe.all((recipes) => {
+      return res.render("publicAccess/recipes/index", { recipes });
+    });
+  },
+  about(req, res) {
+    return res.render("publicAccess/recipes/about");
+  },
+  recipes(req, res) {
+    let { filter } = req.query;
 
-exports.about = (req, res) => {
-  return res.render("publicAccess/about");
-};
+    if (filter) {
+      Recipe.findBy(filter, (recipes) => {
+        return res.render("publicAccess/recipes/recipes", { recipes });
+      });
+    } else {
+      Recipe.all((recipes) => {
+        return res.render("publicAccess/recipes/recipes", { recipes });
+      });
+    }
+  },
+  show(req, res) {
+    Recipe.find(req.params.id, (recipe) => {
+      return res.render("publicAccess/recipes/show", { recipe });
+    });
+  },
 
-exports.recipes = (req, res) => {
-  return res.render("publicAccess/recipes");
-};
+  /* Chefs */
 
-// Show
-exports.recipe = (req, res) => {
+  chefs(req, res) {
+    Chef.all((chefs) => {
+      return res.render("publicAccess/chefs/index", { chefs });
+    });
+  },
+  showChef(req, res) {
+    Chef.find(req.params.id, (chef) => {
+      Chef.findRecipe(req.params.id, (recipes) => {
+        return res.render("publicAccess/chefs/show", { chef, recipes });
+      });
+    });
+  }
 
-  return res.render("publicAccess/recipe");
-};
-
-exports.chefs = (req, res) => {
-  return res.render("publicAccess/chefs");
 }

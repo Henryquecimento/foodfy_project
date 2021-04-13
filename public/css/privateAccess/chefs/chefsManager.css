@@ -64,11 +64,21 @@
   margin-bottom: 4px;
 }
 
-.chef-content:last-child a {
+.chef-content:last-child a.visualization {
   font-size: 14px;
   line-height: 16px;
   text-decoration: none;
   color: #6558c3;
+  font-weight: Bold;
+  cursor: pointer;
+  background: none;
+}
+
+.chef-content:last-child a {
+  font-size: 14px;
+  line-height: 16px;
+  text-decoration: none;
+  color: #111111;
   font-weight: Bold;
   cursor: pointer;
   background: none;

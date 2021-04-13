@@ -3,8 +3,8 @@
 {% block head %}
 
     <title>
-        {{foods.title}}
-        | Foodfy</title>
+        {{recipe.title}}
+        | recipefy</title>
     <link href="/css/publicAccess/recipe.css" rel="stylesheet">
 
 {% endblock %}
@@ -15,16 +15,16 @@
         <div class="recipe-fields">
 
             <div class="food-image">
-                <img src="{{foods.image}}" alt="Image of {{foods.title}}">
+                <img src="{{recipe.image}}" alt="Image of {{recipe.title}}">
             </div>
 
             <div class="food-information">
 
                 <div class="top_info">
 
-                    <h3>{{foods.title}}</h3>
+                    <h3>{{recipe.title}}</h3>
                     <p>Por
-                        {{foods.chef_name}}</p>
+                        {{recipe.chef_name}}</p>
 
                 </div>
 
@@ -38,7 +38,7 @@
                         </div>
 
                         <div class="content show">
-                            {% for ingredient in foods.ingredients %}
+                            {% for ingredient in recipe.ingredients %}
                                 <li>{{ingredient}}</li>
                             {% endfor %}
                         </div>
@@ -53,7 +53,7 @@
                         </div>
 
                         <div class="content show">
-                            {% for preparation in foods.preparation %}
+                            {% for preparation in recipe.preparation %}
                                 <li>{{preparation}}</li>
                             {% endfor %}
                         </div>
@@ -68,7 +68,7 @@
                         </div>
 
                         <div class="content show">
-                            <p>{{foods.information}}</p>
+                            <p>{{recipe.information}}</p>
                         </div>
 
                     </div>

@@ -32,7 +32,7 @@ header {
 }
 
 .links .active {
-  color: #eeeeee;
+  color: #6558c3;
 }
 
 .links a {
@@ -41,25 +41,24 @@ header {
   font-weight: bold;
 }
 
-.links a:last-child {
-  margin-left: 8px;
-}
-
 .links a:hover {
   color: #999999;
   transition: color 300ms;
 }
 
+.links .path {
+  margin-left: 16px;
+}
+
 .links .path a {
   font-size: 16px;
   line-height: 24px;
-  margin-left: 16px;
+  margin-left: 24px;
 }
 
 .filter {
   display: grid;
-  grid-template-columns: 1fr 120px;
-  gap: 8px;
+  grid-template-columns: 1fr 130px;
 }
 
 .filter input {
@@ -73,7 +72,7 @@ header {
   box-sizing: border-box;
 }
 
-button[type="submit"] {
+button {
   font-size: 16px;
   line-height: 24px;
   height: 36px;
@@ -81,6 +80,12 @@ button[type="submit"] {
   background-color: #6558c3;
   border-radius: 6px;
   box-sizing: border-box;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #8174e3;
+  transition: background-color 300ms;
 }
 
 /* -- FOOTER -- */

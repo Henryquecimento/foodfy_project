@@ -28,19 +28,19 @@
 
                 <div class="cards">
 
-                    {% for food in foods %}
+                    {% for recipe in recipes %}
 
                         {% if loop.index <= 6 %}
                             <div class="card">
 
                                 <div class="card-img">
-                                    <a href="/recipes/{{food.id}}"><img src="{{food.image}}" alt="Image of {{food.image}}"></a>
+                                    <a href="/recipes/{{recipe.id}}"><img src="{{recipe.image}}" alt="Image of {{recipe.image}}"></a>
                                 </div>
 
                                 <div class="card-content">
-                                    <h3>{{food.title}}</h3>
+                                    <h3>{{recipe.title}}</h3>
                                     <p>Por
-                                        {{food.chef_name}}</p>
+                                        {{recipe.chef_name}}</p>
                                 </div>
 
                             </div>

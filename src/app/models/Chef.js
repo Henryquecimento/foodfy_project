@@ -4,7 +4,8 @@ const { date } = require('../../lib/utils');
 module.exports = {
     all(callback) {
         db.query(`
-            SELECT *
+            SELECT chefs.*, 
+            (SELECT count (*) FROM recipes WHERE recipes.chef_id = chefs.id) AS total_recipes
             FROM chefs
             ORDER BY id
         `, (err, results) => {

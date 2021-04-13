@@ -1,0 +1,67 @@
+{% extends "publicAccess/layout.njk" %}
+
+{% block head %}
+
+    <title>{{chef.name}}
+        | Foodfy</title>
+    <link href="/css/privateAccess/chefs/show.css" rel="stylesheet">
+
+{% endblock %}
+
+{% block content %}
+    <section class="body-container">
+
+        <div class="body-fields">
+
+            <div class="body-header">
+                <h1>Chef:
+                    {{ chef.name }}</h1>
+            </div>
+
+            <div class="chef">
+
+                <div class="chef_avatar">
+                    <img src="{{chef.avatar_url}}" alt="Image of {{chef.avatar_url}}">
+                </div>
+
+                <div class="chef-content">
+                    <h1>{{ chef.name }}</h1>
+                    <p>{{ chef.total_recipes }}
+                        Receitas</p>
+                </p>
+
+            </div>
+
+            <div class="recipes-container">
+                <h1>Receitas:
+                </h1>
+
+                <div class="recipes-grid">
+                    {% for recipes in recipes %}
+                        <div class="recipe">
+
+                            <div class="recipe-img">
+                                <img src="{{recipes.image}}" alt="Image of {{recipes.image}}">
+                            </div>
+
+                            <div class="recipe-content">
+                                <h3>{{recipes.title}}</h3>
+                                <p>Por
+                                    {{recipes.chef_name}}</p>
+                                <p>
+                                    <a href="/recipes/{{ recipes.id }}">Visualizar</a>
+                                </p>
+
+                            </div>
+
+                        </div>
+                    {% endfor %}
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <script src="/js/script.js"></script>
+
+{% endblock %}

@@ -1,25 +1,16 @@
-{% extends "admin/layout.njk" %}
+{% extends "publicAccess/layout.njk" %}
 
 {% block head %}
 
-    <title>Foodfy Manager</title>
+    <title>Receitas | Foodfy</title>
     <link href="/css/privateAccess/chefs/chefsManager.css" rel="stylesheet">
 
 {% endblock %}
 
 {% block content %}
-
     <section class="manager-container">
 
         <div class="body-container">
-
-            <div class="title-grid">
-                <h1>Gerenciar chefs</h1>
-
-                <button>
-                    <a class="create-button" href="/admin/chefs/create">Criar Chef</a>
-                </button>
-            </div>
 
             <div class="chefs-grid">
 
@@ -32,8 +23,11 @@
                         </div>
 
                         <div class="chef-content">
-                            <h3>{{chef.name}}</h3>
-                            <a class='visualization' href="/admin/chefs/{{ chef.id }}">Visualizar</a>
+                            <a href="/chefs/{{ chef.id }}">
+                                <h3>{{ chef.name }}</h3>
+                            </a>
+                            <p>{{ chef.total_recipes }}
+                                Receitas</p>
                         </div>
 
                     </div>
@@ -43,7 +37,5 @@
 
         </div>
     </section>
-
-    <script src="/js/script.js"></script>
 
 {% endblock %}
