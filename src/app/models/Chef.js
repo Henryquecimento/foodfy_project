@@ -2,20 +2,15 @@ const db = require("../../config/db");
 const { date } = require('../../lib/utils');
 
 module.exports = {
-    all(callback) {
-        db.query(`
-            SELECT chefs.*, 
-            (SELECT count (*) FROM recipes WHERE recipes.chef_id = chefs.id) AS total_recipes
-            FROM chefs
-            ORDER BY id
-        `, (err, results) => {
-            if (err) throw `Database error! ${err}`;
-
-            return callback(results.rows);
-        })
-
+    all() {
+       return db.query(`
+                SELECT chefs.*, 
+                (SELECT count (*) FROM recipes WHERE recipes.chef_id = chefs.id) AS total_recipes
+                FROM chefs
+                ORDER BY id
+                `);
     },
-    create(data, callback) {
+    create(data) {
         const query = `
             INSERT INTO chefs (
                 name,
@@ -31,13 +26,9 @@ module.exports = {
             date(Date.now()).iso,
         ];
 
-        db.query(query, values, (err, results) => {
-            if (err) throw `Database Error! ${err}`;
-
-            return callback(results.rows[0]);
-        });
+        return db.query(query, values);
     },
-    find(id, callback) {
+    find(id) {
         const query = `
             SELECT chefs.*, 
             (SELECT count (*) FROM recipes WHERE recipes.chef_id = $1) AS total_recipes
@@ -46,24 +37,14 @@ module.exports = {
             WHERE chefs.id = $1
         `;
 
-        db.query(query, [id], (err, results) => {
-            if (err) throw `Database error! ${err}`;
-
-            return callback(results.rows[0]);
-        });
-
+        return db.query(query, [id]);
     },
-    findRecipe(id, callback) {
-        db.query(`
-        SELECT recipes.image, recipes.title, recipes.id, chefs.name AS chef_name
-        FROM recipes
-        LEFT JOIN chefs ON (recipes.chef_id = chefs.id)
-        WHERE chefs.id = $1
-        `, [id], (err, results) => {
-            if (err) throw `Database error! ${err}`;
-
-            return callback(results.rows);
-        });
+    findRecipe(id) {
+        return db.query(`
+            SELECT recipes.image, recipes.title, recipes.id, chefs.name AS chef_name
+            FROM recipes
+            LEFT JOIN chefs ON (recipes.chef_id = chefs.id)
+            WHERE chefs.id = $1`, [id]);
     },
     update(data, callback) {
         const query = `

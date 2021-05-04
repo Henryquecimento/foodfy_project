@@ -32,17 +32,26 @@ module.exports = {
 
   /* Chefs */
 
-  chefs(req, res) {
-    Chef.all((chefs) => {
+  async chefs(req, res) {
+    const results = await Chef.all();
+    const chefs = results.rows;
+
+    try {
       return res.render("publicAccess/chefs/index", { chefs });
-    });
-  },
-  showChef(req, res) {
-    Chef.find(req.params.id, (chef) => {
-      Chef.findRecipe(req.params.id, (recipes) => {
-        return res.render("publicAccess/chefs/show", { chef, recipes });
+    } catch (err) {
+      throw new Error({
+        message: `Database Error! ${err}`
       });
-    });
+    }
+  },
+  async showChef(req, res) {
+    let results = await Chef.find(req.params.id);
+    const chef = results.rows[0];
+
+    results = await Chef.findRecipe(req.params.id);
+    const recipes = results.rows;
+
+    return res.render("publicAccess/chefs/show", { chef, recipes });
   }
 
 }
