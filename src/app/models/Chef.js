@@ -46,7 +46,7 @@ module.exports = {
             LEFT JOIN chefs ON (recipes.chef_id = chefs.id)
             WHERE chefs.id = $1`, [id]);
     },
-    update(data, callback) {
+    update(data) {
         const query = `
             UPDATE chefs SET
                 name = ($1),
@@ -60,17 +60,9 @@ module.exports = {
             data.id
         ];
 
-        db.query(query, values, (err, results) => {
-            if (err) throw `Database error! ${err}`;
-
-            return callback();
-        });
+        return db.query(query, values);
     },
-    delete(id, callback) {
-        db.query(`DELETE FROM chefs WHERE id = $1`, [id], (err, results) => {
-            if (err) throw `Database error! ${err}`;
-
-            return callback();
-        })
+    delete(id) {
+        return db.query(`DELETE FROM chefs WHERE id = $1`, [id]);
     }
 }

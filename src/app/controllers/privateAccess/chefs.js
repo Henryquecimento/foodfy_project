@@ -30,7 +30,7 @@ module.exports = {
         const results = await Chef.create(req.body);
         const chefId = results.rows[0].id;
 
-        return res.redirect(`/admin/${chefId}`);
+        return res.redirect(`/admin/chefs/${chefId}`);
 
     },
     async show(req, res) {
@@ -42,32 +42,37 @@ module.exports = {
 
         return res.render('admin/chefs/show', { chef, recipes });
     },
-    edit(req, res) {
-        Chef.find(req.params.id, (chef) => {
+    async edit(req, res) {
+        const results = await Chef.find(req.params.id);
+        const chef = results.rows[0];
 
-            return res.render('admin/chefs/edit', { chef });
-        });
+        return res.render('admin/chefs/edit', { chef });
+    
     },
-    put(req, res) {
-        Chef.update(req.body, () => {
+    async put(req, res) {
+
+        const keys = Object.keys(req.body);
+
+        for (let key of keys) {
+            if (req.body[key] == '') {
+                return res.send("Please, fill all the fields!");
+            }
+        }
+
+        await Chef.update(req.body);
+
+        return res.redirect(`/admin/chefs/${req.body.id}`);       
+    },
+    async delete(req, res) {
+        let results = await Chef.find(req.body.id);
+        const chef = results.rows[0];
+
+        if ( chef.total_recipes != 0 ) {
+            return res.send('Chef possui receitas! Você não pode apagá-lo(a)!');
+        } else {
+            await Chef.delete(req.body.id);
 
             return res.redirect('/admin/chefs');
-        });
-    },
-    delete(req, res) {
-        Chef.find(req.body.id, (chef) => {
-            if (chef.total_recipes != 0) {
-                return res.send('Chef possui receitas! Você não pode apagá-lo(a)!');
-            } else {
-                Chef.delete(req.body.id, () => {
-
-                    return res.redirect('/admin/chefs');
-                });
-            }
-
-
-
-        });
-
+        }
     }
 }
