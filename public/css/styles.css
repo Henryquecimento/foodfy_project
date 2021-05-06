@@ -72,7 +72,7 @@ header {
   box-sizing: border-box;
 }
 
-button {
+button.header_filter {
   font-size: 16px;
   line-height: 24px;
   height: 36px;
@@ -83,7 +83,7 @@ button {
   cursor: pointer;
 }
 
-button:hover {
+button.header_filter {
   background-color: #8174e3;
   transition: background-color 300ms;
 }
@@ -94,7 +94,7 @@ footer {
   background-color: #eeeeee;
   padding: 20px;
   margin-bottom: 5px;
-  margin-top: 10%;
+  /*   margin-top: 10%; */
 }
 
 footer h2 {

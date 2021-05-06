@@ -1,8 +1,8 @@
 const express = require("express");
 const routes = express.Router();
-const public = require("./app/controllers/publicAccess/public");
-const recipes = require("./app/controllers/privateAccess/recipes");
-const chefs = require("./app/controllers/privateAccess/chefs");
+const public = require("./app/controllers/publicAccess/PublicController");
+const recipes = require("./app/controllers/privateAccess/RecipesController");
+const chefs = require("./app/controllers/privateAccess/ChefsController");
 
 /* -- Public Access -- */
 
