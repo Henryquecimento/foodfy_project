@@ -33,6 +33,7 @@ function activeMenu() {
 activeMenu();
 
 const PhotosUpload = {
+  preview: document.querySelector("#photos-preview"),
   uploadLimit: 5,
   handleFileInput(event) {
     const { files: fileList } = event.target;
@@ -51,21 +52,24 @@ const PhotosUpload = {
         const image = new Image();
         image.src = String(reader.result);
 
-        const div = document.createElement('div');
-        div.classList.add('photo');
+        const div = PhotosUpload.getContainer(image);
 
-        div.onclick = () => alert('remover foto');
-
-        div.appendChild(image);
-
-        document.querySelector("#photos-preview").appendChild(div);
+        PhotosUpload.preview.appendChild(div);
 
       }
 
       reader.readAsDataURL(file)
 
-    })
+    });
+  },
+  getContainer(image) {
+    const div = document.createElement('div');
+    div.classList.add('photo');
 
+    div.onclick = () => alert('remover foto');
 
+    div.appendChild(image);
+
+    return div;
   }
 }
