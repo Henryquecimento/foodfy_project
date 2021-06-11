@@ -178,6 +178,38 @@ form .item #photos-preview .photo img {
 }
 
 form .item #photos-upload .add-photo i.material-icons {
-  font-size: 28px;
+  font-size: 50px;
   color: #777777;
+}
+
+/* photos preview */
+#photos-preview .photo {
+  position: relative;
+}
+
+/* Close button */
+#photos-preview .photo i {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  font-size: 50px;
+  color: red;
+  background-color: rgba(242, 242, 242, 0.7);
+
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+
+  opacity: 0;
+  transition: 300ms;
+}
+
+#photos-preview .photo i:hover {
+  opacity: 1;
 }
