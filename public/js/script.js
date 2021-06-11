@@ -33,15 +33,20 @@ function activeMenu() {
 activeMenu();
 
 const PhotosUpload = {
+  input: "",
   preview: document.querySelector("#photos-preview"),
   uploadLimit: 5,
+  files: [],
   handleFileInput(event) {
     const { files: fileList } = event.target;
+    PhotosUpload.input = event.target;
 
     if (PhotosUpload.hasLimit(event)) return;
 
     Array.from(fileList).forEach(file => {
       const reader = new FileReader();
+
+      PhotosUpload.files.push(file);
 
       reader.onload = () => {
         const image = new Image();
@@ -55,10 +60,12 @@ const PhotosUpload = {
       reader.readAsDataURL(file)
 
     });
+
+    PhotosUpload.input.files = PhotosUpload.getAllFiles();
   },
   hasLimit(event) {
-    const { files: fileList } = event.target;
-    const { uploadLimit } = PhotosUpload;
+    const { uploadLimit, input } = PhotosUpload;
+    const { files: fileList, } = input;
 
     if (fileList.length > uploadLimit) {
       alert(`Envie no máximo ${uploadLimit} arquivos!`);
@@ -66,7 +73,21 @@ const PhotosUpload = {
       return true;
     }
 
+    const PhotoDiv = [];
+    preview.childNodes.forEach(item => {
+      if (item.classList && item.classList.value == "photo") {
+        PhotoDiv.push(item);
+      }
+    });
+
     return false;
+  },
+  getAllFiles() {
+    const dataTransfer = new ClipboardEvent("").ClipboardData || new DataTransfer();
+
+    PhotosUpload.files.forEach(file => dataTransfer.items.add(file));
+
+    return dataTransfer.files;
   },
   getContainer(image) {
     const div = document.createElement('div');
@@ -92,6 +113,9 @@ const PhotosUpload = {
     const PhotoDiv = event.target.parentNode;
     const PhotosArray = Array.from(PhotosUpload.preview.children);
     const index = PhotosArray.indexOf(PhotoDiv);
+
+    PhotosUpload.files.splice(index, 1);
+    PhotosUpload.input.files = PhotosUpload.getAllFiles();
 
     PhotoDiv.remove();
   }
