@@ -16,11 +16,11 @@ module.exports = {
     return res.render("publicAccess/recipes/about");
   },
   async recipes(req, res) {
-    let { filter } = req.query;
-    let results,
-      recipes = null;
-
     try {
+      let { filter } = req.query;
+      let results,
+        recipes = null;
+
       if (filter) {
         results = await Recipe.findBy(filter);
         recipes = results.rows;
