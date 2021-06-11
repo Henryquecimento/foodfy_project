@@ -37,13 +37,8 @@ const PhotosUpload = {
   uploadLimit: 5,
   handleFileInput(event) {
     const { files: fileList } = event.target;
-    const { uploadLimit } = PhotosUpload
 
-    if (fileList.length > uploadLimit) {
-      alert(`Envie no máximo ${uploadLimit} arquivos!`);
-      event.preventDefault();
-      return
-    }
+    if (PhotosUpload.hasLimit(event)) return;
 
     Array.from(fileList).forEach(file => {
       const reader = new FileReader();
@@ -55,12 +50,23 @@ const PhotosUpload = {
         const div = PhotosUpload.getContainer(image);
 
         PhotosUpload.preview.appendChild(div);
-
       }
 
       reader.readAsDataURL(file)
 
     });
+  },
+  hasLimit(event) {
+    const { files: fileList } = event.target;
+    const { uploadLimit } = PhotosUpload;
+
+    if (fileList.length > uploadLimit) {
+      alert(`Envie no máximo ${uploadLimit} arquivos!`);
+      event.preventDefault();
+      return true;
+    }
+
+    return false;
   },
   getContainer(image) {
     const div = document.createElement('div');
