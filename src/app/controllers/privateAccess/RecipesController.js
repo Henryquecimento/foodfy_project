@@ -22,15 +22,15 @@ module.exports = {
     }
   },
   async post(req, res) {
-    const keys = Object.keys(req.body);
-
-    for (key of keys) {
-      if (req.body[key] == "") {
-        return res.send("Please, fill all the fields!");
-      }
-    }
-
     try {
+      const keys = Object.keys(req.body);
+
+      for (key of keys) {
+        if (req.body[key] == "") {
+          return res.send("Please, fill all the fields!");
+        }
+      }
+
       const results = await Recipe.create(req.body);
       const recipeId = results.rows[0].id;
 
