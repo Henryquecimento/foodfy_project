@@ -64,7 +64,7 @@ const PhotosUpload = {
     PhotosUpload.input.files = PhotosUpload.getAllFiles();
   },
   hasLimit(event) {
-    const { uploadLimit, input } = PhotosUpload;
+    const { uploadLimit, input, preview } = PhotosUpload;
     const { files: fileList, } = input;
 
     if (fileList.length > uploadLimit) {
@@ -79,6 +79,16 @@ const PhotosUpload = {
         PhotoDiv.push(item);
       }
     });
+
+    const totalPhotos = fileList.length + PhotoDiv.length;
+
+    if (totalPhotos > uploadLimit) {
+      alert("Você ultrapassou o limite máximo de fotos!")
+
+      event.preventDefault();
+
+      return true;
+    }
 
     return false;
   },
