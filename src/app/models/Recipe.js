@@ -73,5 +73,14 @@ module.exports = {
         FROM chefs
         ORDER BY id
     `);
+  },
+  files(id) {
+    return db.query(`
+      SELECT files.*
+      FROM files
+      LEFT JOIN recipe_files ON (files.id = recipe_files.file_id)
+      WHERE recipe_files.recipe_id = $1
+      ORDER BY recipe_files.id
+    `, [id]);
   }
 };

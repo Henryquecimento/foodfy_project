@@ -74,9 +74,17 @@ module.exports = {
       results = await Recipe.chefSelectedOptions();
       const options = results.rows;
 
+      results = await Recipe.files(recipe.id);
+      let files = results.rows;
+      files = files.map(file => ({
+        ...file,
+        src: `${req.protocol}://${req.headers.host}${file.path.replace("public", "")}`
+      }));
+
       return res.render("admin/recipes/edit", {
         recipe,
         chefOptions: options,
+        files
       });
     } catch (err) {
       throw new Error(err);
