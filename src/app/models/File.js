@@ -15,5 +15,13 @@ module.exports = {
     ];
 
     return db.query(query, values);
+  },
+  recipeFiles(id) {
+    return db.query(`
+      INSERT INTO recipe_files (recipe_id, file_id)
+      SELECT recipes.id , files.id
+      FROM recipes, files
+      WHERE recipes.id = $1
+    `, [id]);
   }
 }
