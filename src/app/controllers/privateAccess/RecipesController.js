@@ -100,6 +100,16 @@ module.exports = {
         }
       }
 
+      if (req.files.length != 0) {
+        const newFilesPromise = req.files.map(file => File.create({
+          ...file
+        }));
+
+        await Promise.all(newFilesPromise);
+
+        await File.recipeFiles(req.body.id);
+      }
+
       if (req.body.removed_files) {
         const removedFiles = req.body.removed_files.split(",");
         const lastIndex = removedFiles.length - 1;
