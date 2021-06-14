@@ -28,6 +28,6 @@ CREATE TABLE files (
 
 CREATE TABLE recipe_files (
 	id SERIAL PRIMARY KEY,
-  recipe_id INTEGER REFERENCES recipes(id),
-  file_id INTEGER REFERENCES files(id)
+  recipe_id INTEGER REFERENCES recipes(id) ON DELETE CASCADE,
+  file_id INTEGER REFERENCES files(id) ON DELETE CASCADE
 );
