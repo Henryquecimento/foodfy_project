@@ -92,6 +92,25 @@ module.exports = {
   },
   async put(req, res) {
     try {
+      const keys = Object.keys(req.body);
+
+      for (key of keys) {
+        if (req.body[key] == "" && key != 'removed_files') {
+          return res.send("Please, fill all the fields!");
+        }
+      }
+
+      if (req.body.removed_files) {
+        const removedFiles = req.body.removed_files.split(",");
+        const lastIndex = removedFiles.length - 1;
+
+        removedFiles.splice(lastIndex, 1);
+
+        const removedFilesPromises = removedFiles.map(id => File.delete(id));
+
+        await Promise.all(removedFilesPromises);
+      }
+
       await Recipe.update(req.body);
 
       return res.redirect(`/admin/recipes/${req.body.id}`);
