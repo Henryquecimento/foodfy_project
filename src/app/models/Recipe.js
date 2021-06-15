@@ -64,7 +64,13 @@ module.exports = {
 
     return db.query(query, values);
   },
-  delete(id) {
+  async delete(id) {
+    await db.query(`
+    DELETE FROM files
+    WHERE files.id IN (SELECT recipe_files.file_id 
+    FROM recipe_files WHERE recipe_files.recipe_id = $1);
+    `, [id]);
+
     return db.query("DELETE FROM recipes WHERE id = $1", [id]);
   },
   chefSelectedOptions() {

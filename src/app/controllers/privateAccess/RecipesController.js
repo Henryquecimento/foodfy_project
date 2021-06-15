@@ -1,3 +1,4 @@
+const fs = require('fs');
 const Recipe = require("../../models/Recipe");
 const File = require("../../models/File");
 
@@ -130,6 +131,13 @@ module.exports = {
   },
   async delete(req, res) {
     try {
+      const results = await Recipe.files(req.body.id);
+      const files = results.rows;
+
+      for (file of files) {
+        fs.unlinkSync(file.path);
+      }
+
       await Recipe.delete(req.body.id);
 
       return res.redirect("/admin/recipes");
