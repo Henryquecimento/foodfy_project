@@ -9,85 +9,103 @@
 {% endblock %}
 
 {% block content %}
-    <section class="recipes-container">
+  <section class="recipes-container">
 
-        <div class="recipe-fields">
+    <div class="recipe-fields">
 
-            <div class="recipe-head">
-                <h1>Receita:
-                    {{ recipe.title }}</h1>
+      <div class="recipe-head">
+        <h1>Receita:
+            {{ recipe.title }}</h1>
 
-                <button>
-                    <a class="edit-button" href="/admin/recipes/{{recipe.id}}/edit">Editar receita</a>
-                </button>
-            </div>
+        <button>
+            <a class="edit-button" href="/admin/recipes/{{recipe.id}}/edit">Editar receita</a>
+        </button>
+      </div>
 
-            <div class="food-image">
-                <img src="{{ recipe.image }}" alt="Image of {{recipe.title}}">
-            </div>
+      <div class="food-image gallery">
+        <div class="highlight">
+            {% if not files[0] %}
+            <img src="http://placehold.it/940x280?text=NO PHOTO" />
+            {% else %}
+            <img src="{{ files[0].src }}" alt="Image of {{files[0].src}}" />
+            {% endif%}
+        </div>
+        <div class="gallery-preview">
+        {% for file in files %}
+            <img 
+            src="{{ file.src }}"
+            alt="{{ file.name }}"
+            {% if loop.index0 == 0 %}
+            class="active"
+            {% endif %}
+            onclick='ImageGallery.setImage(event)'
+            /> 
+        {% endfor %}
+        </div>
+      </div>
 
-            <div class="food-information">
+      <div class="food-information">
 
-                <div class="top_info">
+        <div class="top_info">
 
-                    <h3>{{recipe.title}}</h3>
-                    <p>Por
-                        {{recipe.chef_name}}</p>
-
-                </div>
-
-                <div class="mid_info">
-
-                    <div class="ingredients">
-
-                        <div class="subject">
-                            <h1>Ingredientes</h1>
-                            <button class='hide-button'>Esconder</button>
-                        </div>
-
-                        <div class="content show">
-                            {% for ingredient in recipe.ingredients %}
-                                <li>{{ ingredient }}</li>
-                            {% endfor %}
-                        </div>
-
-                    </div>
-
-                    <div class="preparation">
-
-                        <div class="subject">
-                            <h1>Modo de preparo</h1>
-                            <button class='hide-button'>Esconder</button>
-                        </div>
-
-                        <div class="content show">
-                            {% for preparation in recipe.preparation %}
-                                <li>{{ preparation }}</li>
-                            {% endfor %}
-                        </div>
-
-                    </div>
-
-                    <div class="info">
-
-                        <div class="subject">
-                            <h1>Informações adicionais</h1>
-                            <button class='hide-button'>Esconder</button>
-                        </div>
-
-                        <div class="content show">
-                            <p>{{recipe.information}}</p>
-                        </div>
-
-                    </div>
-                </div>
-
-            </div>
+            <h3>{{recipe.title}}</h3>
+            <p>Por
+                {{recipe.chef_name}}</p>
 
         </div>
 
-    </section>
+        <div class="mid_info">
 
-    <script src="/js/script.js"></script>
+            <div class="ingredients">
+
+                <div class="subject">
+                    <h1>Ingredientes</h1>
+                    <button class='hide-button'>Esconder</button>
+                </div>
+
+                <div class="content show">
+                    {% for ingredient in recipe.ingredients %}
+                        <li>{{ ingredient }}</li>
+                    {% endfor %}
+                </div>
+
+            </div>
+
+            <div class="preparation">
+
+                <div class="subject">
+                    <h1>Modo de preparo</h1>
+                    <button class='hide-button'>Esconder</button>
+                </div>
+
+                <div class="content show">
+                    {% for preparation in recipe.preparation %}
+                        <li>{{ preparation }}</li>
+                    {% endfor %}
+                </div>
+
+            </div>
+
+            <div class="info">
+
+                <div class="subject">
+                    <h1>Informações adicionais</h1>
+                    <button class='hide-button'>Esconder</button>
+                </div>
+
+                <div class="content show">
+                    <p>{{recipe.information}}</p>
+                </div>
+
+            </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <script src="/js/script.js"></script>
 
 {% endblock %}

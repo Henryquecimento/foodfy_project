@@ -10,12 +10,14 @@
 }
 
 .recipe-head {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
   width: 940px;
   margin-top: 32px;
   margin-bottom: 32px;
+
   text-align: left;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .recipe-head button {
@@ -27,7 +29,6 @@
   height: 37px;
   font-size: 16px;
   line-height: 19px;
-  margin-left: 332px;
 }
 
 .recipe-head a.edit-button {
@@ -35,11 +36,46 @@
   text-decoration: none;
 }
 
-.food-image img {
+/* PHOTOS GALLERY */
+
+.food-image .highlight > img {
   width: 940px;
   height: 280px;
   border-radius: 15px;
+
+  object-fit: cover;
+  object-position: 50% 50%;
 }
+
+.food-image .gallery-preview {
+  display: flex;
+  justify-content: end;
+}
+
+.food-image .gallery-preview img {
+  width: 50px;
+  height: 49.7px;
+
+  border-radius: 3.5px;
+  margin-right: 10px;
+
+  object-fit: cover;
+
+  cursor: pointer;
+
+  opacity: 0.5;
+}
+
+.food-image .gallery-preview img:last-child {
+  margin-right: 0;
+}
+
+.food-image .gallery-preview img:hover,
+.food-image .gallery-preview img.active {
+  opacity: 1;
+}
+
+/* INFO FIELDS */
 
 .food-information {
   text-align: justify;

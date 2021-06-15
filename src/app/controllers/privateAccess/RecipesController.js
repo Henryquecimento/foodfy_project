@@ -55,12 +55,19 @@ module.exports = {
   },
   async show(req, res) {
     try {
-      const results = await Recipe.find(req.params.id);
+      let results = await Recipe.find(req.params.id);
       const recipe = results.rows[0];
 
       if (!recipe) return res.send("Recipe not found!");
 
-      return res.render("admin/recipes/show", { recipe });
+      results = await Recipe.files(req.params.id);
+      let files = results.rows;
+      files = files.map(file => ({
+        ...file,
+        src: `${req.protocol}://${req.headers.host}${file.path.replace("public", "")}`
+      }));
+
+      return res.render("admin/recipes/show", { recipe, files });
     } catch (err) {
       throw new Error(err);
     }
