@@ -1,5 +1,6 @@
 const fs = require('fs');
 const Recipe = require("../../models/Recipe");
+const RecipeFiles = require("../../models/Recipe_File");
 const File = require("../../models/File");
 
 module.exports = {
@@ -40,14 +41,12 @@ module.exports = {
       let results = await Recipe.create(req.body);
       const recipeId = results.rows[0].id;
 
-      const FilesPromise = req.files.map(file => File.create({
+      const FilesPromise = req.files.map(file => RecipeFiles.create({
         ...file,
         recipe_id: recipeId
       }));
 
       await Promise.all(FilesPromise);
-
-      /* await File.recipeFiles(recipeId); */
 
       return res.redirect(`/admin/recipes/${recipeId}/edit`);
     } catch (err) {
@@ -110,13 +109,12 @@ module.exports = {
       }
 
       if (req.files.length != 0) {
-        const newFilesPromise = req.files.map(file => File.create({
-          ...file
+        const newFilesPromise = req.files.map(file => RecipeFiles.create({
+          ...file,
+          recipe_id: req.body.id
         }));
 
         await Promise.all(newFilesPromise);
-
-        await File.recipeFiles(req.body.id);
       }
 
       if (req.body.removed_files) {
