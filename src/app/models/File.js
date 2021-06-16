@@ -2,40 +2,43 @@ const db = require('../../config/db');
 const fs = require('fs');
 
 module.exports = {
-  create({ filename, path }) {
-    const query = `
+	async create({ filename, path, recipe_id }) {
+		let query = `
       INSERT INTO files (
         name,
         path
       ) VALUES ($1, $2)
       RETURNING id`;
 
-    const values = [
-      filename,
-      path,
-    ];
+		let values = [filename, path];
 
-    return db.query(query, values);
-  },
-  recipeFiles(id) {
-    return db.query(`
-      INSERT INTO recipe_files (recipe_id, file_id)
-      SELECT recipes.id , files.id
-      FROM recipes, files
-      WHERE recipes.id = $1
-    `, [id]);
-  },
-  async delete(id) {
-    try {
-      const results = await db.query('SELECT * FROM files WHERE id = $1', [id]);
-      const file = results.rows[0]
+		//one file result
+		const result = await db.query(query, values);
+		const fileId = result.rows[0].id;
 
-      fs.unlinkSync(file.path);
+		if (recipe_id) {
+			query = `
+			INSERT INTO recipe_files (
+				recipe_id,
+				file_id
+			)	VALUES ($1, $2)
+			`
+			values = [recipe_id, fileId]
 
-      return db.query(`DELETE FROM files WHERE id = $1`, [id]);
+			return db.query(query, values);
+		}
+	},
+	async delete(id) {
+		try {
+			const results = await db.query('SELECT * FROM files WHERE id = $1', [id]);
+			const file = results.rows[0]
 
-    } catch (err) {
-      throw new Error(err);
-    }
-  }
+			fs.unlinkSync(file.path);
+
+			return db.query(`DELETE FROM files WHERE id = $1`, [id]);
+
+		} catch (err) {
+			throw new Error(err);
+		}
+	}
 }

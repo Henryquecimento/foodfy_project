@@ -41,12 +41,13 @@ module.exports = {
       const recipeId = results.rows[0].id;
 
       const FilesPromise = req.files.map(file => File.create({
-        ...file
+        ...file,
+        recipe_id: recipeId
       }));
 
       await Promise.all(FilesPromise);
 
-      await File.recipeFiles(recipeId);
+      /* await File.recipeFiles(recipeId); */
 
       return res.redirect(`/admin/recipes/${recipeId}/edit`);
     } catch (err) {
