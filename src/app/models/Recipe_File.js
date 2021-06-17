@@ -24,13 +24,5 @@ module.exports = {
     values = [recipe_id, fileId]
 
     return db.query(query, values);
-  },
-  findById(id) {
-    return db.query(`
-    SELECT files.*
-    FROM files
-    LEFT JOIN recipe_files ON (files.id = recipe_files.file_id)
-    WHERE recipe_files.recipe_id = $1;
-    `, [id])
   }
 }
