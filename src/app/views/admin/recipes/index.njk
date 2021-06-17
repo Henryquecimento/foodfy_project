@@ -27,7 +27,7 @@
                     <div class="recipe">
 
                         <div class="recipe-img">
-                            <img src="{{recipe.image}}" alt="Image of {{recipe.image}}">
+                            <img src="{{recipe.files[0].src}}" alt="Image of {{recipe.files[0].name}}">
                         </div>
 
                         <div class="recipe-content">
@@ -46,6 +46,6 @@
         </div>
     </section>
 
-    <script src="/js/script.js"></script>
+   {#  <script src="/js/script.js"></script> #}
 
 {% endblock %}

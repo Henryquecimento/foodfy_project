@@ -6,10 +6,25 @@ const File = require("../../models/File");
 module.exports = {
   async index(req, res) {
     try {
-      const results = await Recipe.all();
+      let results = await Recipe.all();
       const recipes = results.rows;
 
+      for (recipe in recipes) {
+        results = await Recipe.files(recipes[recipe].id);
+        let files = results.rows;
+        files = files.map(file => ({
+          ...file,
+          src: `${req.protocol}://${req.headers.host}${file.path.replace("public", "")}`
+        }));
+
+        recipes[recipe] = {
+          ...recipes[recipe],
+          files
+        }
+      }
+
       return res.render("admin/recipes/index", { recipes });
+
     } catch (err) {
       throw new Error(err);
     }
@@ -100,13 +115,6 @@ module.exports = {
   },
   async put(req, res) {
     try {
-      const keys = Object.keys(req.body);
-
-      for (key of keys) {
-        if (req.body[key] == "" && key != 'removed_files') {
-          return res.send("Please, fill all the fields!");
-        }
-      }
 
       if (req.files.length != 0) {
         const newFilesPromise = req.files.map(file => RecipeFiles.create({
