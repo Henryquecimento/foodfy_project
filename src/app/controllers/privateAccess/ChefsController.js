@@ -1,4 +1,5 @@
 const Chef = require("../../models/Chef");
+const Recipe = require("../../models/Recipe");
 
 module.exports = {
 	async index(req, res) {
@@ -39,6 +40,19 @@ module.exports = {
 
 			results = await Chef.findRecipe(req.params.id);
 			const recipes = results.rows;
+
+			for (recipe in recipes) {
+				results = await Recipe.files(recipes[recipe].id);
+				let files = results.rows.map(file => ({
+					...file,
+					src: `${req.protocol}://${req.headers.host}${file.path.replace("public", "")}`
+				}));
+
+				recipes[recipe] = {
+					...recipes[recipe],
+					files
+				}
+			}
 
 			return res.render("admin/chefs/show", { chef, recipes });
 		} catch (err) {
