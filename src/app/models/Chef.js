@@ -3,7 +3,7 @@ const { date } = require('../../lib/utils');
 
 module.exports = {
     all() {
-       return db.query(`
+        return db.query(`
                 SELECT chefs.*, 
                 (SELECT count (*) FROM recipes WHERE recipes.chef_id = chefs.id) AS total_recipes
                 FROM chefs
@@ -41,10 +41,11 @@ module.exports = {
     },
     findRecipe(id) {
         return db.query(`
-            SELECT recipes.image, recipes.title, recipes.id, chefs.name AS chef_name
+            SELECT recipes.title, recipes.id, chefs.name AS chef_name
             FROM recipes
             LEFT JOIN chefs ON (recipes.chef_id = chefs.id)
-            WHERE chefs.id = $1`, [id]);
+            WHERE chefs.id = $1
+            ORDER BY recipes.id`, [id]);
     },
     update(data) {
         const query = `
