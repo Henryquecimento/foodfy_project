@@ -47,6 +47,14 @@ module.exports = {
             WHERE chefs.id = $1
             ORDER BY recipes.id`, [id]);
     },
+    findFile(id) {
+        return db.query(`
+        SELECT files.*
+        FROM files
+        INNER JOIN chefs ON (files.id = chefs.file_id)
+        WHERE chefs.id = $1;
+        `, [id]);
+    },
     update(data) {
         const query = `
             UPDATE chefs SET
