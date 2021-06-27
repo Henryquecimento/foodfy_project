@@ -5,7 +5,6 @@
 CREATE TABLE chefs (
 	id SERIAL PRIMARY KEY,
   name TEXT NOT NULL,
-  avatar_url TEXT,
   created_at TIMESTAMP DEFAULT (now())
 );
 
@@ -31,3 +30,7 @@ CREATE TABLE recipe_files (
   recipe_id INTEGER REFERENCES recipes(id) ON DELETE CASCADE,
   file_id INTEGER REFERENCES files(id) ON DELETE CASCADE
 );
+
+/* ALTER TABLES */
+
+ALTER TABLE chefs ADD COLUMN file_id INTEGER REFERENCES files(id);
