@@ -72,10 +72,18 @@ module.exports = {
 	},
 	async edit(req, res) {
 		try {
-			const results = await Chef.find(req.params.id);
+			let results = await Chef.find(req.params.id);
 			const chef = results.rows[0];
 
-			return res.render("admin/chefs/edit", { chef });
+			results = await Chef.findFile(req.params.id);
+			let file = results.rows[0];
+
+			file = {
+				...file,
+				src: `${req.protocol}://${req.headers.host}${file.path.replace("public", "")}`
+			}
+
+			return res.render("admin/chefs/edit", { chef, file });
 		} catch (err) {
 			throw new Error(err);
 		}
