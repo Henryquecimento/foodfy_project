@@ -2,7 +2,7 @@ const db = require('../../config/db');
 const fs = require('fs');
 
 module.exports = {
-	create({ filename, path }) {
+	async create({ filename, path, fieldname }) {
 		let query = `
       INSERT INTO files (
         name,
@@ -10,7 +10,15 @@ module.exports = {
       ) VALUES ($1, $2)
       RETURNING id`;
 
-		return db.query(query, [filename, path]);
+		let values = [filename, path];
+
+		// one file result
+		const result = await db.query(query, values);
+		const fileId = result.rows[0].id;
+
+		if (fieldname == "photos") {
+			return fileId;
+		}
 	},
 	async delete(id) {
 		try {
