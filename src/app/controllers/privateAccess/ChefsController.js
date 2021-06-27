@@ -1,5 +1,6 @@
 const Chef = require("../../models/Chef");
 const Recipe = require("../../models/Recipe");
+const File = require("../../models/File");
 
 module.exports = {
 	async index(req, res) {
@@ -20,12 +21,22 @@ module.exports = {
 			const keys = Object.keys(req.body);
 
 			for (let key of keys) {
-				if (req.body[key] == "") {
+				if (req.body[key] == "" && key == "removed_files") {
 					return res.send("Please, fill all the fields!");
 				}
 			}
 
-			const results = await Chef.create(req.body);
+			let results = await File.create({
+				...req.files[0]
+			});
+
+			const fileID = results;
+
+			results = await Chef.create({
+				...req.body,
+				file_id: fileID
+			});
+
 			const chefId = results.rows[0].id;
 
 			return res.redirect(`/admin/chefs/${chefId}`);
