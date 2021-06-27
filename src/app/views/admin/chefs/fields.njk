@@ -19,16 +19,16 @@
             Enviar Avatar
         </div>
         <div id="photos-preview">
-          {% if files %}
-            {# {% for image in files %} #}
+          {% if file %}
+            
               <div class="photo" id="{{ image.id }}">
-                <img src="{{ image.src }}" alt="{{ image.name }}">
+                <img src="{{ file.src }}" alt="{{ file.name }}">
                   <i 
                     class="material-icons" 
                     onclick='PhotosUpload.removeOldPhoto(event)'
                   >close</i>
                 </div>
-             {#  {% endfor %} #}
+          
               <input type="hidden" name="removed_files">
             {% endif %}
         </div>
