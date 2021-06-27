@@ -10,20 +10,20 @@ module.exports = {
                 ORDER BY id
                 `);
     },
-    create(data) {
+    create({ name, file_id }) {
         const query = `
             INSERT INTO chefs (
                 name,
-                avatar_url,
-                created_at
+                created_at,
+                file_id
             ) VALUES ($1, $2, $3)
             RETURNING id     
         `;
 
         const values = [
-            data.name,
-            data.avatar_url,
+            name,
             date(Date.now()).iso,
+            file_id,
         ];
 
         return db.query(query, values);
