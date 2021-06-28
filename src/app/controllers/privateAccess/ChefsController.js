@@ -21,9 +21,13 @@ module.exports = {
 			const keys = Object.keys(req.body);
 
 			for (let key of keys) {
-				if (req.body[key] == "" && key == "removed_files") {
+				if (req.body[key] == "" && key != "removed_files") {
 					return res.send("Please, fill all the fields!");
 				}
+			}
+
+			if (req.files.length == 0) {
+				return res.send('Please, insert a avatar image!')
 			}
 
 			let results = await File.create({
@@ -77,10 +81,11 @@ module.exports = {
 
 			results = await Chef.findFile(req.params.id);
 			let file = results.rows[0];
-
-			file = {
-				...file,
-				src: `${req.protocol}://${req.headers.host}${file.path.replace("public", "")}`
+			if (file) {
+				file = {
+					...file,
+					src: `${req.protocol}://${req.headers.host}${file.path.replace("public", "")}`
+				}
 			}
 
 			return res.render("admin/chefs/edit", { chef, file });
@@ -93,12 +98,43 @@ module.exports = {
 			const keys = Object.keys(req.body);
 
 			for (let key of keys) {
-				if (req.body[key] == "") {
+				if (req.body[key] == "" && key != "removed_files") {
 					return res.send("Please, fill all the fields!");
 				}
 			}
 
-			await Chef.update(req.body);
+			let results = await Chef.find(req.body.id);
+			let oldFile = results.rows[0].file_id;
+
+			if (req.body.removed_files) {
+
+				const removedFiles = req.body.removed_files.split(",");
+				const lastIndex = removedFiles.length - 1;
+
+				removedFiles.splice(lastIndex, 1);
+
+				oldFile = Number(removedFiles[0]);
+
+				await Chef.update({
+					...req.body,
+					file_id: null
+				});
+
+				await File.delete(oldFile);
+			}
+
+			if (req.files != 0) {
+				results = await File.create({
+					...req.files[0]
+				});
+
+				const fileID = results;
+
+				await Chef.update({
+					...req.body,
+					file_id: fileID
+				});
+			}
 
 			return res.redirect(`/admin/chefs/${req.body.id}`);
 		} catch (err) {
