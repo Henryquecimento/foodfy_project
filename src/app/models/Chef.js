@@ -55,18 +55,18 @@ module.exports = {
         WHERE chefs.id = $1;
         `, [id]);
     },
-    update(data) {
+    update({ name, file_id, id }) {
         const query = `
             UPDATE chefs SET
                 name = ($1),
-                avatar_url = ($2)
+                file_id = ($2)
             WHERE id = $3
         `;
 
         const values = [
-            data.name,
-            data.avatar_url,
-            data.id
+            name,
+            file_id,
+            id
         ];
 
         return db.query(query, values);
