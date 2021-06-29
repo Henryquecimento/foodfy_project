@@ -95,8 +95,19 @@ module.exports = {
 
   async chefs(req, res) {
     try {
-      const results = await Chef.all();
+      let results = await Chef.all();
       const chefs = results.rows;
+
+      for (chef in chefs) {
+        results = await Chef.findFile(chefs[chef].id);
+        const avatar = results.rows[0];
+
+        chefs[chef] = {
+          ...chefs[chef],
+          avatarName: avatar.name,
+          src: `${req.protocol}://${req.headers.host}${avatar.path.replace('public', "")}`
+        }
+      }
 
       return res.render("publicAccess/chefs/index", { chefs });
     } catch (err) {
