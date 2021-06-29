@@ -14,10 +14,12 @@
             <div class="cards">
 
                 {% for recipe in recipes %}
-                    <div class="card" id='{{recipe.image}}'>
+                    <div class="card" id='{{recipe.id}}'>
 
                         <div class="card-img">
-                            <a href="/recipes/{{recipe.id}}"><img src="{{recipe.image}}" alt="Image of {{recipe.image}}"></a>
+                            <a href="/recipes/{{recipe.id}}">
+                                <img src="{{recipe.src}}" alt="Image of {{recipe.filename}}">
+                            </a>
                         </div>
 
                         <div class="card-content">
