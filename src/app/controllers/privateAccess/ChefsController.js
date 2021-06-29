@@ -5,8 +5,20 @@ const File = require("../../models/File");
 module.exports = {
 	async index(req, res) {
 		try {
-			const results = await Chef.all();
+			let results = await Chef.all();
 			const chefs = results.rows;
+
+			for (chef in chefs) {
+
+				results = await Chef.findFile(chefs[chef].id);
+				const avatar = results.rows[0];
+
+				chefs[chef] = {
+					...chefs[chef],
+					avatarName: avatar.name,
+					src: `${req.protocol}://${req.headers.host}${avatar.path.replace("public", "")}`
+				}
+			}
 
 			return res.render("admin/chefs/index", { chefs });
 		} catch (err) {
@@ -53,6 +65,14 @@ module.exports = {
 			let results = await Chef.find(req.params.id);
 			const chef = results.rows[0];
 
+			results = await Chef.findFile(req.params.id);
+			let avatar = results.rows[0];
+
+			avatar = {
+				...avatar,
+				src: `${req.protocol}://${req.headers.host}${avatar.path.replace("public", "")}`
+			}
+
 			results = await Chef.findRecipe(req.params.id);
 			const recipes = results.rows;
 
@@ -69,7 +89,7 @@ module.exports = {
 				}
 			}
 
-			return res.render("admin/chefs/show", { chef, recipes });
+			return res.render("admin/chefs/show", { chef, recipes, avatar });
 		} catch (err) {
 			throw new Error(err);
 		}
