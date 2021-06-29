@@ -117,10 +117,31 @@ module.exports = {
   async showChef(req, res) {
     try {
       let results = await Chef.find(req.params.id);
-      const chef = results.rows[0];
+      let chef = results.rows[0];
+
+      results = await Chef.findFile(req.params.id);
+      const avatar = results.rows[0];
+
+      chef = {
+        ...chef,
+        avatarName: avatar.name,
+        src: `${req.protocol}://${req.headers.host}${avatar.path.replace('public', "")}`
+      }
 
       results = await Chef.findRecipe(req.params.id);
       const recipes = results.rows;
+
+      for (recipe in recipes) {
+        results = await Recipe.files(recipes[recipe].id);
+        const file = results.rows[0];
+
+        recipes[recipe] = {
+          ...recipes[recipe],
+          filename: file.name,
+          src: `${req.protocol}://${req.headers.host}${file.path.replace('public', "")}`
+        }
+
+      }
 
       return res.render("publicAccess/chefs/show", { chef, recipes });
     } catch (err) {
