@@ -34,11 +34,11 @@ module.exports = {
 				...req.files[0]
 			});
 
-			const fileID = results;
+			const fileId = results;
 
 			results = await Chef.create({
 				...req.body,
-				file_id: fileID
+				file_id: fileId
 			});
 
 			const chefId = results.rows[0].id;
@@ -128,11 +128,11 @@ module.exports = {
 					...req.files[0]
 				});
 
-				const fileID = results;
+				const fileId = results;
 
 				await Chef.update({
 					...req.body,
-					file_id: fileID
+					file_id: fileId
 				});
 			}
 
@@ -144,13 +144,18 @@ module.exports = {
 	async delete(req, res) {
 		try {
 			//let
-			const results = await Chef.find(req.body.id);
+			let results = await Chef.find(req.body.id);
 			const chef = results.rows[0];
+
+			results = await Chef.findFile(req.body.id);
+			const fileId = results.rows[0].id;
 
 			if (chef.total_recipes != 0) {
 				return res.send("Chef possui receitas! Você não pode apagá-lo(a)!");
 			} else {
 				await Chef.delete(req.body.id);
+
+				await File.delete(fileId)
 
 				return res.redirect("/admin/chefs");
 			}
