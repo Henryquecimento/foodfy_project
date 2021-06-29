@@ -4,8 +4,21 @@ const Recipe = require("../../models/Recipe");
 module.exports = {
   async index(req, res) {
     try {
-      const results = await Recipe.all();
+      let results = await Recipe.all();
       const recipes = results.rows;
+
+      for (recipe in recipes) {
+        results = await Recipe.files(recipes[recipe].id);
+        const file = results.rows[0];
+
+        recipes[recipe] = {
+          ...recipes[recipe],
+          filename: file.name,
+          src: `${req.protocol}://${req.headers.host}${file.path.replace('public', "")}`
+        }
+
+      }
+      console.log(recipes)
 
       return res.render("publicAccess/recipes/index", { recipes });
     } catch (err) {
