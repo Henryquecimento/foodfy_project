@@ -1,87 +1,87 @@
-.body-container {
-    text-align: center;
-}
+/* .body-container {
+  text-align: center;
+  margin-bottom: 10%;
+} */
 
 .bodyIndex {
-    display: inline-block;
-    margin-top: 32px;
+  display: inline-block;
+  /*   margin-top: 32px; */
 }
 
 .bodyIntro {
-    width: 940px;
-    height: 366px;
-    background-color: #FBDFDB;
-    border-radius: 30px;
-    box-sizing: border-box;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+  width: 940px;
+  height: 366px;
+  background-color: #fbdfdb;
+  border-radius: 30px;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
 
 .bodyIntro-texts {
-    padding: 100px;
-    text-align: left;
+  padding: 100px;
+  text-align: left;
 }
 .bodyIntro h1 {
-    font-size: 32px;
-    line-height: 38px;
-    color: #111111;
-
+  font-size: 32px;
+  line-height: 38px;
+  color: #111111;
 }
 
 .bodyIntro p {
-    width: 316px;
-    height: 84px;
-    font-size: 18px;
-    line-height: 28px;
-    opacity: 0.7;
-    color: #000000;
-    margin-top: 16px;
+  width: 316px;
+  height: 84px;
+  font-size: 18px;
+  line-height: 28px;
+  opacity: 0.7;
+  color: #000000;
+  margin-top: 16px;
 }
 
 .bodyIntro-img img {
-    width: 216px;
-    height: 300px;
-    margin: 48px;
+  width: 216px;
+  height: 300px;
+  margin: 48px;
 }
 
 /* -- ACCESSED ELEMENTS --  */
 .accessedElements {
-    text-align: left;
+  text-align: left;
 }
 
 .accessedElements h1 {
-    font-size: 24px;
-    margin-top: 54px;
-} 
+  font-size: 24px;
+  margin-top: 54px;
+}
 
 /* ------------------------------------------------- */
 .cards {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 16px;
-    margin-top: 50px;
-    cursor: pointer
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 16px;
+  margin-top: 50px;
+  cursor: pointer;
 }
 
-.card-img img{
-    width: 300px;
-    height: 140px;
-    border-radius: 8px;
+.card-img img {
+  width: 300px;
+  height: 140px;
+  border-radius: 8px;
 }
 .card-content {
-    text-align: left;
+  text-align: left;
 }
 
 .card-content h3 {
-    font-size: 18px;
-    line-height: 21px;
-    font-weight: bold;
-    padding-top: 5px;
+  font-size: 18px;
+  line-height: 21px;
+  font-weight: bold;
+  padding-top: 5px;
 }
 
 .card-content p {
-    font-size: 14px;
-    line-height: 16px;
-    color: #777777;
-    padding-top: 5px;
+  font-size: 14px;
+  line-height: 16px;
+  color: #777777;
+  padding-top: 5px;
 }

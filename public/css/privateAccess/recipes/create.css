@@ -1,9 +1,5 @@
 /* FORM */
 
-.manager-container {
-  text-align: center;
-}
-
 .create {
   display: inline-block;
   margin: 32px 0;
@@ -92,6 +88,10 @@ button.save-button {
   margin-left: 814px;
 }
 
+button.save-button:hover {
+  background-color: #877aeb;
+}
+
 textarea.text {
   border: 1px solid #dddddd;
   border-radius: 4px;
@@ -110,7 +110,7 @@ textarea.text {
 /* DELETE BUTTON */
 button.delete {
   text-align: center;
-  background-color: #e63e73;
+  background-color: #dc4747;
   color: #ffffff;
   padding: 8px;
   border-radius: 4px;
@@ -118,7 +118,7 @@ button.delete {
   height: 37px;
   font-size: 16px;
   line-height: 19px;
-  margin-left: 178px;
+  margin-left: -288px;
   top: 129px;
   position: absolute;
 }

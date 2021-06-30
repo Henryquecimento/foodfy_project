@@ -9,42 +9,39 @@
 
 {% block content %}
 
-    <section class="manager-container">
+    <div class="body-container">
 
-        <div class="body-container">
+        <div class="title-grid">
+            <h1>Gerenciar Receitas</h1>
 
-            <div class="title-grid">
-                <h1>Gerenciar Receitas</h1>
+            <button>
+                <a class="create-button" href="/admin/recipes/create">Criar receita</a>
+            </button>
+        </div>
 
-                <button>
-                    <a class="create-button" href="/admin/recipes/create">Criar receita</a>
-                </button>
-            </div>
+        <div class="recipes-grid">
 
-            <div class="recipes-grid">
+            {% for recipe in recipes %}
+                <div class="recipe">
 
-                {% for recipe in recipes %}
-                    <div class="recipe">
+                    <div class="recipe-img">
+                        <img src="{{recipe.files[0].src}}" alt="Image of {{recipe.files[0].name}}">
+                    </div>
 
-                        <div class="recipe-img">
-                            <img src="{{recipe.files[0].src}}" alt="Image of {{recipe.files[0].name}}">
-                        </div>
-
-                        <div class="recipe-content">
-                            <h3>{{recipe.title}}</h3>
-                            <p>Por
-                                {{recipe.chef_name}}</p>
-                            <p>
-                                <a href="recipes/{{ recipe.id }}">Visualizar</a>
-                            </p>
-
-                        </div>
+                    <div class="recipe-content">
+                        <h3>{{recipe.title}}</h3>
+                        <p>Por
+                            {{recipe.chef_name}}</p>
+                        <p>
+                            <a href="recipes/{{ recipe.id }}">Visualizar</a>
+                        </p>
 
                     </div>
-                {% endfor %}
-            </div>
+
+                </div>
+            {% endfor %}
         </div>
-    </section>
+    </div>
 
    {#  <script src="/js/script.js"></script> #}
 
