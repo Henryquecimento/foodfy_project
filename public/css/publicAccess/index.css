@@ -19,9 +19,13 @@
 }
 
 .bodyIntro-texts {
-  padding: 100px;
   text-align: left;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
+
 .bodyIntro h1 {
   font-size: 32px;
   line-height: 38px;

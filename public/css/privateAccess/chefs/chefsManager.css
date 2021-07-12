@@ -1,6 +1,7 @@
 .body-container {
   display: inline-block;
-  margin: 32px 0;
+  /* margin: 32px 0; */
+  height: 100vh;
 }
 
 .body-container h1 {
