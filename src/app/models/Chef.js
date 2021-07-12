@@ -45,7 +45,8 @@ module.exports = {
             FROM recipes
             LEFT JOIN chefs ON (recipes.chef_id = chefs.id)
             WHERE chefs.id = $1
-            ORDER BY recipes.id`, [id]);
+            ORDER BY recipes.created_at DESC
+            `, [id]);
     },
     findFile(id) {
         return db.query(`
