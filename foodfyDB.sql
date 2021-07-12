@@ -11,7 +11,6 @@ CREATE TABLE chefs (
 CREATE TABLE recipes (
 	id SERIAL PRIMARY KEY,
   chef_id INT NOT NULL,
-  image TEXT NOT NULL,
   title TEXT NOT NULL,
   ingredients TEXT[] NOT NULL,
   preparation TEXT[] NOT NULL,
@@ -34,3 +33,19 @@ CREATE TABLE recipe_files (
 /* ALTER TABLES */
 
 ALTER TABLE chefs ADD COLUMN file_id INTEGER REFERENCES files(id);
+ALTER TABLE recipes ADD COLUMN updated_at TIMESTAMP DEFAULT(now());
+
+/* PROCEDURES AND TRIGGERS */
+
+CREATE FUNCTION trigger_set_timestamp()
+RETURNS TRIGGER AS $$
+BEGIN
+	NEW.updated_at = NOW();
+  RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER set_timestamp
+BEFORE UPDATE ON recipes
+FOR EACH ROW
+EXECUTE PROCEDURE trigger_set_timestamp();
