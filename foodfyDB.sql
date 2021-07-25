@@ -49,3 +49,24 @@ CREATE TRIGGER set_timestamp
 BEFORE UPDATE ON recipes
 FOR EACH ROW
 EXECUTE PROCEDURE trigger_set_timestamp();
+
+-- USERS
+
+CREATE TABLE users(
+	id SERIAL PRIMARY KEY,
+  name text NOT NULL,
+  email text NOT NULL,
+  password text NOT NULL,
+  reset_token text,
+  reset_token_expires text,
+  is_admin BOOLEAN DEFAULT false,
+  created_at TIMESTAMP DEFAULT(now()),
+  updated_at TIMESTAMP DEFAULT(now())
+);
+
+-- Products user_id Foreign key
+ALTER TABLE recipes 
+ADD COLUMN user_id int,
+ADD CONSTRAINT recipes_user_id_fkey
+FOREIGN KEY ("user_id")
+REFERENCES "users" ("id");
