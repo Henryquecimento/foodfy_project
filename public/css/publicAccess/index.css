@@ -1,16 +1,8 @@
-/* .body-container {
-  text-align: center;
-  margin-bottom: 10%;
-} */
-
 .bodyIndex {
   display: inline-block;
-  /*   margin-top: 32px; */
 }
 
 .bodyIntro {
-  width: 940px;
-  height: 366px;
   background-color: #fbdfdb;
   border-radius: 30px;
   box-sizing: border-box;

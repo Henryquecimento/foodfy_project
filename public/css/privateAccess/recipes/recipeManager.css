@@ -1,10 +1,9 @@
-.body-container {
+.body.container {
   display: inline-block;
-  /* margin: 32px 0; */
   height: 100vh;
 }
 
-.body-container h1 {
+.body.container h1 {
   text-align: left;
 }
 

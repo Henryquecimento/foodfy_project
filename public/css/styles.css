@@ -29,7 +29,14 @@ footer {
   padding: 16px 0;
 }
 
-section.body-container {
+.container {
+  width: 100%;
+  max-width: 940px;
+
+  margin: 0 auto; /*  to align in the center */
+}
+
+section.body.container {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -42,10 +49,10 @@ header {
   text-align: center;
 }
 
-.header-container {
+.header.container {
   display: inline-grid;
   grid-template-columns: 1fr 380px;
-  width: 940px;
+  /* width: 940px; */
 }
 
 .links {

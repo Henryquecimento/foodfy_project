@@ -1,5 +1,5 @@
 /*----FOOD PAGE -------*/
-.body-container {
+section.body.container {
   text-align: center;
 }
 
@@ -59,11 +59,11 @@
 }
 
 /* RECIPES */
-.recipes-container {
+.recipes.container {
   margin-top: 50px;
 }
 
-.recipes-container h1 {
+.recipes.container h1 {
   text-align: left;
 }
 
@@ -72,7 +72,6 @@
   grid-template-columns: 1fr 1fr;
   gap: 16px;
   margin: 34px 0 34px 0;
-  width: 940px;
 }
 
 .recipe {
