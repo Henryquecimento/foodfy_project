@@ -64,9 +64,22 @@ CREATE TABLE users(
   updated_at TIMESTAMP DEFAULT(now())
 );
 
--- Products user_id Foreign key
+-- PRODUCTS user_id Foreign key
+
 ALTER TABLE recipes 
 ADD COLUMN user_id int,
 ADD CONSTRAINT recipes_user_id_fkey
 FOREIGN KEY ("user_id")
 REFERENCES "users" ("id");
+
+-- SESSION
+
+CREATE TABLE "session" (
+  "sid" varchar NOT NULL COLLATE "default",
+  "sess" json NOT NULL,
+  "expire" timestamp(6) NOT NULL
+)
+WITH (OIDS=FALSE);
+ALTER TABLE "session" 
+ADD CONSTRAINT "session_pkey" 
+PRIMARY KEY ("sid") NOT DEFERRABLE INITIALLY IMMEDIATE;
