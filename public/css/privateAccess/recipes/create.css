@@ -88,10 +88,6 @@ button.save-button {
   margin-left: 814px;
 }
 
-button.save-button:hover {
-  background-color: #877aeb;
-}
-
 textarea.text {
   border: 1px solid #dddddd;
   border-radius: 4px;

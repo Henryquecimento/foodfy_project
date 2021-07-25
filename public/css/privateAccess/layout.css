@@ -30,3 +30,8 @@ header {
   color: #ffffff;
   transition: color 300ms;
 }
+
+button:hover {
+  background-color: #877aeb;
+  transition: background-color 300ms;
+}
