@@ -8,18 +8,6 @@
 header {
   background-color: #111111;
   margin: 0 0 34px 0;
-  padding: 16px;
-}
-
-.header-container {
-  margin-right: 690px;
-  text-align: start;
-  display: initial;
-}
-
-.links {
-  display: inline-flex;
-  gap: 40px;
 }
 
 .links .logo {

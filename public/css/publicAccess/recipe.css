@@ -100,55 +100,47 @@
   font-family: Roboto-Regular;
 }
 
-.subject {
-  display: inline-grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
-}
-
 .mid_info {
   max-width: 940px;
 }
 
-.ingredients h1 {
-  margin-bottom: 2%;
-  color: #111111;
-  font-size: 24px;
-  line-height: 28px;
-  font-family: Roboto-Bold;
+.subject {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  margin-bottom: 16px;
 }
 
-.ingredients li {
-  font-size: 18px;
-  line-height: 28px;
-  color: #444444;
-  font-family: Roboto-Regular;
+ul.content li {
+  list-style: none;
+}
+ul.content li::before {
+  content: " - ";
 }
 
-.preparation {
-  margin-top: 2%;
-}
-
+.ingredients h1,
 .preparation h1 {
-  margin-bottom: 2%;
   color: #111111;
   font-size: 24px;
   line-height: 28px;
   font-family: Roboto-Bold;
 }
-.preparation li {
+
+.ingredients li,
+.preparation li,
+.info p {
   font-size: 18px;
   line-height: 28px;
   color: #444444;
   font-family: Roboto-Regular;
 }
 
+.preparation,
 .info {
-  margin-top: 2%;
+  margin-top: 16px;
 }
 
 .info h1 {
-  margin-bottom: 2%;
   color: #111111;
   font-size: 24px;
   line-height: 28px;
@@ -156,14 +148,10 @@
 }
 
 .info p {
-  font-size: 18px;
-  line-height: 28px;
-  color: #444444;
-  font-family: Roboto-Regular;
   white-space: pre-line;
 }
 
-/* hide buttom */
+/* -- HIDE BUTTON -- */
 .hide-button {
   font-size: 12px;
   line-height: 14px;

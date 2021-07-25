@@ -55,11 +55,11 @@
                             <button class='hide-button'>Esconder</button>
                         </div>
 
-                        <div class="content show">
+                        <ul class="content show">
                             {% for ingredient in recipe.ingredients %}
                                 <li>{{ingredient}}</li>
                             {% endfor %}
-                        </div>
+                        </ul>
 
                     </div>
 
@@ -70,11 +70,11 @@
                             <button class='hide-button'>Esconder</button>
                         </div>
 
-                        <div class="content show">
+                        <ul class="content show">
                             {% for preparation in recipe.preparation %}
                                 <li>{{preparation}}</li>
                             {% endfor %}
-                        </div>
+                        </ul>
 
                     </div>
 
