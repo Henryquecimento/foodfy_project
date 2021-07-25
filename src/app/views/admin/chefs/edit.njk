@@ -8,29 +8,27 @@
 {% endblock %}
 
 {% block content %}
-    <section class="manager container">
+    <div class="body container">
+            <form method='POST' action="/admin/chefs?_method=PUT" enctype="multipart/form-data">
 
-        <form method='POST' action="/admin/chefs?_method=PUT" enctype="multipart/form-data">
+                <div class="create">
+                    <div class="create-grid">
+                        <h1>Editando chef</h1>
+                        <button class="save-button edit" type="submit">Salvar chef</button>
+                    </div>
 
-            <div class="create">
-                <div class="create-grid">
-                    <h1>Editando chef</h1>
-                    <button class="save-button edit" type="submit">Salvar chef</button>
+                    {% include 'admin/chefs/fields.njk' %}
+
+                    <input type="hidden" name="id" value="{{ chef.id }}">
                 </div>
 
-                {% include 'admin/chefs/fields.njk' %}
+            </form>
 
+            <form id='form-delete' method="POST" action="/admin/chefs?_method=DELETE">
                 <input type="hidden" name="id" value="{{ chef.id }}">
-            </div>
-
-        </form>
-
-        <form id='form-delete' method="POST" action="/admin/chefs?_method=DELETE">
-            <input type="hidden" name="id" value="{{ chef.id }}">
-            <button class="delete" type="submit">Deletar chef</button>
-        </form>
-
-    </section>
+                <button class="delete" type="submit">Deletar chef</button>
+            </form>
+    </div>
 
     {% include "admin/confirm.njk"%}
 {% endblock %}

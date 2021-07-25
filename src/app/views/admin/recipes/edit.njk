@@ -8,8 +8,7 @@
 {% endblock %}
 
 {% block content %}
-    <section class="manager container">
-
+<div class="body container">
         <form method='POST' action="/admin/recipes?_method=PUT" enctype="multipart/form-data">
 
             <div class="create">
@@ -29,8 +28,6 @@
             <input type="hidden" name="id" value="{{ recipe.id }}">
             <button class="delete" type="submit">Deletar receita</button>
         </form>
-
-    </section>
-
+</div>
     {% include "admin/confirm.njk"%}
 {% endblock %}

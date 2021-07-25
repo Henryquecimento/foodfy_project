@@ -8,9 +8,9 @@
 {% endblock %}
 
 {% block content %}
+<div class="body container">
 
     <form method='POST' action="/admin/recipes" enctype="multipart/form-data">
-        <section class="manager container">
 
             <div class="create">
                 <div class="create-grid">
@@ -22,7 +22,9 @@
                 <button class="save-button" type="submit">Salvar</button>
             </div>
         </div>
-    </section>
-</form>
+    </form>
+
+</div>
+
 
 {% endblock %}
