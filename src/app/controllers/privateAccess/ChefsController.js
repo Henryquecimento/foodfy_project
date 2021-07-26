@@ -143,7 +143,7 @@ module.exports = {
 				await File.delete(oldFile);
 			}
 
-			if (req.files != 0) {
+			if (req.files.length != 0) {
 				results = await File.create({
 					...req.files[0]
 				});
@@ -153,6 +153,11 @@ module.exports = {
 				await Chef.update({
 					...req.body,
 					file_id: fileId
+				});
+			} else {
+				await Chef.update({
+					...req.body,
+					file_id: oldFile
 				});
 			}
 
