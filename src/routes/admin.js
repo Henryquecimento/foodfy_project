@@ -3,6 +3,7 @@ const routes = express.Router();
 const multer = require('../app/middlewares/multer');
 const RecipesController = require("../app/controllers/privateAccess/RecipesController");
 const ChefsController = require("../app/controllers/privateAccess/ChefsController");
+const SessionController = require("../app/controllers/privateAccess/SessionController");
 const ProfileController = require("../app/controllers/privateAccess/ChefsController");
 const UserController = require("../app/controllers/privateAccess/ChefsController");
 
@@ -27,6 +28,18 @@ routes.put("/chefs", multer.array("photos", 5), ChefsController.put);
 routes.delete("/chefs", ChefsController.delete);
 
 /* -- USERS -- */
+
+// --- login/logout
+routes.get('/login', SessionController.loginForm);
+// routes.post('/login', SessionValidations.login, SessionController.login);
+// routes.post('/logout', SessionController.logout);
+
+// --- reset password/ forgot
+// routes.get('/forgot-password', SessionController.forgotForm);
+// routes.get('/password-reset', SessionController.resetForm);
+// routes.post('/forgot-password', SessionValidations.forgot, SessionController.forgot);
+// routes.post('/password-reset', SessionValidations.reset, SessionController.reset);
+
 
 // Rotas de perfil de um usuário logado
 //routes.get('/admin/profile', ProfileController.index) // Mostrar o formulário com dados do usuário logado
