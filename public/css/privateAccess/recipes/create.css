@@ -114,9 +114,9 @@ button.delete {
   height: 37px;
   font-size: 16px;
   line-height: 19px;
-  margin-left: -288px;
   top: 129px;
   position: absolute;
+  right: 345px;
 }
 
 button.delete:hover {
