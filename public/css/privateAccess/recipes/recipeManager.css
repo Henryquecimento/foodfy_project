@@ -37,7 +37,6 @@
   grid-template-columns: 1fr 1fr;
   gap: 16px;
   margin: 34px 0 34px 0;
-  width: 940px;
 }
 
 .recipe {

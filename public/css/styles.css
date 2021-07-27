@@ -52,7 +52,6 @@ header {
 .header.container {
   display: inline-grid;
   grid-template-columns: 1fr 380px;
-  /* width: 940px; */
 }
 
 .links {
