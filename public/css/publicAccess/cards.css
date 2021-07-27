@@ -1,14 +1,9 @@
 /*CARDS*/
 
-.card.container {
+section.recipe.container {
   text-align: center;
 }
 
-.card-section {
-  /* NEED TO CHANGE */
-  display: inline-block;
-  height: 100vh;
-}
 .cards {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;

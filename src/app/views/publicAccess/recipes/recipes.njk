@@ -8,29 +8,27 @@
 {% endblock %}
 
 {% block content %}
-    <section class='card container'>
-        <div class="card-section">
+    <section class='recipe container'>
 
-            <div class="cards">
+        <div class="cards">
 
-                {% for recipe in recipes %}
-                    <div class="card" id='{{recipe.id}}'>
+            {% for recipe in recipes %}
+                <div class="card" id='{{recipe.id}}'>
 
-                        <div class="card-img">
-                            <a href="/recipes/{{recipe.id}}">
-                                <img src="{{recipe.src}}" alt="Image of {{recipe.filename}}">
-                            </a>
-                        </div>
-
-                        <div class="card-content">
-                            <h3>{{recipe.title}}</h3>
-                            <p>Por
-                                {{recipe.chef_name}}</p>
-                        </div>
-
+                    <div class="card-img">
+                        <a href="/recipes/{{recipe.id}}">
+                            <img src="{{recipe.src}}" alt="Image of {{recipe.filename}}">
+                        </a>
                     </div>
-                {% endfor %}
-            </div>
+
+                    <div class="card-content">
+                        <h3>{{recipe.title}}</h3>
+                        <p>Por
+                            {{recipe.chef_name}}</p>
+                    </div>
+
+                </div>
+            {% endfor %}
         </div>
     </section>
 
