@@ -1,14 +1,14 @@
 /*----FOOD PAGE -------*/
-section.body.container {
+.body.container.chefs_manager {
   text-align: center;
 }
 
-.body-fields {
+.body.container.chefs_manager div.body-fields {
   max-width: 1400px;
   display: inline-block;
 }
 
-.body-header {
+.body.container.chefs_manager div.body-header {
   display: grid;
   grid-template-columns: 1fr 1fr;
   margin-top: 32px;
@@ -16,11 +16,11 @@ section.body.container {
   text-align: left;
 }
 
-.body-header h1 {
+.body.container.chefs_manager div.body-header h1 {
   align-self: center;
 }
 
-.body-header button {
+.body.container.chefs_manager div.body-header button {
   text-align: center;
   background-color: #6558c3;
   padding: 8px;
@@ -32,77 +32,77 @@ section.body.container {
   margin-left: 332px;
 }
 
-.body-header a.edit-button {
+.body.container.chefs_manager div.body-header a.edit-button {
   color: #ffffff;
   text-decoration: none;
 }
 
-.chef_avatar img {
+.body.container.chefs_manager div.chef_avatar img {
   width: 200px;
   height: 200px;
   border-radius: 100px;
 }
 
-.chef-content {
+.body.container.chefs_manager div.chef-content {
   margin-top: 32px;
 }
 
-.chef-content h1 {
+.body.container.chefs_manager div.chef-content h1 {
   font-size: 32px;
   line-height: 42px;
 }
 
-.chef-content p {
+.body.container.chefs_manager div.chef-content p {
   font-size: 20px;
   line-height: 24px;
 }
 
 /* RECIPES */
-.recipes.container {
+.body.container.chefs_manager div.recipes.container {
   margin-top: 50px;
 }
 
-.recipes.container h1 {
+.body.container.chefs_manager div.recipes.container h1 {
   text-align: left;
 }
 
-.recipes-grid {
+.body.container.chefs_manager div.recipes-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 16px;
   margin: 34px 0 34px 0;
 }
 
-.recipe {
+.body.container.chefs_manager div.recipe {
   display: inline-flex;
 }
 
-.recipe-img img {
+.body.container.chefs_manager div.recipe-img img {
   width: 172px;
   height: 80px;
   border-radius: 8.57px;
 }
 
-.recipe-content {
+.body.container.chefs_manager div.recipe-content {
   text-align: left;
   padding: 0 8px 0 8px;
 }
 
-.recipe-content h3 {
+.body.container.chefs_manager div.recipe-content h3 {
   font-size: 18px;
   line-height: 21px;
   font-weight: bold;
   padding-top: 5px;
 }
 
-.recipe-content p {
+.body.container.chefs_manager div.recipe-content p {
   font-size: 14px;
   line-height: 16px;
   color: #777777;
   padding-top: 5px;
 }
 
-.recipe-content p:last-child a {
+.body.container.chefs_manager div.recipe-content p:last-child a {
   text-decoration: none;
   color: #6558c3;
   font-weight: Bold;

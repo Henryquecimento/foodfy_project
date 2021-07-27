@@ -1,22 +1,22 @@
-.body.container {
+.body.container.chefs_manager {
   display: inline-block;
   height: 100vh;
 }
 
-.body.container h1 {
+.body.container.chefs_manager h1 {
   text-align: left;
   font-size: 24px;
   line-height: 28px;
   color: #111111;
 }
 
-.title-grid {
+.body.container.chefs_manager div.title-grid {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.title-grid button {
+.body.container.chefs_manager div.title-grid button {
   text-align: center;
   background-color: #6558c3;
   padding: 8px;
@@ -27,42 +27,42 @@
   line-height: 19px;
 }
 
-.title-grid .create-button {
+.body.container.chefs_manager div.title-grid .create-button {
   color: #ffffff;
   text-decoration: none;
 }
 
-.chefs-grid {
+.body.container.chefs_manager div.chefs-grid {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   row-gap: 16px;
   margin: 34px 0 34px 0;
 }
 
-.chef {
+.body.container.chefs_manager div.chef {
   display: inline-flex;
 }
 
-.chef_avatar img {
+.body.container.chefs_manager div.chef_avatar img {
   width: 64px;
   height: 64px;
   border-radius: 40px;
 }
 
-.chef-content {
+.body.container.chefs_manager div.chef-content {
   text-align: left;
   padding: 8px;
   margin-left: 8px;
 }
 
-.chef-content h3 {
+.body.container.chefs_manager div.chef-content h3 {
   font-size: 18px;
   line-height: 21px;
   font-weight: normal;
   margin-bottom: 4px;
 }
 
-.chef-content:last-child a.visualization {
+.body.container.chefs_manager div.chef-content:last-child a.visualization {
   font-size: 14px;
   line-height: 16px;
   text-decoration: none;
@@ -72,7 +72,7 @@
   background: none;
 }
 
-.chef-content:last-child a {
+.body.container.chefs_manager div.chef-content:last-child a {
   font-size: 14px;
   line-height: 16px;
   text-decoration: none;
