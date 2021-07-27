@@ -8,34 +8,31 @@
 {% endblock %}
 
 {% block content %}
-    <section class="manager container">
+    <div class="body container chefs_manager">
 
-        <div class="body container">
+        <div class="chefs-grid">
 
-            <div class="chefs-grid">
+            {% for chef in chefs %}
 
-                {% for chef in chefs %}
+                <div class="chef">
 
-                    <div class="chef">
-
-                        <div class="chef_avatar">
-                            <img src="{{chef.src}}" alt="Image of {{chef.avatarName}}">
-                        </div>
-
-                        <div class="chef-content">
-                            <a href="/chefs/{{ chef.id }}">
-                                <h3>{{ chef.name }}</h3>
-                            </a>
-                            <p>{{ chef.total_recipes }}
-                                Receitas</p>
-                        </div>
-
+                    <div class="chef_avatar">
+                        <img src="{{chef.src}}" alt="Image of {{chef.avatarName}}">
                     </div>
 
-                {% endfor %}
-            </div>
+                    <div class="chef-content">
+                        <a href="/chefs/{{ chef.id }}">
+                            <h3>{{ chef.name }}</h3>
+                        </a>
+                        <p>{{ chef.total_recipes }}
+                            Receitas</p>
+                    </div>
 
+                </div>
+
+            {% endfor %}
         </div>
-    </section>
+
+    </div>
 
 {% endblock %}

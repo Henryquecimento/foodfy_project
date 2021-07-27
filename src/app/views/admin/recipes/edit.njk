@@ -8,13 +8,13 @@
 {% endblock %}
 
 {% block content %}
-<div class="body container">
+<div class="body container recipes_manager">
         <form method='POST' action="/admin/recipes?_method=PUT" enctype="multipart/form-data">
 
             <div class="create">
                 <div class="create-grid">
                     <h1>Editando receitas</h1>
-                    <button class="save-button edit" type="submit">Salvar receita</button>
+                    <button class="button edit" type="submit">Salvar receita</button>
                 </div>
 
                 {% include 'admin/recipes/fields.njk' %}

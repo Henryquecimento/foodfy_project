@@ -8,7 +8,7 @@
 {% endblock %}
 
 {% block content %}
-<div class="body container">
+<div class="body container recipes_manager">
 
     <form method='POST' action="/admin/recipes" enctype="multipart/form-data">
 
@@ -19,7 +19,7 @@
 
                 {% include 'admin/recipes/fields.njk' %}
 
-                <button class="save-button" type="submit">Salvar</button>
+                <button class="button save" type="submit">Salvar</button>
             </div>
         </div>
     </form>

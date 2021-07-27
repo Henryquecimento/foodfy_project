@@ -1,11 +1,12 @@
 /* FORM */
 
-.create {
-  display: inline-block;
+.recipes_manager div.create {
+  display: block;
   margin: 32px 0;
+  position: relative;
 }
 
-.create h1 {
+.recipes_manager div.create h1 {
   font-weight: bold;
   color: #111111;
   font-size: 24px;
@@ -14,60 +15,8 @@
   margin-bottom: 8px;
 }
 
-.create-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-}
-
-button.save-button.edit {
-  margin-left: 335px;
-}
-
-.item {
-  text-align: left;
-  margin: 24px 0;
-}
-
-select {
-  border: 1px solid #dddddd;
-  width: 950px;
-  height: 49px;
-  border-radius: 4px;
-  font-size: 16px;
-  line-height: 19px;
-  padding: 4px;
-  color: #555;
-  font-weight: bold;
-  outline: none;
-}
-
-.item div:first-child {
-  font-size: 16px;
-  line-height: 19px;
-  color: #111111;
-  font-weight: bold;
-  margin-bottom: 8px;
-}
-
-.item:nth-child(7) input {
-  max-width: 940px;
-  max-height: 257px;
-}
-
-input {
-  border: 1px solid #dddddd;
-  width: 940px;
-  height: 49px;
-  border-radius: 4px;
-  font-size: 16px;
-  line-height: 19px;
-  padding: 4px;
-  color: #555;
-  font-weight: bold;
-}
-
-.add-ingredient,
-.add-step {
+.recipes_manager form .item button.add-ingredient,
+.recipes_manager form .item button.add-step {
   color: #6558c3;
   font-weight: Bold;
   cursor: pointer;
@@ -75,16 +24,7 @@ input {
   background: none;
 }
 
-button.save-button {
-  text-align: center;
-  background-color: #6558c3;
-  color: #ffffff;
-  padding: 8px;
-  border-radius: 4px;
-  width: 139px;
-  height: 37px;
-  font-size: 16px;
-  line-height: 19px;
+.recipes_manager div.create button.button.save {
   margin-left: 814px;
 }
 
@@ -105,23 +45,9 @@ textarea.text {
 
 /* DELETE BUTTON */
 button.delete {
-  text-align: center;
-  background-color: #dc4747;
-  color: #ffffff;
-  padding: 8px;
-  border-radius: 4px;
-  width: 139px;
-  height: 37px;
-  font-size: 16px;
-  line-height: 19px;
   top: 129px;
   position: absolute;
   right: 345px;
-}
-
-button.delete:hover {
-  background-color: #eb628d;
-  transition: background-color 300ms;
 }
 
 /* Photos grid */

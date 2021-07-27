@@ -3,8 +3,8 @@
 {% block head %}
 
     <title>Foodfy Manager</title>
-    <link href="/css/privateAccess/recipes/create.css" rel="stylesheet">
-    <link href="/css/privateAccess/chefs/chefsManager.css" rel="stylesheet">
+{#     <link href="/css/privateAccess/recipes/create.css" rel="stylesheet">
+ #}    <link href="/css/privateAccess/chefs/chefsManager.css" rel="stylesheet">
 
 {% endblock %}
 
@@ -14,9 +14,9 @@
             <div class="create">
                 <div class="create-grid">
                     <h1>Criando chefs</h1>
+                    <button class="button" type="submit">Salvar</button>
                 </div>
                 
-                <button class="save-button" type="submit">Salvar</button>
 
                 {% include 'admin/chefs/fields.njk' %}
 
