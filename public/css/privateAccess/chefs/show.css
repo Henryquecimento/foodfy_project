@@ -34,25 +34,26 @@
   text-decoration: none;
 }
 
-.body.container.chefs_manager div.chef_avatar img {
+.body.container.chefs_manager div.chef_avatar.show img {
   width: 200px;
   height: 200px;
   border-radius: 100px;
 }
 
-.body.container.chefs_manager div.chef-content {
+.body.container.chefs_manager div.chef-content.show {
   margin-top: 32px;
 }
 
-.body.container.chefs_manager div.chef-content h1 {
+.body.container.chefs_manager div.chef-content.show h1 {
   font-size: 32px;
   line-height: 42px;
   text-align: center;
 }
 
-.body.container.chefs_manager div.chef-content p {
+.body.container.chefs_manager div.chef-content.show p {
   font-size: 20px;
   line-height: 24px;
+  text-align: center;
 }
 
 /* RECIPES */
