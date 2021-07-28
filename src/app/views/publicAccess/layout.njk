@@ -17,7 +17,7 @@
 
     <body>
         <header>
-            <section class="header container">
+            <div class="header container">
                 <div class="links">
                     <div class='logo'>
                         <a href="/">
@@ -40,19 +40,19 @@
                     </div>
                 </form>
 
-            </section>
+            </div>
 
         </header>
 
-         <section class="body container">
-            {% block content%}{% endblock%}
-         </section>
-        </body>
 
-        <footer>
-            <h2>Foodfy Receitas - 2020 - All Rights Reserved</h2>
-        </footer>
+        {% block content%}{% endblock%}
+        
+    </body>
 
-        <script src="/js/script.js"></script>
+    <footer>
+        <h2>Foodfy Receitas - 2020 - All Rights Reserved</h2>
+    </footer>
 
-    </html>
+    <script src="/js/script.js"></script>
+
+</html>

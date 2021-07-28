@@ -17,10 +17,6 @@
   text-align: left;
 }
 
-.body.container.chefs_manager div.body-header h1 {
-  align-self: center;
-}
-
 .body.container.chefs_manager div.body-header button {
   text-align: center;
   background-color: #6558c3;
@@ -51,6 +47,7 @@
 .body.container.chefs_manager div.chef-content h1 {
   font-size: 32px;
   line-height: 42px;
+  text-align: center;
 }
 
 .body.container.chefs_manager div.chef-content p {
