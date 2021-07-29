@@ -50,7 +50,7 @@
 }
 
 /* DELETE BUTTON */
-button.delete {
+button.delete.edit {
   top: 97px;
 }
 

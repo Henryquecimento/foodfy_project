@@ -4,7 +4,6 @@
 
     <title>{{recipe.title}}
         | Foodfy</title>
-    <link href="/css/publicAccess/recipe.css" rel="stylesheet">
 
 {% endblock %}
 
@@ -17,8 +16,8 @@
         <h1>Receita:
             {{ recipe.title }}</h1>
 
-        <button>
-            <a class="edit-button" href="/admin/recipes/{{recipe.id}}/edit">Editar receita</a>
+        <button class="button">
+            <a href="/admin/recipes/{{recipe.id}}/edit">Editar receita</a>
         </button>
       </div>
 
@@ -63,11 +62,11 @@
                     <button class='hide-button'>Esconder</button>
                 </div>
 
-                <div class="content show">
+                <ul class="content show">
                     {% for ingredient in recipe.ingredients %}
                         <li>{{ ingredient }}</li>
                     {% endfor %}
-                </div>
+                </ul>
 
             </div>
 
@@ -78,11 +77,11 @@
                     <button class='hide-button'>Esconder</button>
                 </div>
 
-                <div class="content show">
+                <ul class="content show">
                     {% for preparation in recipe.preparation %}
                         <li>{{ preparation }}</li>
                     {% endfor %}
-                </div>
+                </ul>
 
             </div>
 

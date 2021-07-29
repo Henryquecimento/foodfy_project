@@ -1,6 +1,6 @@
 header {
   background-color: #111111;
-  margin: 0 0 34px 0;
+  margin: 0 0 16px 0;
 }
 
 .links .logo {
@@ -79,7 +79,7 @@ div.create-grid {
   justify-content: space-between;
 }
 
-.title-grid button {
+button {
   text-align: center;
   background-color: #6558c3;
   padding: 8px;
@@ -90,8 +90,8 @@ div.create-grid {
   line-height: 19px;
 }
 
-.title-grid button.button,
-.title-grid a.button {
+button.button,
+a.button {
   color: #ffffff;
   text-decoration: none;
 }
