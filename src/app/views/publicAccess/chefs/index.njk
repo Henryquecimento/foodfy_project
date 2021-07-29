@@ -3,7 +3,6 @@
 {% block head %}
 
     <title>Chefs | Foodfy</title>
-    <link href="/css/privateAccess/chefs/chefsManager.css" rel="stylesheet">
 
 {% endblock %}
 
@@ -14,7 +13,7 @@
 
             {% for chef in chefs %}
 
-                <div class="chef">
+                <div class="chef index">
 
                     <div class="chef_avatar">
                         <img src="{{chef.src}}" alt="Image of {{chef.avatarName}}">

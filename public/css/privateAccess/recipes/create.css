@@ -22,6 +22,14 @@
   cursor: pointer;
   margin-top: 8px;
   background: none;
+
+  text-align: initial;
+  padding: initial;
+  border-radius: initial;
+  width: initial;
+  height: initial;
+  font-size: 12px;
+  line-height: 14px;
 }
 
 .recipes_manager div.create button.button.save {
@@ -45,7 +53,7 @@ textarea.text {
 
 /* DELETE BUTTON */
 button.delete {
-  top: 129px;
+  top: 111px;
   position: absolute;
   right: 345px;
 }

@@ -1,7 +1,7 @@
 /*----FOOD PAGE -------*/
 .recipes.container {
   text-align: center;
-  min-height: 1221.41px;
+  /*   min-height: 1221.41px; */
 }
 
 .recipe-fields {
@@ -35,7 +35,6 @@
   color: #ffffff;
   text-decoration: none;
 }
-
 
 /* PHOTOS GALLERY */
 

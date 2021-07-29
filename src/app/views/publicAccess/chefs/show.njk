@@ -4,7 +4,6 @@
 
     <title>{{chef.name}}
         | Foodfy</title>
-    <link href="/css/privateAccess/chefs/show.css" rel="stylesheet">
 
 {% endblock %}
 
@@ -20,11 +19,11 @@
 
             <div class="chef">
 
-                <div class="chef_avatar">
+                <div class="chef_avatar show">
                     <img src="{{chef.src}}" alt="Image of {{chef.avatarName}}">
                 </div>
 
-                <div class="chef-content">
+                <div class="chef-content show">
                     <h1>{{ chef.name }}</h1>
                     <p>{{ chef.total_recipes }}
                         Receitas</p>

@@ -1,5 +1,3 @@
-@import "https://fonts.googleapis.com/css2?family=Roboto&display=swap";
-
 * {
   margin: 0;
   border: 0;
@@ -36,7 +34,8 @@ footer {
   margin: 0 auto; /*  to align in the center */
 }
 
-section.body.container {
+section.body.container,
+section.recipes.container {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -107,7 +106,7 @@ button.header_filter {
   cursor: pointer;
 }
 
-button.header_filter {
+button.header_filter:hover {
   background-color: #8174e3;
   transition: background-color 300ms;
 }
