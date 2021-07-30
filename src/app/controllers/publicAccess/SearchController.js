@@ -23,7 +23,7 @@ module.exports = {
 
         }
 
-        return res.render("publicAccess/recipes/recipes", { recipes });
+        return res.render("publicAccess/recipes/recipes", { recipes, filter });
       } else {
         results = await Recipe.all();
         recipes = results.rows;

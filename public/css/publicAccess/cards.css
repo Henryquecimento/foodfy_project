@@ -4,6 +4,12 @@ section.recipe.container {
   text-align: center;
 }
 
+section.recipe.container h1.filter {
+  font-size: 24px;
+  line-height: 28px;
+  text-align: left;
+}
+
 .cards {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;

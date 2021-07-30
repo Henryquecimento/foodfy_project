@@ -7,7 +7,11 @@
 {% endblock %}
 
 {% block content %}
+
     <section class='recipe container'>
+    {% if filter %}
+        <h1 class='filter'>Buscando por "{{filter}}"</h1>
+    {% endif %}
 
         <div class="cards">
 
