@@ -164,3 +164,21 @@ button.hide-button {
 .content.hide {
   display: none;
 }
+
+/* PAGINATION */
+.pagination {
+  margin: 32px 0;
+}
+
+.pagination a {
+  font-size: 18px;
+  line-height: 20px;
+  color: #6558c3;
+  font-weight: Bold;
+  cursor: pointer;
+  margin: 0 8px;
+}
+
+.pagination a:hover {
+  text-decoration: underline;
+}
