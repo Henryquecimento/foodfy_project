@@ -3,47 +3,46 @@ const Recipe = require('../../models/Recipe');
 module.exports = {
   async index(req, res) {
     try {
-      let { filter } = req.query;
-      let results,
-        recipes = null;
+      let { filter, page, limit } = req.query;
 
-      if (filter) {
-        results = await Recipe.findBy(filter);
-        recipes = results.rows;
+      page = page || 1;
+      limit = limit || 9;
+      let offset = limit * (page - 1);
 
-        for (recipe in recipes) {
-          results = await Recipe.files(recipes[recipe].id);
-          const file = results.rows[0];
-
-          recipes[recipe] = {
-            ...recipes[recipe],
-            filename: file.name,
-            src: `${req.protocol}://${req.headers.host}${file.path.replace('public', "")}`
-          }
-
-        }
-
-        return res.render("publicAccess/recipes/recipes", { recipes, filter });
-      } else {
-        results = await Recipe.all();
-        recipes = results.rows;
-
-        for (recipe in recipes) {
-          results = await Recipe.files(recipes[recipe].id);
-          const file = results.rows[0];
-
-          recipes[recipe] = {
-            ...recipes[recipe],
-            filename: file.name,
-            src: `${req.protocol}://${req.headers.host}${file.path.replace('public', "")}`
-          }
-
-        }
-
-        return res.render("publicAccess/recipes/recipes", { recipes });
+      const params = {
+        filter,
+        page,
+        limit,
+        offset
       }
+
+      let results = await Recipe.paginate(params);
+
+      const recipesPromise = results.rows.map(async recipe => {
+        results = await Recipe.files(recipe.id);
+        const file = results.rows[0];
+
+        recipe = {
+          ...recipe,
+          filename: file.name,
+          src: `${req.protocol}://${req.headers.host}${file.path.replace('public', "")}`
+        }
+
+        return recipe;
+      });
+
+      const recipes = await Promise.all(recipesPromise);
+
+      const pagination = {
+        total: recipes[0] ? Math.ceil(recipes[0].total / limit) : 0,
+        page
+      }
+
+      return res.render("publicAccess/recipes/recipes", { recipes, filter, pagination });
+
     } catch (err) {
       throw new Error(err);
     }
   },
 }
+
