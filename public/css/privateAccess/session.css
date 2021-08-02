@@ -1,0 +1,45 @@
+header.session-header {
+  background-color: white;
+}
+
+.session.header.container {
+  display: initial;
+}
+
+.session.header.container div.links {
+  display: initial;
+  align-items: initial;
+}
+
+.session.body.container {
+  width: 500px;
+}
+
+.session div.create {
+  margin: 95px 0;
+}
+
+.session div.create-grid {
+  display: initial;
+}
+
+.session div.create-grid h1 {
+  text-align: center;
+}
+
+.session div.fields input {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.session div.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.session div.footer a {
+  font-size: 16px;
+  line-height: 19px;
+  color: #969696;
+}
