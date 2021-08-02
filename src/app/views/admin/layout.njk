@@ -13,7 +13,9 @@
     </head>
     <body>
         
-        {% include 'admin/parts/header.njk' %}
+        {% block header%}
+            {% include 'admin/parts/header.njk' %}
+        {% endblock%}
 
 
         {% block content%}{% endblock%}

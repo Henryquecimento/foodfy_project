@@ -112,7 +112,6 @@ form .item select {
   line-height: 19px;
   padding: 4px;
   color: #555;
-  font-weight: bold;
   outline: none;
 }
 
@@ -138,5 +137,4 @@ form .item input {
   line-height: 19px;
   padding: 4px;
   color: #555;
-  font-weight: bold;
 }

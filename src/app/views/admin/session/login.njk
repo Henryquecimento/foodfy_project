@@ -1,8 +1,12 @@
 {% extends "admin/layout.njk" %}
 
+{% block header%}
+   {% include 'admin/parts/loginHeader.njk' %}
+{% endblock%}
+
 {% block content %}
-<div class="body container">
-    <form method='POST' action="/admin/session/login">
+<div class="session body container">
+    <form method='POST' action="/admin/users/login">
             <div class="create">
                 <div class="create-grid">
                     <h1>Iniciar Sessão</h1>
@@ -15,11 +19,11 @@
 
                 <div class="footer">
                     <li>
-                        <a href="/admin/forgot-password">Perdeu a senha</a>
+                        <a href="/admin/forgot-password">Perdeu a senha?</a>
                     </li>
+                    <button class="button" type="submit">Acessar</button>
                 </div>
 
-                <button class="button" type="submit">Entrar</button>
             
             </div>
         </div>
