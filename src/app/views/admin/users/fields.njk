@@ -1,0 +1,34 @@
+<div class="admin">
+ 
+    <div class="item">
+        <div>Nome</div>
+        <div>
+            <input 
+            type="text" 
+            name='name' 
+            placeholder="Digite seu nome completo" 
+            value='{{ user.name }}'>
+        </div>
+    </div>
+
+    <div class="item">
+        <div>Email</div>
+        <div>
+            <input 
+            type="email" 
+            name='email' 
+            placeholder="Digite seu email" 
+            value='{{ user.email }}'>
+        </div>
+    </div>
+</div>
+
+<div class="item isAdmin">
+    <div>
+        <input 
+        type="checkbox" 
+        name='isAdmin' 
+        value='{{ user.isAdmin }}'>
+    </div>
+    <div>Adminstrador</div>
+</div>

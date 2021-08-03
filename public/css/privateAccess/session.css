@@ -41,5 +41,36 @@ header.session-header {
 .session div.footer a {
   font-size: 16px;
   line-height: 19px;
-  color: #969696;
+  color: #854141;
+}
+
+/* USERS */
+form .create div.admin {
+  display: flex;
+  justify-content: space-between;
+}
+
+form .create div.admin input {
+  width: 450px;
+}
+
+form .create .item.isAdmin {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 16px 0;
+
+  font-size: 16px;
+  line-height: 18px;
+  font-weight: bold;
+}
+
+form .create .item.isAdmin input {
+  width: 15px;
+  height: 15px;
+  margin: 0;
+}
+
+form .item.item.isAdmin div:first-child {
+  margin: 0;
 }

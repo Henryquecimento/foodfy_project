@@ -1,0 +1,30 @@
+{% extends "admin/layout.njk" %}
+
+{% block head %}
+
+    <title>Foodfy | Criar Usuário</title>
+
+{% endblock %}
+
+{% block content %}
+
+  <div class="body container users">
+      <form method='POST' action="/admin/users">
+            <div class="create">
+                <div class="create-grid">
+                    <h1>Criar Usuário</h1>
+                    <button class="button" type="submit">Salvar</button>
+                </div>
+
+                {# CANCEL BUTTON CAN BE MADE AS CONFIRM.NJK #}
+                
+                {% include 'admin/users/fields.njk' %}
+    
+
+            </div>
+        </div>
+    </form>
+      
+  </div>
+
+{% endblock %}
