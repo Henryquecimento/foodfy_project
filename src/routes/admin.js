@@ -5,7 +5,7 @@ const RecipesController = require("../app/controllers/privateAccess/RecipesContr
 const ChefsController = require("../app/controllers/privateAccess/ChefsController");
 const SessionController = require("../app/controllers/privateAccess/SessionController");
 const ProfileController = require("../app/controllers/privateAccess/ChefsController");
-const UserController = require("../app/controllers/privateAccess/ChefsController");
+const UserController = require("../app/controllers/privateAccess/UserController");
 
 /* -- Private Access -- */
 
@@ -42,15 +42,15 @@ routes.get('/login', SessionController.loginForm);
 
 
 // Rotas de perfil de um usuário logado
-//routes.get('/admin/profile', ProfileController.index) // Mostrar o formulário com dados do usuário logado
-//routes.put('/admin/profile', ProfileController.put)// Editar o usuário logado
+//routes.get('/profile', ProfileController.index) // Mostrar o formulário com dados do usuário logado
+//routes.put('/profile', ProfileController.put)// Editar o usuário logado
 
 // Rotas que o administrador irá acessar para gerenciar usuários
-// routes.get('/admin/users', UserController.list) // Mostrar a lista de usuários cadastrados
+// routes.get('/users', UserController.list) // Mostrar a lista de usuários cadastrados
 // routes.post('/admin/users', UserController.post) // Cadastrar um usuário
-// routes.get('/admin/users/create', UserController.create) // Mostrar o formulário de criação de um usuário
-// routes.put('/admin/users/:id', UserController.put) // Editar um usuário
-// routes.get('/admin/users/:id/edit', UserController.edit) // Mostrar o formulário de edição de um usuário
-// routes.delete('/admin/users/:id', UserController.delete) // Deletar um usuário
+routes.get('/users/create', UserController.create) // Mostrar o formulário de criação de um usuário
+// routes.put('/users/:id', UserController.put) // Editar um usuário
+// routes.get('/users/:id/edit', UserController.edit) // Mostrar o formulário de edição de um usuário
+// routes.delete('/users/:id', UserController.delete) // Deletar um usuário
 
 module.exports = routes;
