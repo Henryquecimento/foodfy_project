@@ -88,6 +88,7 @@ button {
   height: 37px;
   font-size: 16px;
   line-height: 19px;
+  cursor: pointer;
 }
 
 button.button,
@@ -103,6 +104,9 @@ form .item {
   margin: 24px 0;
 }
 
+
+
+form .item input,
 form .item select {
   border: 1px solid #dddddd;
   width: 940px;
@@ -112,8 +116,13 @@ form .item select {
   line-height: 19px;
   padding: 4px;
   color: #555;
+  box-sizing: border-box;
+}
+
+form .item select {
   outline: none;
 }
+
 
 form .item div:first-child {
   font-size: 16px;
@@ -126,15 +135,4 @@ form .item div:first-child {
 form .item:nth-child(7) input {
   max-width: 940px;
   max-height: 257px;
-}
-
-form .item input {
-  border: 1px solid #dddddd;
-  width: 940px;
-  height: 49px;
-  border-radius: 4px;
-  font-size: 16px;
-  line-height: 19px;
-  padding: 4px;
-  color: #555;
 }
