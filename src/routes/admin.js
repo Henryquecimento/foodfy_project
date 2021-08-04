@@ -1,12 +1,14 @@
 const express = require("express");
 const routes = express.Router();
 const multer = require('../app/middlewares/multer');
+
 const RecipesController = require("../app/controllers/privateAccess/RecipesController");
 const ChefsController = require("../app/controllers/privateAccess/ChefsController");
 const SessionController = require("../app/controllers/privateAccess/SessionController");
 const ProfileController = require("../app/controllers/privateAccess/ChefsController");
 const UserController = require("../app/controllers/privateAccess/UserController");
 
+const UserServices = require('../app/services/UserServices');
 /* -- Private Access -- */
 
 routes.get("/recipes", RecipesController.index);
@@ -46,9 +48,9 @@ routes.get('/login', SessionController.loginForm);
 //routes.put('/profile', ProfileController.put)// Editar o usuário logado
 
 // Rotas que o administrador irá acessar para gerenciar usuários
-// routes.get('/users', UserController.list) // Mostrar a lista de usuários cadastrados
-// routes.post('/admin/users', UserController.post) // Cadastrar um usuário
+routes.get('/users', UserController.list) // Mostrar a lista de usuários cadastrados
 routes.get('/users/create', UserController.create) // Mostrar o formulário de criação de um usuário
+routes.post('/users', UserServices.post, UserController.post) // Cadastrar um usuário
 // routes.put('/users/:id', UserController.put) // Editar um usuário
 // routes.get('/users/:id/edit', UserController.edit) // Mostrar o formulário de edição de um usuário
 // routes.delete('/users/:id', UserController.delete) // Deletar um usuário
