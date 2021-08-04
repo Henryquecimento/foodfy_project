@@ -10,5 +10,16 @@ module.exports = {
   },
   create(req, res) {
     return res.render('admin/users/create.njk');
+  },
+  async post(req, res) {
+
+    const { name, email, isAdmin } = req.body;
+
+    const results = await User.post({name, email, isAdmin});
+
+    const user = results.rows[0];
+
+    return res.redirect('/admin/users');
   }
+
 }
