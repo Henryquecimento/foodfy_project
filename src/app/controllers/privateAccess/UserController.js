@@ -13,13 +13,13 @@ module.exports = {
   },
   async post(req, res) {
 
-    const { name, email, isAdmin } = req.body;
+    const { name, email, is_admin } = req.body;
 
-    const results = await User.post({name, email, isAdmin});
+    const results = await User.post({ name, email, is_admin });
 
-    const user = results.rows[0];
+    const userId = results.rows[0];
 
-    return res.redirect('/admin/users');
+    return res.redirect(`/admin/users/${userId}`);
   }
 
 }
