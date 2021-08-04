@@ -1,0 +1,39 @@
+{% extends "admin/layout.njk" %}
+
+{% block head %}
+
+    <title>Foodfy Manager</title>
+
+{% endblock %}
+
+{% block content %}
+
+    <div class="body container users_manager">
+
+        <div class="title-grid">
+            <h1>Usuários</h1>
+
+            <button>
+                <a class="button" href="/admin/users/create">Novo</a>
+            </button>
+        </div>
+
+        <div class="users-grid">
+
+            {% for user in users %}
+
+                <div class="user index">
+
+                    <div class="user-content">
+                        <h3>{{user.name}}</h3>
+                        <a class='visualization' href="/admin/users/{{ user.id }}">Visualizar</a>
+                    </div>
+
+                </div>
+
+            {% endfor %}
+        </div>
+
+    </div>
+
+{% endblock %}
