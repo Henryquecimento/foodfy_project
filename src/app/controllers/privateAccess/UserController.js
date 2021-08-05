@@ -20,6 +20,14 @@ module.exports = {
     const userId = results.rows[0];
 
     return res.redirect(`/admin/users/${userId}`);
+  },
+  async edit(req, res) {
+
+    const results = await User.find(req.params.id);
+
+    const user = results.rows[0];
+
+    return res.render(`admin/users/edit`, { user });
   }
 
 }
