@@ -48,5 +48,10 @@ module.exports = {
         const results = await db.query(query);
 
         return results.rows[0];
+    },
+    find(id) {
+        return db.query(`
+        SELECT * FROM users
+        WHERE users.id = $1`, [id]);
     }
 }
