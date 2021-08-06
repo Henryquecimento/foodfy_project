@@ -28,6 +28,11 @@ module.exports = {
     const user = results.rows[0];
 
     return res.render(`admin/users/edit`, { user });
-  }
+  },
+  async put(req, res) {
 
+    await User.update(req.body);
+
+    return res.redirect(`/admin/users`);
+  }
 }
