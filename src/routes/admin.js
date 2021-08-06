@@ -52,7 +52,7 @@ routes.get('/users', UserController.list) // Mostrar a lista de usuários cadast
 routes.get('/users/create', UserController.create) // Mostrar o formulário de criação de um usuário
 routes.post('/users', UserServices.post, UserController.post) // Cadastrar um usuário
 routes.get('/users/:id/edit', UserController.edit) // Mostrar o formulário de edição de um usuário
-// routes.put('/users/:id', UserController.put) // Editar um usuário
+routes.put('/users', UserController.put) // Editar um usuário
 // routes.delete('/users/:id', UserController.delete) // Deletar um usuário
 
 module.exports = routes;
