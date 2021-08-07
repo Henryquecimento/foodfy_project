@@ -17,9 +17,9 @@ module.exports = {
 
     const results = await User.post({ name, email, is_admin });
 
-    const userId = results.rows[0];
+    const userId = results.rows[0].id;
 
-    return res.redirect(`/admin/users/${userId}`);
+    return res.redirect(`/admin/users/${userId}/edit`);
   },
   async edit(req, res) {
 
@@ -32,6 +32,12 @@ module.exports = {
   async put(req, res) {
 
     await User.update(req.body);
+
+    return res.redirect(`/admin/users`);
+  },
+  async delete(req, res) {
+
+    await User.delete(req.body.id);
 
     return res.redirect(`/admin/users`);
   }
