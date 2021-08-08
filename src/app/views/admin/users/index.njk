@@ -26,7 +26,15 @@
 
                     <div class="user-content">
                         <h3>{{user.name}}</h3>
-                        <a class='visualization' href="/admin/users/{{ user.id }}/edit">Visualizar</a>
+                        <p>{{user.email}}</p>
+                        <div class="button-container">
+                                <a class='visualization' href="/admin/users/{{ user.id }}/edit">Editar</a>
+                                
+                                <form id='form-delete' method="POST" action="/admin/users?_method=DELETE">
+                                    <input type="hidden" name="id" value="{{ user.id }}">
+                                    <button class="remove" type="submit">Remover</button>
+                                </form>
+                        </div>
                     </div>
 
                 </div>

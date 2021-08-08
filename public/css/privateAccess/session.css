@@ -74,3 +74,59 @@ form .create .item.isAdmin input {
 form .item.item.isAdmin div:first-child {
   margin: 0;
 }
+
+/* INDEX USERS */
+div.users-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  row-gap: 16px;
+  margin: 34px 0 34px 0;
+}
+
+div.user-content h3 {
+  font-size: 18px;
+  line-height: 22px;
+  font-weight: normal;
+}
+
+div.user-content p {
+  color: #777777;
+}
+
+div.user-content div.button-container {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+div.user-content p,
+div.user-content div.button-container a,
+div.user-content div.button-container button.remove {
+  font-size: 14px;
+  line-height: 17px;
+}
+
+div.user-content div.button-container a,
+div.user-content div.button-container button.remove {
+  font-weight: bold;
+}
+
+div.user-content div.button-container a {
+  color: #6558c3;
+}
+
+div.user-content div.button-container button.remove {
+  text-align: initial;
+  background-color: initial;
+  padding: 0px;
+  border-radius: 0px;
+  width: initial;
+  height: initial;
+
+  color: #f55a5a;
+}
+
+div.user-content div.button-container a:hover,
+div.user-content div.button-container button.remove:hover {
+  text-decoration: underline;
+}
