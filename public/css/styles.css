@@ -76,6 +76,10 @@ header {
   transition: color 300ms;
 }
 
+.links .path {
+  min-width: 256px;
+}
+
 .links .path a {
   font-size: 16px;
   line-height: 24px;
