@@ -5,7 +5,7 @@ const multer = require('../app/middlewares/multer');
 const RecipesController = require("../app/controllers/privateAccess/RecipesController");
 const ChefsController = require("../app/controllers/privateAccess/ChefsController");
 const SessionController = require("../app/controllers/privateAccess/SessionController");
-const ProfileController = require("../app/controllers/privateAccess/ChefsController");
+const ProfileController = require("../app/controllers/privateAccess/ProfileController");
 const UserController = require("../app/controllers/privateAccess/UserController");
 
 const UserServices = require('../app/services/UserServices');
@@ -44,7 +44,7 @@ routes.get('/login', SessionController.loginForm);
 
 
 // Rotas de perfil de um usuário logado
-//routes.get('/profile', ProfileController.index) // Mostrar o formulário com dados do usuário logado
+routes.get('/profile', ProfileController.index) // Mostrar o formulário com dados do usuário logado
 //routes.put('/profile', ProfileController.put)// Editar o usuário logado
 
 // Rotas que o administrador irá acessar para gerenciar usuários

@@ -1,0 +1,29 @@
+{% extends "admin/layout.njk" %}
+
+{% block head %}
+
+    <title>Foodfy Manager</title>
+
+{% endblock %}
+
+{% block content %}
+    <div class="body container users_manager">
+            <form method='POST' action="/admin/users?_method=PUT">
+
+                <div class="create">
+                    <div class="create-grid">
+                        <h1>Bem vindo {{user.name}}</h1>
+                        <button class="button edit" type="submit">Salvar</button>
+                    </div>
+
+                    {% include 'admin/profile/fields.njk' %}
+
+                    <input type="hidden" name="id" value="{{ user.id }}">
+                </div>
+
+            </form>
+
+    </div>
+
+    {% include "admin/confirm.njk"%}
+{% endblock %}
