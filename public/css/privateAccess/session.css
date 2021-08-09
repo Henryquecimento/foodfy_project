@@ -46,8 +46,11 @@ header.session-header {
 
 /* USERS */
 form .create div.admin {
-  display: flex;
-  justify-content: space-between;
+  /* display: flex;
+  justify-content: space-between; */
+  display: grid;
+  grid-template-columns: repeat(2, 490px);
+  box-sizing: border-box;
 }
 
 form .create div.admin input {
