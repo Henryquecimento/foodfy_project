@@ -9,6 +9,7 @@ const ProfileController = require("../app/controllers/privateAccess/ProfileContr
 const UserController = require("../app/controllers/privateAccess/UserController");
 
 const UserServices = require('../app/services/UserServices');
+const SessionServices = require('../app/services/SessionServices');
 /* -- Private Access -- */
 
 routes.get("/recipes", RecipesController.index);
@@ -33,7 +34,7 @@ routes.delete("/chefs", ChefsController.delete);
 
 // --- login/logout
 routes.get('/login', SessionController.loginForm);
-// routes.post('/login', SessionValidations.login, SessionController.login);
+routes.post('/login', SessionServices.login, SessionController.login);
 // routes.post('/logout', SessionController.logout);
 
 // --- reset password/ forgot
