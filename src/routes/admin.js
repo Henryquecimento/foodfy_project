@@ -35,7 +35,7 @@ routes.delete("/chefs", ChefsController.delete);
 // --- login/logout
 routes.get('/login', SessionController.loginForm);
 routes.post('/login', SessionServices.login, SessionController.login);
-// routes.post('/logout', SessionController.logout);
+routes.post('/logout', SessionController.logout);
 
 // --- reset password/ forgot
 // routes.get('/forgot-password', SessionController.forgotForm);
@@ -45,7 +45,7 @@ routes.post('/login', SessionServices.login, SessionController.login);
 
 
 // Rotas de perfil de um usuário logado
-routes.get('/profile', ProfileController.index) // Mostrar o formulário com dados do usuário logado
+routes.get('/profile', UserServices.show, ProfileController.index) // Mostrar o formulário com dados do usuário logado
 //routes.put('/profile', ProfileController.put)// Editar o usuário logado
 
 // Rotas que o administrador irá acessar para gerenciar usuários
