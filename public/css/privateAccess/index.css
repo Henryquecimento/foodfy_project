@@ -2,6 +2,11 @@ header {
   background-color: #111111;
   margin: 0 0 16px 0;
 }
+.header.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 
 .links .logo {
   position: initial;
@@ -15,8 +20,10 @@ header {
   margin-left: 16px;
 }
 
-.links a {
+.links a,
+button.logout-button {
   color: #999999;
+  font-weight: bold;
 }
 
 .links a:hover {
@@ -58,6 +65,22 @@ button.delete:hover {
   background-color: #eb628d;
   transition: background-color 300ms;
 }
+
+button.logout-button {
+  text-align: initial;
+  background-color: initial;
+  padding: 0;
+  border-radius: 0;
+  width: initial;
+  height: initial;
+
+  color: #dc4747;
+}
+
+button.logout-button:hover {
+  color: #eb628d;
+}
+
 
 /* RECIPES AND CHEFS GLOBAL CONFIG */
 
