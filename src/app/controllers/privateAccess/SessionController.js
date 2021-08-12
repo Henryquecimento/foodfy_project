@@ -9,9 +9,7 @@ module.exports = {
     return res.redirect('/admin/profile');
   },
   logout(req, res) {
-    console.log(req.session);
     req.session.destroy();
-
 
     return res.redirect('/');
   }
