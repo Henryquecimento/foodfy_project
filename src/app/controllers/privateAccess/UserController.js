@@ -31,7 +31,9 @@ module.exports = {
   },
   async put(req, res) {
 
-    await User.update(req.body);
+    await User.update(req.body.id, {
+      ...req.body
+    });
 
     return res.redirect(`/admin/users`);
   },
