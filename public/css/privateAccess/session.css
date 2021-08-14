@@ -11,11 +11,13 @@ header.session-header {
   align-items: initial;
 }
 
-.session.body.container {
+.session.body.container,
+.password.body.container {
   width: 500px;
 }
 
-.session div.create {
+.session div.create,
+.password.password.body.container form {
   margin: 95px 0;
 }
 
@@ -27,7 +29,8 @@ header.session-header {
   text-align: center;
 }
 
-.session div.fields input {
+.session div.fields input,
+.password div.fields input {
   width: 100%;
   box-sizing: border-box;
 }
@@ -133,4 +136,15 @@ div.user-content div.button-container button.remove {
 div.user-content div.button-container a:hover,
 div.user-content div.button-container button.remove:hover {
   text-decoration: underline;
+}
+
+/* Forgot Password */
+
+.password.body.container div.header h3 {
+  text-align: center;
+}
+
+.password.body.container div.button {
+  display: flex;
+  justify-content: end;
 }
