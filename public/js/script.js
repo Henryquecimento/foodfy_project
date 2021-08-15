@@ -32,6 +32,7 @@ function activeMenu() {
 }
 activeMenu();
 
+/* Pagination */
 function paginate(selectedPage, totalPages) {
   let pages = [],
     oldPage;
@@ -90,8 +91,7 @@ if (pagination) {
   createPagination(pagination);
 }
 
-/* if (photos-preview) { const PhotosUpload ... }  - TO SOLVE SCRIPT ERROR IN FRONTEND*/
-
+/* Photos upload */
 const PhotosUpload = {
   input: "",
   preview: document.querySelector("#photos-preview"),
@@ -219,3 +219,30 @@ const ImageGallery = {
   }
 }
 
+/* VALIDATIONS */
+const Validate = {
+  apply(input, func) {
+    Validade.clearErrors(input);
+
+    let results = Validate[func](input.value);
+    input.value = results.value;
+
+    if (results.error) {
+      Validate.displayErrors(input, results.error);
+    }
+  },
+  displayErrors(input, error) {
+    const div = document.createElement("div");
+    div.classList.add('error');
+
+    div.innerHTML = error;
+
+    input.parentNode.appendChild(div);
+  },
+  clearErrors(input) {
+    const errorDiv = input.parentNode.querySelector('.error');
+
+    if (errorDiv) errorDiv.remove();
+  },
+
+}
