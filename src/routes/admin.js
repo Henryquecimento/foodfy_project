@@ -39,7 +39,7 @@ routes.post('/logout', SessionController.logout);
 
 // --- reset password/ forgot
 routes.get('/forgot-password', SessionController.forgotForm);
-// routes.get('/password-reset', SessionController.resetForm);
+routes.get('/password-reset', SessionController.resetForm);
 routes.post('/forgot-password', SessionServices.forgot, SessionController.forgot);
 // routes.post('/password-reset', SessionValidations.reset, SessionController.reset);
 
