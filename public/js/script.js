@@ -222,7 +222,7 @@ const ImageGallery = {
 /* VALIDATIONS */
 const Validate = {
   apply(input, func) {
-    Validade.clearErrors(input);
+    Validate.clearErrors(input);
 
     let results = Validate[func](input.value);
     input.value = results.value;
@@ -238,11 +238,26 @@ const Validate = {
     div.innerHTML = error;
 
     input.parentNode.appendChild(div);
+
+    input.focus();
   },
   clearErrors(input) {
     const errorDiv = input.parentNode.querySelector('.error');
 
     if (errorDiv) errorDiv.remove();
   },
+  isEmail(value) {
+    let error = null;
 
+    const mailFormat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+
+    if (!value.match(mailFormat)) {
+      error = "Email Inválido";
+    }
+
+    return {
+      error,
+      value
+    }
+  }
 }
