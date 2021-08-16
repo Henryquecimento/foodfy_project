@@ -47,13 +47,25 @@ header.session-header {
   color: #854141;
 }
 
+/* ERRORS - INPUT */
+div.error {
+  color: #eeee;
+  background-color: #f55a5a;
+  text-align: center;
+  font-size: 16px;
+  letter-spacing: 2px;
+  margin-top: 4px;
+  padding: 4px;
+  border-radius: 4px;
+}
+
 /* USERS */
 form .create div.admin {
-  /* display: flex;
-  justify-content: space-between; */
-  display: grid;
+  display: flex;
+  justify-content: space-between;
+  /* display: grid;
   grid-template-columns: repeat(2, 490px);
-  box-sizing: border-box;
+  box-sizing: border-box; */
 }
 
 form .create div.admin input {
