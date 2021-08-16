@@ -17,7 +17,7 @@ module.exports = {
     return res.redirect('/');
   },
   forgotForm(req, res) {
-    return res.render('admin/session/forgot-password')
+    return res.render('admin/session/forgot-password');
   },
   async forgot(req, res) {
     const { user } = req;
@@ -55,6 +55,10 @@ module.exports = {
 
       return res.send('Erro inesperado!')
     }
+  },
+  resetForm(req, res) {
+    return res.render('admin/session/password-reset');
   }
+
 }
 
