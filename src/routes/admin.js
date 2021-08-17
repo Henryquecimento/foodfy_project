@@ -41,7 +41,7 @@ routes.post('/logout', SessionController.logout);
 routes.get('/forgot-password', SessionController.forgotForm);
 routes.get('/password-reset', SessionController.resetForm);
 routes.post('/forgot-password', SessionServices.forgot, SessionController.forgot);
-// routes.post('/password-reset', SessionValidations.reset, SessionController.reset);
+routes.post('/password-reset', SessionServices.reset, SessionController.reset);
 
 
 // Rotas de perfil de um usuário logado
