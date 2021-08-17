@@ -1,6 +1,7 @@
 const mailer = require('../../../lib/mailer');
 const crypto = require('crypto');
 const User = require('../../models/User');
+const { hash } = require('bcrypt');
 
 module.exports = {
   loginForm(req, res) {
@@ -47,17 +48,38 @@ module.exports = {
         `
       });
 
-      return res.render('admin/session/forgot-password');
+      return res.render('admin/session/forgot-password', { token });
 
     } catch (err) {
 
       console.error(err);
 
-      return res.send('Erro inesperado!')
+      return res.send('Erro inesperado!', { token })
     }
   },
   resetForm(req, res) {
-    return res.render('admin/session/password-reset');
+    return res.render('admin/session/password-reset', { token: req.query.token });
+  },
+  async reset(req, res) {
+    const { password, token } = req.body;
+
+    try {
+      const { user } = req;
+
+      const newPassword = await hash(password, 8);
+
+
+      await User.update(user.id, {
+        password: newPassword,
+        reset_token: "",
+        reset_token_expires: ""
+      });
+
+      return res.redirect('/admin/login')
+    } catch (err) {
+      console.error(err);
+      return res.render('admin/session/password-reset', { token })
+    }
   }
 
 }
