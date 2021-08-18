@@ -47,10 +47,49 @@ header.session-header {
   color: #854141;
 }
 
-/* ERRORS - INPUT */
-div.error {
+/* MESSAGES */
+@keyframes hideMessage {
+  to {
+    top: -100%;
+    opacity: 0;
+  }
+}
+
+/* @keyframes inputMessage {
+  to {
+    border-color: #dc4747;
+  }
+} */
+
+.messages {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  position: absolute;
+  top: 20px;
+  right: 20px;
+
+  width: 344px;
+  height: 135px;
+
   color: #eeee;
-  background-color: #f55a5a;
+  background-color: #dc4747;
+  font-size: 16px;
+  letter-spacing: 2px;
+  border-radius: 4px;
+
+  animation: hideMessage 800ms 2s ease-out forwards;
+}
+
+/* .input input {
+  animation: inputMessage 800ms 2s ease-out forwards;
+}
+ */
+/* ERRORS - INPUT */
+.input .error {
+  color: #eeee;
+  background-color: #dc4747;
   text-align: center;
   font-size: 16px;
   letter-spacing: 2px;
