@@ -8,12 +8,18 @@ async function login(req, res, next) {
     where: { email }
   });
 
-  if (!user) return res.send('User does not already exists!');
+  if (!user) return res.render('admin/session/login', {
+    user: req.body,
+    error: 'User does not exists!'
+  });
 
   // PASSWORD VALIDATION -- MODIFY
   const passed = await compare(password, user.password);
 
-  if (!passed) return res.send('Invalid Password, please try again!');
+  if (!passed) return res.render('admin/session/login', {
+    user: req.body,
+    error: 'Invalid Password, please try again!'
+  });
 
   req.user = user;
 
