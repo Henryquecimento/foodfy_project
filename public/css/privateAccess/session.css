@@ -78,6 +78,7 @@ header.session-header {
   font-size: 16px;
   letter-spacing: 2px;
   border-radius: 4px;
+  text-align: center;
 
   animation: hideMessage 800ms 2s ease-out forwards;
 }
