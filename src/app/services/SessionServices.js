@@ -51,16 +51,31 @@ async function reset(req, res, next) {
     where: { email }
   });
 
-  if (!user) return res.send('User does not exists!')
+  if (!user) return res.render("admin/session/password-reset", {
+    user: req.body,
+    error: 'O usuário não existe!'
+  });
 
-  if (password != passwordRepeat) return res.send('Password Mismatch!', { token });
+  if (password != passwordRepeat) return res.render("admin/session/password-reset", {
+    token,
+    user: req.body,
+    error: 'As senhas não combinam!'
+  });
 
-  if (token != user.reset_token) return res.send('Invalid Token! Please ask a new Password Recovery', { token })
+  if (token != user.reset_token) return res.render("admin/session/password-reset", {
+    token,
+    user: req.body,
+    error: 'Token inválido! Por favor, peça uma nova recuperação de senha'
+  });
 
   let now = new Date();
   now = now.setHours(now.getHours());
 
-  if (now > user.reset_token_expires) return res.send('Token Expired! Please ask a new Password Recovery', { token });
+  if (now > user.reset_token_expires) return res.render("admin/session/password-reset", {
+    token,
+    user: req.body,
+    error: 'Token expirado! Por favor, peça uma nova recuperação de senha'
+  });
 
   req.user = user;
 
