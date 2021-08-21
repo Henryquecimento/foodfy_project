@@ -6,6 +6,7 @@ function checkAllfields(body) {
   for (let key of keys) {
     if (body[key] == "") {
       return {
+        user: body,
         error: "Please, fill all the fields!"
       };
     }
@@ -17,7 +18,7 @@ async function post(req, res, next) {
 
   const filledFields = checkAllfields(req.body);
 
-  if (filledFields) return res.render('admin/profile', filledFields);
+  if (filledFields) return res.render('admin/users/create', filledFields);
 
   const { email } = req.body;
 
@@ -25,7 +26,10 @@ async function post(req, res, next) {
     where: { email }
   });
 
-  if (user) return res.send('User Already exists!');
+  if (user) return res.render("admin/users/create", {
+    user: req.body,
+    error: 'User Already exists!'
+  });
 
   next();
 }
@@ -37,7 +41,9 @@ async function show(req, res, next) {
     where: { id }
   });
 
-  if (!user) return res.send('User does not exists!');
+  if (!user) return res.render("admin/session/login", {
+    error: 'User does not exists!'
+  });
 
   req.user = user;
 
@@ -47,11 +53,13 @@ async function show(req, res, next) {
 async function update(req, res, next) {
   const filledFields = checkAllfields(req.body);
 
-  if (filledFields) return res.render('admin/profile', filledFields);
+  if (filledFields) return res.render('admin/profile/edit', filledFields);
 
   const { id, password } = req.body;
 
-  if (!password) return res.send('Ponha a senha para atualizar o cadastro!');
+  if (!password) return res.render("admin/profile/edit", {
+    error: 'Ponha a senha para atualizar o cadastro!'
+  });
 
   const user = await User.findOne({
     where: { id }
