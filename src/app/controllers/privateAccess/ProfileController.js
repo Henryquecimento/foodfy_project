@@ -1,3 +1,4 @@
+const User = require("../../models/User");
 
 module.exports = {
   async index(req, res) {
@@ -16,6 +17,6 @@ module.exports = {
       email
     });
 
-    return res.render('admin/profile');
+    return res.redirect('/admin/users');
   }
 };
