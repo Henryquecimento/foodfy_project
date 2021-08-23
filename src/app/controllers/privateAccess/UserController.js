@@ -35,12 +35,16 @@ module.exports = {
       ...req.body
     });
 
-    return res.redirect(`/admin/users`);
+    return res.render('admin/users/index', {
+      success: 'Dados do usuário atualizado com sucesso!'
+    });
   },
   async delete(req, res) {
 
     await User.delete(req.body.id);
 
-    return res.redirect(`/admin/users`);
+    return res.render('admin/users/index', {
+      success: 'Usuário removido com sucesso!'
+    });
   }
 }

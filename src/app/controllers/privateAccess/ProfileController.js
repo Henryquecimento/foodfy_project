@@ -17,6 +17,8 @@ module.exports = {
       email
     });
 
-    return res.redirect('/admin/users');
+    return res.render('admin/users/index', {
+      success: 'Dados do usuário atualizado com sucesso!'
+    });
   }
 };
