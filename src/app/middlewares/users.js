@@ -11,6 +11,8 @@ async function onlyAdmin(req, res, next) {
     })
   }
 
+  next();
+
 }
 
 module.exports = {
