@@ -74,13 +74,20 @@ header.session-header {
   height: 135px;
 
   color: #eeee;
-  background-color: #dc4747;
   font-size: 16px;
   letter-spacing: 2px;
   border-radius: 4px;
   text-align: center;
 
   animation: hideMessage 800ms 2s ease-out forwards;
+}
+
+.messages.error {
+  background-color: #dc4747;
+}
+
+.messages.success {
+  background-color: #01b12a;
 }
 
 /* .input input {

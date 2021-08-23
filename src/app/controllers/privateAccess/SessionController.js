@@ -48,13 +48,19 @@ module.exports = {
         `
       });
 
-      return res.render('admin/session/forgot-password', { token });
+      return res.render('admin/session/forgot-password', {
+        token,
+        success: 'E-mail enviado com sucesso!'
+      });
 
     } catch (err) {
 
       console.error(err);
 
-      return res.send('Erro inesperado!', { token })
+      return res.render('admin/session/forgot-password', {
+        token,
+        error: "Erro inesperado!"
+      });
     }
   },
   resetForm(req, res) {
@@ -75,10 +81,15 @@ module.exports = {
         reset_token_expires: ""
       });
 
-      return res.redirect('/admin/login')
+      return res.render('admin/session/login', {
+        success: 'Senha modificada com sucesso!'
+      })
     } catch (err) {
       console.error(err);
-      return res.render('admin/session/password-reset', { token })
+      return res.render('admin/session/password-reset', {
+        token,
+        error: 'Erro inesperado!'
+      })
     }
   }
 
