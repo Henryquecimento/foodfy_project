@@ -5,7 +5,7 @@ module.exports = {
 
     const { user } = req;
 
-    return res.render('admin/profile/edit.njk', { user });
+    return res.render('admin/users/profile.njk', { user });
   },
   async put(req, res) {
     const { user } = req;
