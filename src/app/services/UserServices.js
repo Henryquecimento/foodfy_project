@@ -7,7 +7,7 @@ function checkAllfields(body) {
     if (body[key] == "") {
       return {
         user: body,
-        error: "Please, fill all the fields!"
+        error: "Por favor, preencha todos os campos!"
       };
     }
   }
@@ -53,11 +53,12 @@ async function show(req, res, next) {
 async function update(req, res, next) {
   const filledFields = checkAllfields(req.body);
 
-  if (filledFields) return res.render('admin/profile/edit', filledFields);
+  if (filledFields) return res.render('admin/users/profile.njk', filledFields);
 
   const { id, password } = req.body;
 
-  if (!password) return res.render("admin/profile/edit", {
+  if (!password) return res.render("admin/users/profile.njk", {
+    user: req.body,
     error: 'Ponha a senha para atualizar o cadastro!'
   });
 
