@@ -3,9 +3,13 @@ const routes = express.Router();
 const PublicController = require("../app/controllers/publicAccess/PublicController");
 const SearchController = require("../app/controllers/publicAccess/SearchController");
 
-const admin = require('./admin');
+const users = require('./users');
+const chefs = require('./chefs');
+const recipes = require('./recipes');
 
-routes.use("/admin", admin);
+routes.use("/admin", users);
+routes.use("/admin", chefs);
+routes.use("/admin", recipes);
 
 /* -- Public Access -- */
 routes.get("/", PublicController.index);
