@@ -1,0 +1,62 @@
+{% extends "admin/layout.njk" %}
+
+{% block head %}
+
+    <title>Foodfy Manager</title>
+
+{% endblock %}
+
+{% block content %}
+    <div class="body container users_manager">
+            <form method='POST' action="/admin/profile?_method=PUT">
+
+                <div class="create">
+                    <div class="create-grid">
+                        <h1>Bem vindo {{user.name}}</h1>
+                        <button class="button edit" type="submit">Salvar</button>
+                    </div>
+
+                    <div class="admin">
+ 
+                        <div class="item">
+                            <div>Nome</div>
+                            <div>
+                                <input 
+                                type="text" 
+                                name='name' 
+                                placeholder="Digite seu nome completo" 
+                                value='{{ user.name }}'>
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <div>Email</div>
+                            <div>
+                                <input 
+                                type="email" 
+                                name='email' 
+                                placeholder="Digite seu email" 
+                                value='{{ user.email }}'>
+                            </div>
+                        </div>
+                        
+                        <div class="item">
+                            <div>Senha</div>
+                            <div>
+                                <input 
+                                type="password" 
+                                name='password' 
+                                placeholder="Digite sua senha">
+                            </div>
+                        </div>
+                    </div>
+
+                    <input type="hidden" name="id" value="{{ user.id }}">
+                </div>
+
+            </form>
+
+    </div>
+
+    {% include "admin/parts/confirm.njk"%}
+{% endblock %}
