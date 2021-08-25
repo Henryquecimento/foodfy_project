@@ -1,4 +1,7 @@
 const User = require("../../models/User");
+const mailer = require('../../../lib/mailer');
+const { hash } = require("bcrypt");
+const crypto = require('crypto');
 
 module.exports = {
   async list(req, res) {
@@ -12,14 +15,54 @@ module.exports = {
     return res.render('admin/users/create.njk');
   },
   async post(req, res) {
+    try {
+      const { name, email, is_admin } = req.body;
 
-    const { name, email, is_admin } = req.body;
+      const firstPassword = crypto.randomBytes(20).toString('hex');
 
-    const results = await User.post({ name, email, is_admin });
+      const encryptedPassword = await hash(firstPassword, 8);
 
-    const userId = results.rows[0].id;
+      await mailer.sendMail({
+        to: email,
+        from: "no-reply@foodfy.com",
+        subject: "Cadastro de Usuário",
+        html: `<h2>Olá ${name}, seja bem-vindo!</h2>
+        <p>Segue abaixo seu login e senha</p>
+        <p>
+          E-mail: ${email}</b>
+          Senha: ${firstPassword}
+        </p>
+        <p>
+          <a href="http://localhost:5000/admin/login" target="_blank">
+          ACESSE COM O SEU LOGIN
+          </a>
+        </p>
+        <p>Caso queira outra senha, clique no link abaixo para resetar a senha</p>
+        <p>
+          <a href="http://localhost:5000/admin/forgot-password" target="_blank">
+          MUDAR A SENHA
+          </a>
+        </p>
+        `
+      });
 
-    return res.redirect(`/admin/users/${userId}/edit`);
+      await User.post({
+        name,
+        email,
+        password: encryptedPassword,
+        is_admin
+      });
+
+      return res.render(`admin/users/index.njk`, {
+        success: "Usuário criado com sucesso!"
+      });
+
+    } catch (err) {
+      console.error(err);
+      return res.render(`admin/users/index.njk`, {
+        error: "Erro ao criar um novo usuário, tente novamente mais tarde!"
+      });
+    }
   },
   async edit(req, res) {
 
