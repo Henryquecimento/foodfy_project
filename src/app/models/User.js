@@ -6,7 +6,7 @@ module.exports = {
             SELECT * FROM users
         `);
     },
-    post({ name, email, is_admin }) {
+    post({ name, email, password, is_admin }) {
         const query = `
             INSERT INTO users (
                 name,
@@ -17,12 +17,10 @@ module.exports = {
             RETURNING id     
         `;
 
-        const newPassword = 1234
-
         const values = [
             name,
             email,
-            newPassword,
+            password,
             is_admin
         ];
 
@@ -58,7 +56,7 @@ module.exports = {
         let query = `UPDATE users SET`;
 
         Object.keys(fields).map((key, index, array) => {
-            
+
             if ((index + 1) < array.length) {
                 query = `
                     ${query}
@@ -75,11 +73,11 @@ module.exports = {
 
         await db.query(query);
 
-        return ;
+        return;
     },
     delete(id) {
 
-      return db.query(`
+        return db.query(`
       DELETE FROM users WHERE id = $1
       `, [id]);
 
