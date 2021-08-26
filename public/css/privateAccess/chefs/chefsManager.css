@@ -49,13 +49,6 @@
   background: none;
 }
 
-/* DELETE BUTTON */
-button.delete.edit {
-  top: 79px;
-}
-
-/* Avatar button */
-
 form .item .chef.photos-container #photos-upload {
   position: relative;
 

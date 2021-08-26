@@ -51,13 +51,6 @@ textarea.text {
   resize: none;
 }
 
-/* DELETE BUTTON */
-button.delete {
-  top: 111px;
-  position: absolute;
-  right: 345px;
-}
-
 /* Photos grid */
 form .item .photos-container,
 form .item #photos-preview {

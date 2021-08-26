@@ -49,6 +49,11 @@ button:hover {
 }
 
 /* DELETE BUTTON */
+form#form-delete {
+  display: flex;
+  justify-content: end;
+}
+
 button.delete {
   text-align: center;
   background-color: #dc4747;
@@ -80,7 +85,6 @@ button.logout-button {
 button.logout-button:hover {
   color: #eb628d;
 }
-
 
 /* RECIPES AND CHEFS GLOBAL CONFIG */
 
