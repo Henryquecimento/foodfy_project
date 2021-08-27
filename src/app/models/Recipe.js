@@ -2,13 +2,15 @@ const db = require("../../config/db");
 const { date } = require("../../lib/utils");
 
 module.exports = {
-  all() {
+  all(id) {
     return db.query(`
-        SELECT recipes.*, chefs.name AS chef_name
-        FROM recipes
-        LEFT JOIN chefs ON (recipes.chef_id = chefs.id)
-        ORDER BY created_at DESC     
-    `);
+      SELECT recipes.*, chefs.name AS chef_name, users.is_admin AS user_admin
+      FROM recipes
+      LEFT JOIN chefs ON (recipes.chef_id = chefs.id)
+      LEFT JOIN users ON (recipes.user_id = users.id)
+      WHERE users.id = $1
+      ORDER BY created_at DESC     
+    `, [id]);
   },
   create(data) {
     const query = `
