@@ -6,7 +6,7 @@ const File = require("../../models/File");
 module.exports = {
   async index(req, res) {
     try {
-      let results = await Recipe.all();
+      let results = await Recipe.all(req.session.userId);
       const recipes = results.rows;
 
       for (recipe in recipes) {
