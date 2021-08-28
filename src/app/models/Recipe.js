@@ -2,17 +2,15 @@ const db = require("../../config/db");
 const { date } = require("../../lib/utils");
 
 module.exports = {
-  all(id) {
+  all() {
     return db.query(`
-      SELECT recipes.*, chefs.name AS chef_name, users.is_admin AS user_admin
+      SELECT recipes.*, chefs.name AS chef_name
       FROM recipes
       LEFT JOIN chefs ON (recipes.chef_id = chefs.id)
-      LEFT JOIN users ON (recipes.user_id = users.id)
-      WHERE users.id = $1
       ORDER BY created_at DESC     
-    `, [id]);
+    `);
   },
-  create(data) {
+  create(data, userId) {
     const query = `
       INSERT INTO recipes (
       chef_id,
@@ -20,8 +18,9 @@ module.exports = {
       ingredients,
       preparation,
       information,
-      created_at          
-      ) VALUES ($1, $2, $3, $4, $5, $6)
+      created_at,
+      user_id          
+      ) VALUES ($1, $2, $3, $4, $5, $6, $7)
       RETURNING id`;
 
     const values = [
@@ -31,6 +30,7 @@ module.exports = {
       data.preparation,
       data.information,
       date(Date.now()).iso,
+      userId
     ];
 
     return db.query(query, values);
@@ -130,5 +130,15 @@ module.exports = {
     `;
 
     return db.query(query, [limit, offset]);
-  }
+  },
+  list(id) {
+    return db.query(`
+      SELECT recipes.*, chefs.name AS chef_name, users.is_admin AS user_admin
+      FROM recipes
+      LEFT JOIN chefs ON (recipes.chef_id = chefs.id)
+      LEFT JOIN users ON (recipes.user_id = users.id)
+      WHERE users.id = $1
+      ORDER BY created_at DESC     
+    `, [id]);
+  },
 };

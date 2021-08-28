@@ -6,7 +6,7 @@ const File = require("../../models/File");
 module.exports = {
   async index(req, res) {
     try {
-      let results = await Recipe.all(req.session.userId);
+      let results = await Recipe.list(req.session.userId);
       const recipes = results.rows;
 
       for (recipe in recipes) {
@@ -53,7 +53,7 @@ module.exports = {
         return res.send('Please, send at least one image!');
       }
 
-      let results = await Recipe.create(req.body);
+      let results = await Recipe.create(req.body, req.session.userId);
       const recipeId = results.rows[0].id;
 
       const FilesPromise = req.files.map(file => RecipeFiles.create({
