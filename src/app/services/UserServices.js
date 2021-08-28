@@ -51,9 +51,6 @@ async function show(req, res, next) {
 }
 
 async function update(req, res, next) {
-  const filledFields = checkAllfields(req.body);
-
-  if (filledFields) return res.render('admin/users/profile.njk', filledFields);
 
   const { id, password } = req.body;
 
@@ -61,6 +58,10 @@ async function update(req, res, next) {
     user: req.body,
     error: 'Ponha a senha para atualizar o cadastro!'
   });
+
+  const filledFields = checkAllfields(req.body);
+
+  if (filledFields) return res.render('admin/users/profile.njk', filledFields);
 
   const user = await User.findOne({
     where: { id }
