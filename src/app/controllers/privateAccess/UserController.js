@@ -73,21 +73,36 @@ module.exports = {
     return res.render(`admin/users/edit`, { user });
   },
   async put(req, res) {
-
-    await User.update(req.body.id, {
-      ...req.body
-    });
-
-    return res.render('admin/users/index', {
-      success: 'Dados do usuário atualizado com sucesso!'
-    });
+    try {
+      await User.update(req.body.id, {
+        ...req.body
+      });
+  
+      return res.render('admin/users/edit', {
+        user: req.body,
+        success: 'Dados do usuário atualizado com sucesso!'
+      });
+    } catch (err) {
+      console.error(err);
+      return res.render(`admin/users/index.njk`, {
+        error: "Erro ao atualizar usuário, tente novamente mais tarde!"
+      });
+    }
+    
   },
   async delete(req, res) {
+    try {
+      await User.delete(req.body.id);
 
-    await User.delete(req.body.id);
-
-    return res.render('admin/users/index', {
+      return res.render('admin/users/index', {
       success: 'Usuário removido com sucesso!'
     });
+    } catch (err) {
+      console.error(err);
+      return res.render(`admin/users/index.njk`, {
+        error: "Erro ao remover usuário, tente novamente mais tarde!"
+      });
+    }
+    
   }
 }

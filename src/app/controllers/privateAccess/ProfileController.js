@@ -17,7 +17,8 @@ module.exports = {
       email
     });
 
-    return res.render('admin/users/index', {
+    return res.render('admin/users/profile.njk', {
+      user: req.body,
       success: 'Dados do usuário atualizado com sucesso!'
     });
   }

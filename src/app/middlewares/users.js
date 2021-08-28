@@ -6,9 +6,7 @@ async function onlyAdmin(req, res, next) {
   const isAdmin = result.rows[0].is_admin;
 
   if (!isAdmin) {
-    return res.render('admin/users/index', {
-      error: 'Você não está autorizado a realizar esta operação!'
-    })
+    return res.redirect('/admin/users');
   }
 
   next();
