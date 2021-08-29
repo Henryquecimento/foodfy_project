@@ -1,9 +1,7 @@
-const User = require("../models/User");
+const Recipe = require('../models/Recipe');
 
 async function onlyAdmin(req, res, next) {
-  const result = await User.find(req.session.userId);
-
-  const isAdmin = result.rows[0].is_admin;
+  const { isAdmin } = req.session;
 
   if (!isAdmin) {
     return res.redirect('/admin/users');
@@ -13,6 +11,21 @@ async function onlyAdmin(req, res, next) {
 
 }
 
+async function onlyUserCreator(req, res, next) {
+  const { id } = req.params;
+  const { userId, isAdmin } = req.session;
+
+  const results = await Recipe.find(id);
+  const recipe_userId = results.rows[0].user_id;
+
+  if (userId != recipe_userId && !isAdmin) {
+    return res.redirect('/admin/users');
+  }
+
+  next();
+}
+
 module.exports = {
-  onlyAdmin
+  onlyAdmin,
+  onlyUserCreator
 }
