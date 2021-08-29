@@ -24,8 +24,8 @@ routes.get('/profile', onlyUsers, UserServices.show, ProfileController.index);
 routes.put('/profile', UserServices.update, ProfileController.put);
 
 routes.get('/users', onlyUsers, UserController.list);
-routes.get('/users/create', onlyUsers, onlyAdmin, UserController.create);
-routes.post('/users', onlyAdmin, UserServices.post, UserController.post);
+routes.get('/users/create', onlyUsers, UserController.create);
+routes.post('/users', UserServices.post, UserController.post);
 routes.get('/users/:id/edit', onlyUsers, onlyAdmin, UserController.edit);
 routes.put('/users', onlyAdmin, UserController.put);
 routes.delete('/users', onlyAdmin, UserController.delete);
