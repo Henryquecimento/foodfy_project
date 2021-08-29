@@ -53,11 +53,16 @@ module.exports = {
 				file_id: fileId
 			});
 
-			const chefId = results.rows[0].id;
-
-			return res.redirect(`/admin/chefs/${chefId}`);
+			return res.render("admin/chefs/index", {
+				success: "Chefe criado com sucesso!"
+			});
 		} catch (err) {
-			throw new Error(err);
+			console.error(err);
+
+			return res.render('admin/chefs/create', {
+				user: req.body,
+				error: "Erro ao criar um novo chef. Por favor, tente novamente mais tarde!"
+			});
 		}
 	},
 	async show(req, res) {
@@ -161,9 +166,16 @@ module.exports = {
 				});
 			}
 
-			return res.redirect(`/admin/chefs/${req.body.id}`);
+			return res.render("admin/chefs/index", {
+				success: "Chefe atualizado com sucesso!"
+			});
 		} catch (err) {
-			throw new Error(err);
+			console.error(err);
+
+			return res.render(`admin/chefs/edit`, {
+				chef: req.body,
+				error: "Erro ao editar o chef. Por favor, tente novamente mais tarde!"
+			});
 		}
 	},
 	async delete(req, res) {
@@ -182,10 +194,19 @@ module.exports = {
 
 				await File.delete(fileId)
 
-				return res.redirect("/admin/chefs");
+				return res.render("admin/chefs/index", {
+					success: "Chefe removido com sucesso!"
+				});
 			}
 		} catch (err) {
-			throw new Error(err);
+			console.error(err);
+
+			const results = await Chef.find(req.body.id);
+
+			return res.render(`admin/chefs/edit`, {
+				chef: results.rows[0],
+				error: "Erro ao remover o chef. Por favor, tente novamente mais tarde!"
+			});
 		}
 	},
 };

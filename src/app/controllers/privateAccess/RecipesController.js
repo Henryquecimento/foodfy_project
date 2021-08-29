@@ -63,9 +63,15 @@ module.exports = {
 
       await Promise.all(FilesPromise);
 
-      return res.redirect(`/admin/recipes/${recipeId}/edit`);
+      return res.render("admin/recipes/index", {
+        success: "Receita criada com sucesso!"
+      });
     } catch (err) {
-      throw new Error(err);
+      console.error(err);
+
+      return res.render("admin/recipes/index", {
+        error: "Erro ao criar nova receita. Tente novamente mais tarde!"
+      });
     }
   },
   async show(req, res) {
@@ -138,9 +144,15 @@ module.exports = {
 
       await Recipe.update(req.body);
 
-      return res.redirect(`/admin/recipes/${req.body.id}`);
+      return res.render("admin/recipes/index", {
+        success: "Receita atualizada com sucesso!"
+      });
     } catch (err) {
-      throw new Error(err);
+      console.error(err);
+
+      return res.render("admin/recipes/index", {
+        error: "Erro ao atualizar receita. Tente novamente mais tarde!"
+      });
     }
   },
   async delete(req, res) {
@@ -154,9 +166,15 @@ module.exports = {
 
       await Recipe.delete(req.body.id);
 
-      return res.redirect("/admin/recipes");
+      return res.render("admin/recipes/index", {
+        success: "Receita removida com sucesso!"
+      });
     } catch (err) {
-      throw new Error(err);
+      console.error(err);
+
+      return res.render("admin/recipes/index", {
+        error: "Erro ao remover receita. Tente novamente mais tarde!"
+      });
     }
   },
 };
