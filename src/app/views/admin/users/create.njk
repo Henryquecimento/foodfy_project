@@ -8,18 +8,18 @@
 
 {% block content %}
 
-  <div class="body container users">
+  <div class="body container users_maneger">
       <form method='POST' action="/admin/users">
             <div class="create">
                 <div class="create-grid">
                     <h1>Criar Usuário</h1>
-                    <button class="button" type="submit">Salvar</button>
+                    <div class="buttons">
+                        <button class="button" type="submit">Salvar</button>
+                        <a href="#" onclick='history.back()' class="cancel-button">Cancelar</a>
+                    </div>
                 </div>
-
-                {# CANCEL BUTTON CAN BE MADE AS CONFIRM.NJK #}
                 
                 {% include 'admin/users/fields.njk' %}
-    
 
             </div>
         </div>

@@ -6,7 +6,7 @@
 }
 
 .recipe {
-  display: inline-flex;
+  display: flex;
 }
 
 .recipe-img img {

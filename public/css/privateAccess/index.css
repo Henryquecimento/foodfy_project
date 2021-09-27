@@ -88,10 +88,10 @@ button.logout-button:hover {
 
 /* RECIPES AND CHEFS GLOBAL CONFIG */
 
-.body.container {
-  display: inline-block;
+/* .body.container {
+  display: block;
 }
-
+ */
 .body.container h1 {
   text-align: left;
   font-size: 24px;
