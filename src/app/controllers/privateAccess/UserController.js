@@ -5,9 +5,7 @@ const crypto = require('crypto');
 
 module.exports = {
   async list(req, res) {
-    const results = await User.all();
-
-    const users = results.rows;
+    const users = await User.findAll();
 
     return res.render('admin/users/index.njk', { users });
   },
@@ -66,9 +64,11 @@ module.exports = {
   },
   async edit(req, res) {
 
-    const results = await User.find(req.params.id);
-
-    const user = results.rows[0];
+    const user = await User.findOne({
+      where: {
+        id: req.params.id
+      }
+    });
 
     return res.render(`admin/users/edit`, { user });
   },
@@ -77,7 +77,7 @@ module.exports = {
       await User.update(req.body.id, {
         ...req.body
       });
-  
+
       return res.render('admin/users/edit', {
         user: req.body,
         success: 'Dados do usuário atualizado com sucesso!'
@@ -88,21 +88,21 @@ module.exports = {
         error: "Erro ao atualizar usuário, tente novamente mais tarde!"
       });
     }
-    
+
   },
   async delete(req, res) {
     try {
       await User.delete(req.body.id);
 
       return res.render('admin/users/index', {
-      success: 'Usuário removido com sucesso!'
-    });
+        success: 'Usuário removido com sucesso!'
+      });
     } catch (err) {
       console.error(err);
       return res.render(`admin/users/index.njk`, {
         error: "Erro ao remover usuário, tente novamente mais tarde!"
       });
     }
-    
+
   }
 }
