@@ -32,6 +32,28 @@ const Base = {
 
     return this;
   },
+  async create(fields) {
+    let keys = [];
+    let values = [];
+
+    Object.keys(fields).map(key => {
+
+      keys.push(key);
+      values.push(`'${fields[key]}'`);
+
+    });
+
+    const query = `
+    INSERT INTO ${this.table} 
+    (${keys.join(',')}) 
+    VALUES (${values.join(',')})
+    RETURNING id
+    `;
+
+    const results = await db.query(query);
+
+    return results.rows[0].id;
+  },
   async findOne(filters) {
 
     const results = await find(this.table, filters);
