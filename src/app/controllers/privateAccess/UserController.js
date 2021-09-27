@@ -14,7 +14,7 @@ module.exports = {
   },
   async post(req, res) {
     try {
-      const { name, email, is_admin } = req.body;
+      let { name, email, is_admin } = req.body;
 
       const firstPassword = crypto.randomBytes(20).toString('hex');
 
@@ -44,7 +44,9 @@ module.exports = {
         `
       });
 
-      await User.post({
+      if (is_admin == undefined) is_admin = false;
+
+      await User.create({
         name,
         email,
         password: encryptedPassword,
