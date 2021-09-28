@@ -76,10 +76,14 @@ module.exports = {
   },
   async put(req, res) {
     try {
+      let { name, email, is_admin } = req.body;
+
+      if (is_admin == undefined) is_admin = false;
+
       await User.update(req.body.id, {
-        name: req.body.name,
-        email: req.body.email,
-        is_admin: req.body.is_admin
+        name,
+        email,
+        is_admin
       });
 
       return res.render('admin/users/edit', {
