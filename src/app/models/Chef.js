@@ -42,22 +42,6 @@ module.exports = {
         WHERE chefs.id = $1;
         `, [id]);
     },
-    update({ name, file_id, id }) {
-        const query = `
-            UPDATE chefs SET
-                name = ($1),
-                file_id = ($2)
-            WHERE id = $3
-        `;
-
-        const values = [
-            name,
-            file_id,
-            id
-        ];
-
-        return db.query(query, values);
-    },
     delete(id) {
         return db.query(`DELETE FROM chefs WHERE id = $1`, [id]);
     }
