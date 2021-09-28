@@ -77,7 +77,9 @@ module.exports = {
   async put(req, res) {
     try {
       await User.update(req.body.id, {
-        ...req.body
+        name: req.body.name,
+        email: req.body.email,
+        is_admin: req.body.is_admin
       });
 
       return res.render('admin/users/edit', {
