@@ -12,8 +12,8 @@ routes.get("/chefs/create", onlyUsers, onlyAdmin, ChefsController.create);
 routes.get("/chefs/:id", onlyUsers, ChefsController.show);
 routes.get("/chefs/:id/edit", onlyUsers, onlyAdmin, ChefsController.edit);
 
-routes.post("/chefs", onlyUsers, onlyAdmin, multer.array("photos", 5), ChefsController.post);
-routes.put("/chefs", onlyUsers, onlyAdmin, multer.array("photos", 5), ChefsController.put);
+routes.post("/chefs", onlyUsers, onlyAdmin, multer.array("photos", 1), ChefsController.post);
+routes.put("/chefs", onlyUsers, onlyAdmin, multer.array("photos", 1), ChefsController.put);
 routes.delete("/chefs", onlyUsers, onlyAdmin, ChefsController.delete);
 
 module.exports = routes;
