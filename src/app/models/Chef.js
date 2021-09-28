@@ -41,8 +41,5 @@ module.exports = {
         INNER JOIN chefs ON (files.id = chefs.file_id)
         WHERE chefs.id = $1;
         `, [id]);
-    },
-    delete(id) {
-        return db.query(`DELETE FROM chefs WHERE id = $1`, [id]);
     }
 }
