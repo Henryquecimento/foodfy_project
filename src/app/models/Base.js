@@ -86,6 +86,13 @@ const Base = {
 
     return results.rows;
   },
+  delete(id) {
+    return db.query(`
+      DELETE FROM ${this.table} 
+      WHERE id = ${id}`
+    );
+
+  },
   find,
 }
 
