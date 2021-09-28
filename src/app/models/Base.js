@@ -54,6 +54,26 @@ const Base = {
 
     return results.rows[0].id;
   },
+  async update(id, fields) {
+    let update = [];
+
+    Object.keys(fields).map(key => {
+
+      const line = `${key} = '${fields[key]}'`;
+
+      update.push(line);
+    });
+
+    let query = `
+    UPDATE ${this.table} SET
+    ${update.join(',')}
+    WHERE id = ${id}
+    `;
+
+    await db.query(query);
+
+    return;
+  },
   async findOne(filters) {
 
     const results = await find(this.table, filters);
