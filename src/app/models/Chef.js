@@ -1,7 +1,11 @@
 const db = require("../../config/db");
-const { date } = require('../../lib/utils');
+
+const Base = require('./Base');
+
+Base.init({ table: 'chefs' });
 
 module.exports = {
+    ...Base,
     all() {
         return db.query(`
                 SELECT chefs.*, 
@@ -9,24 +13,6 @@ module.exports = {
                 FROM chefs
                 ORDER BY id
                 `);
-    },
-    create({ name, file_id }) {
-        const query = `
-            INSERT INTO chefs (
-                name,
-                created_at,
-                file_id
-            ) VALUES ($1, $2, $3)
-            RETURNING id     
-        `;
-
-        const values = [
-            name,
-            date(Date.now()).iso,
-            file_id,
-        ];
-
-        return db.query(query, values);
     },
     find(id) {
         const query = `

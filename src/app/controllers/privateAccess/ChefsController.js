@@ -1,3 +1,5 @@
+const { date } = require('../../../lib/utils');
+
 const Chef = require("../../models/Chef");
 const Recipe = require("../../models/Recipe");
 const File = require("../../models/File");
@@ -42,14 +44,15 @@ module.exports = {
 				return res.send('Please, insert a avatar image!')
 			}
 
-			let results = await File.create({
+			let fileId = await File.create({
 				...req.files[0]
 			});
 
-			const fileId = results;
+			const { name } = req.body;
 
-			results = await Chef.create({
-				...req.body,
+			await Chef.create({
+				name,
+				created_at: date(Date.now()).iso,
 				file_id: fileId
 			});
 
@@ -79,20 +82,25 @@ module.exports = {
 			}
 
 			results = await Chef.findRecipe(req.params.id);
-			const recipes = results.rows;
 
-			for (recipe in recipes) {
-				results = await Recipe.files(recipes[recipe].id);
+			const recipesPromise = results.rows.map(async recipe => {
+
+				results = await Recipe.files(recipe.id);
+
 				let files = results.rows.map(file => ({
 					...file,
 					src: `${req.protocol}://${req.headers.host}${file.path.replace("public", "")}`
 				}));
 
-				recipes[recipe] = {
-					...recipes[recipe],
+				recipe = {
+					...recipe,
 					files
 				}
-			}
+
+				return recipe;
+			});
+
+			const recipes = await Promise.all(recipesPromise);
 
 			return res.render("admin/chefs/show", { chef, recipes, avatar });
 		} catch (err) {
