@@ -132,46 +132,43 @@ module.exports = {
 
 			for (let key of keys) {
 				if (req.body[key] == "" && key != "removed_files") {
-					return res.send("Please, fill all the fields!");
+					return res.render(`admin/chefs/edit`, {
+						chef: req.body,
+						error: "Preencha todos os campos!"
+					});
 				}
 			}
 
-			let results = await Chef.find(req.body.id);
-			let oldFile = results.rows[0].file_id;
+			const { id: chef_id, name, removed_files } = req.body;
 
-			if (req.body.removed_files) {
-
-				const removedFiles = req.body.removed_files.split(",");
-				const lastIndex = removedFiles.length - 1;
-
-				removedFiles.splice(lastIndex, 1);
-
-				oldFile = Number(removedFiles[0]);
-
-				await Chef.update({
-					...req.body,
-					file_id: null
-				});
-
-				await File.delete(oldFile);
-			}
-
+			//Add image
 			if (req.files.length != 0) {
-				results = await File.create({
+				const fileId = await File.create({
 					...req.files[0]
 				});
 
-				const fileId = results;
-
-				await Chef.update({
-					...req.body,
+				await Chef.update(chef_id, {
+					name,
 					file_id: fileId
 				});
-			} else {
-				await Chef.update({
-					...req.body,
-					file_id: oldFile
-				});
+			}
+
+			//If not new image, update just the name
+			await Chef.update(chef_id, { name });
+
+			// removed files
+			if (removed_files) {
+				if (req.files.length === 0) {
+					return res.render(`admin/chefs/edit`, {
+						chef: req.body,
+						error: "Adicione pelo menos uma imagem!"
+					});
+				}
+
+				const removedFiles = req.body.removed_files.split(",");
+				const file_id = removedFiles[0];
+
+				await File.delete(file_id);
 			}
 
 			return res.render("admin/chefs/index", {
