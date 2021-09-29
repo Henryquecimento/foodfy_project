@@ -1,6 +1,8 @@
 const Chef = require("../../models/Chef");
 const Recipe = require("../../models/Recipe");
 
+const { LoadChef } = require('../../services/LoadChefs');
+
 module.exports = {
   async index(req, res) {
     try {
@@ -50,18 +52,7 @@ module.exports = {
 
   async chefs(req, res) {
     try {
-      let results = await Chef.all();
-      const chefs = results.rows;
-
-      for (chef in chefs) {
-        const avatar = await Chef.findFile(chefs[chef].id);
-
-        chefs[chef] = {
-          ...chefs[chef],
-          avatarName: avatar[0].name,
-          src: `${req.protocol}://${req.headers.host}${avatar[0].path.replace('public', "")}`
-        }
-      }
+      const chefs = await LoadChef.load('chefs');
 
       return res.render("publicAccess/chefs/index", { chefs });
     } catch (err) {
@@ -70,17 +61,9 @@ module.exports = {
   },
   async showChef(req, res) {
     try {
-      let chef = await Chef.findOne({ where: { id: req.params.id } });
+      let chef = await LoadChef.load('chef', { where: { id: req.params.id } })
 
-      const avatar = await Chef.findFile(req.params.id);
-
-      chef = {
-        ...chef,
-        avatarName: avatar[0].name,
-        src: `${req.protocol}://${req.headers.host}${avatar[0].path.replace('public', "")}`
-      }
-
-      results = await Chef.findRecipe(req.params.id);
+      let results = await Chef.findRecipe(req.params.id);
       const recipes = results.rows;
 
       for (recipe in recipes) {
