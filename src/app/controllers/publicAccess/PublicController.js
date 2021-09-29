@@ -54,13 +54,12 @@ module.exports = {
       const chefs = results.rows;
 
       for (chef in chefs) {
-        results = await Chef.findFile(chefs[chef].id);
-        const avatar = results.rows[0];
+        const avatar = await Chef.findFile(chefs[chef].id);
 
         chefs[chef] = {
           ...chefs[chef],
-          avatarName: avatar.name,
-          src: `${req.protocol}://${req.headers.host}${avatar.path.replace('public', "")}`
+          avatarName: avatar[0].name,
+          src: `${req.protocol}://${req.headers.host}${avatar[0].path.replace('public', "")}`
         }
       }
 
@@ -71,16 +70,14 @@ module.exports = {
   },
   async showChef(req, res) {
     try {
-      let results = await Chef.find(req.params.id);
-      let chef = results.rows[0];
+      let chef = await Chef.findOne({ where: { id: req.params.id } });
 
-      results = await Chef.findFile(req.params.id);
-      const avatar = results.rows[0];
+      const avatar = await Chef.findFile(req.params.id);
 
       chef = {
         ...chef,
-        avatarName: avatar.name,
-        src: `${req.protocol}://${req.headers.host}${avatar.path.replace('public', "")}`
+        avatarName: avatar[0].name,
+        src: `${req.protocol}://${req.headers.host}${avatar[0].path.replace('public', "")}`
       }
 
       results = await Chef.findRecipe(req.params.id);

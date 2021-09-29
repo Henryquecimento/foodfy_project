@@ -34,12 +34,15 @@ module.exports = {
             ORDER BY recipes.created_at DESC
             `, [id]);
     },
-    findFile(id) {
-        return db.query(`
+    async findFile(id) {
+
+        const results = await db.query(`
         SELECT files.*
         FROM files
         INNER JOIN chefs ON (files.id = chefs.file_id)
-        WHERE chefs.id = $1;
-        `, [id]);
+        WHERE chefs.id = ${id};
+        `);
+
+        return results.rows;
     }
 }
