@@ -1,10 +1,12 @@
 const { date } = require('../../../lib/utils');
 
+const { unlinkSync } = require('fs');
+
+const { LoadChef } = require('../../services/LoadChefs');
+
 const Chef = require("../../models/Chef");
 const Recipe = require("../../models/Recipe");
 const File = require("../../models/File");
-
-const { LoadChef } = require('../../services/LoadChefs');
 
 module.exports = {
 	async index(req, res) {
@@ -90,19 +92,9 @@ module.exports = {
 	},
 	async edit(req, res) {
 		try {
-			let results = await Chef.find(req.params.id);
-			const chef = results.rows[0];
+			const chef = await LoadChef.load('chef', { where: { id: req.params.id } })
 
-			results = await Chef.findFile(req.params.id);
-			let file = results.rows[0];
-			if (file) {
-				file = {
-					...file,
-					src: `${req.protocol}://${req.headers.host}${file.path.replace("public", "")}`
-				}
-			}
-
-			return res.render("admin/chefs/edit", { chef, file });
+			return res.render("admin/chefs/edit", { chef });
 		} catch (err) {
 			throw new Error(err);
 		}
@@ -149,7 +141,12 @@ module.exports = {
 				const removedFiles = req.body.removed_files.split(",");
 				const file_id = removedFiles[0];
 
+				const file = await File.findOne({ where: { id: file_id } });
+
+				unlinkSync(file.path);
+
 				await File.delete(file_id);
+
 			}
 
 			return res.render("admin/chefs/index", {
@@ -166,31 +163,29 @@ module.exports = {
 	},
 	async delete(req, res) {
 		try {
-			//let
-			let results = await Chef.find(req.body.id);
-			const chef = results.rows[0];
 
-			results = await Chef.findFile(req.body.id);
-			const fileId = results.rows[0].id;
+			const chef = await LoadChef.load('chef', { where: { id: req.body.id } })
 
 			if (chef.total_recipes != 0) {
 				return res.send("Chef possui receitas! Você não pode apagá-lo(a)!");
-			} else {
-				await Chef.delete(req.body.id);
-
-				await File.delete(fileId)
-
-				return res.render("admin/chefs/index", {
-					success: "Chefe removido com sucesso!"
-				});
 			}
+
+			await Chef.delete(req.body.id);
+			
+			unlinkSync(chef.filePath);
+
+			await File.delete(chef.file_id);
+
+			return res.render("admin/chefs/index", {
+				success: "Chefe removido com sucesso!"
+			});
 		} catch (err) {
 			console.error(err);
 
-			const results = await Chef.find(req.body.id);
+			const chef = await LoadChef.load('chef', { where: { id: req.body.id } })
 
 			return res.render(`admin/chefs/edit`, {
-				chef: results.rows[0],
+				chef,
 				error: "Erro ao remover o chef. Por favor, tente novamente mais tarde!"
 			});
 		}

@@ -19,10 +19,10 @@
             Enviar Avatar
         </div>
         <div id="photos-preview">
-          {% if file %}
+          {% if chef.img %}
             
-              <div class="photo" id="{{ file.id }}">
-                <img src="{{ file.src }}" alt="{{ file.name }}">
+              <div class="photo" id="{{ chef.file_id }}">
+                <img src="{{ chef.img }}" alt="{{ chef.filename }}">
                   <i 
                     class="material-icons" 
                     onclick='PhotosUpload.removeOldPhoto(event)'
