@@ -6,25 +6,6 @@ Base.init({ table: 'chefs' });
 
 module.exports = {
     ...Base,
-    all() {
-        return db.query(`
-                SELECT chefs.*, 
-                (SELECT count (*) FROM recipes WHERE recipes.chef_id = chefs.id) AS total_recipes
-                FROM chefs
-                ORDER BY id
-                `);
-    },
-    find(id) {
-        const query = `
-            SELECT chefs.*, 
-            (SELECT count (*) FROM recipes WHERE recipes.chef_id = $1) AS total_recipes
-            FROM chefs
-            LEFT JOIN recipes ON (chefs.id = recipes.chef_id)
-            WHERE chefs.id = $1
-        `;
-
-        return db.query(query, [id]);
-    },
     findRecipe(id) {
         return db.query(`
             SELECT recipes.title, recipes.id, chefs.name AS chef_name
