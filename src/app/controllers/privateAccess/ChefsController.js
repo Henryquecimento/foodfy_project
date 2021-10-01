@@ -37,7 +37,8 @@ module.exports = {
 			}
 
 			let fileId = await File.create({
-				...req.files[0]
+				name: req.files[0].filename,
+				path: req.files[0].path
 			});
 
 			const { name } = req.body;
@@ -117,7 +118,8 @@ module.exports = {
 			//Add image
 			if (req.files.length != 0) {
 				const fileId = await File.create({
-					...req.files[0]
+					name: req.files[0].filename,
+					path: req.files[0].path
 				});
 
 				await Chef.update(chef_id, {
@@ -171,7 +173,7 @@ module.exports = {
 			}
 
 			await Chef.delete(req.body.id);
-			
+
 			unlinkSync(chef.filePath);
 
 			await File.delete(chef.file_id);
