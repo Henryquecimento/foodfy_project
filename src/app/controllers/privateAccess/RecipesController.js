@@ -44,12 +44,17 @@ module.exports = {
   },
   async post(req, res) {
     try {
+
+      const results = await Recipe.chefSelectedOptions();
+      const options = results.rows;
+
       const keys = Object.keys(req.body);
 
       for (key of keys) {
         if (req.body[key] == "") {
           return res.render("admin/recipes/create", {
             recipe: req.body,
+            chefOptions: options,
             error: "You must fill all the fields!"
           });
         }
