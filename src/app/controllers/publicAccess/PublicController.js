@@ -2,26 +2,18 @@ const Chef = require("../../models/Chef");
 const Recipe = require("../../models/Recipe");
 
 const { LoadChef } = require('../../services/LoadChefs');
+const { LoadRecipe } = require("../../services/LoadRecipes");
 
 module.exports = {
   async index(req, res) {
     try {
-      let results = await Recipe.all();
-      const recipes = results.rows;
-
-      for (recipe in recipes) {
-        results = await Recipe.files(recipes[recipe].id);
-        const file = results.rows[0];
-
-        recipes[recipe] = {
-          ...recipes[recipe],
-          filename: file.name,
-          src: `${req.protocol}://${req.headers.host}${file.path.replace('public', "")}`
+      const recipes = await LoadRecipe.load('recipes', {
+        where: {
+          user_id: req.session.userId
         }
+      });
 
-      }
-
-      return res.render("publicAccess/recipes/index", { recipes });
+      return res.render("publicAccess/index", { recipes });
     } catch (err) {
       throw new Error(err);
     }

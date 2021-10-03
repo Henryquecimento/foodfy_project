@@ -19,8 +19,8 @@ module.exports = {
       let results = await Recipe.paginate(params);
 
       const recipesPromise = results.rows.map(async recipe => {
-        results = await Recipe.files(recipe.id);
-        const file = results.rows[0];
+        results = await Recipe.files(recipe.id); // I CHANGED THE WAY FILES IS CALLED -> RESULTS.ROWS
+        const file = results[0]; //CHANGE 
 
         recipe = {
           ...recipe,
