@@ -1,5 +1,7 @@
 const { unlinkSync } = require('fs');
 
+const { date } = require("../../../lib/utils");
+
 const Recipe = require("../../models/Recipe");
 const RecipeFiles = require("../../models/Recipe_File");
 const File = require("../../models/File");
@@ -46,7 +48,10 @@ module.exports = {
 
       for (key of keys) {
         if (req.body[key] == "") {
-          return res.send("Please, fill all the fields!");
+          return res.render("admin/recipes/create", {
+            recipe: req.body,
+            error: "You must fill all the fields!"
+          });
         }
       }
 
@@ -54,8 +59,17 @@ module.exports = {
         return res.send('Please, send at least one image!');
       }
 
-      let results = await Recipe.create(req.body, req.session.userId);
-      const recipeId = results.rows[0].id;
+      const { chef_id, title, ingredients, preparation, information } = req.body;
+
+      const recipeId = await Recipe.create({
+        chef_id,
+        title,
+        ingredients: `{${ingredients}}`,
+        preparation: `{${preparation}}`,
+        information,
+        created_at: date(Date.now()).iso,
+        user_id: req.session.userId
+      });
 
       const FilesPromise = req.files.map(async file => {
 
