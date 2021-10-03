@@ -7,24 +7,6 @@ Base.init({ table: 'recipes' });
 
 module.exports = {
   ...Base,
-  all() {
-    return db.query(`
-      SELECT recipes.*, chefs.name AS chef_name
-      FROM recipes
-      LEFT JOIN chefs ON (recipes.chef_id = chefs.id)
-      ORDER BY created_at DESC     
-    `);
-  },
-  find(id) {
-    return db.query(
-      ` SELECT recipes.*, chefs.name AS chef_name
-        FROM recipes
-        LEFT JOIN chefs ON (recipes.chef_id = chefs.id)
-        WHERE recipes.id = $1        
-      `,
-      [id]
-    );
-  },
   update(data) {
     const query = `
       UPDATE recipes SET
@@ -50,8 +32,8 @@ module.exports = {
     await db.query(`
     DELETE FROM files
     WHERE files.id IN (SELECT recipe_files.file_id 
-    FROM recipe_files WHERE recipe_files.recipe_id = $1);
-    `, [id]);
+    FROM recipe_files WHERE recipe_files.recipe_id = ${id});
+    `);
 
     return db.query("DELETE FROM recipes WHERE id = $1", [id]);
   },
@@ -62,14 +44,16 @@ module.exports = {
         ORDER BY id
     `);
   },
-  files(id) {
-    return db.query(`
-      SELECT files.*
-      FROM files
-      LEFT JOIN recipe_files ON (files.id = recipe_files.file_id)
-      WHERE recipe_files.recipe_id = $1
-      ORDER BY recipe_files.id
-    `, [id]);
+  async files(id) {
+    const results = await db.query(`
+    SELECT files.*
+    FROM files
+    LEFT JOIN recipe_files ON (files.id = recipe_files.file_id)
+    WHERE recipe_files.recipe_id = ${id}
+    ORDER BY recipe_files.id
+  `)
+
+    return results.rows;
   },
   paginate(params) {
     const { filter, limit, offset } = params;
@@ -101,15 +85,5 @@ module.exports = {
     `;
 
     return db.query(query, [limit, offset]);
-  },
-  list(id) {
-    return db.query(`
-      SELECT recipes.*, chefs.name AS chef_name, users.is_admin AS user_admin
-      FROM recipes
-      LEFT JOIN chefs ON (recipes.chef_id = chefs.id)
-      LEFT JOIN users ON (recipes.user_id = users.id)
-      WHERE users.id = $1
-      ORDER BY created_at DESC     
-    `, [id]);
-  },
+  }
 };
