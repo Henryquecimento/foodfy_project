@@ -1,0 +1,57 @@
+{% extends "publicAccess/layout.njk" %}
+
+{% block head %}
+
+    <title>
+        Home | Foodfy</title>
+
+{% endblock %}
+
+{% block content %}
+
+    <section class="body container">
+        <div class="bodyIndex">
+
+            <div class="bodyIntro">
+                <div class="bodyIntro-texts">
+                    <h1>As melhores receitas</h1>
+                    <p>Aprenda a construir os melhores pratos com receitas criadas por profissionais do mundo inteiro.</p>
+                </div>
+                <div class="bodyIntro-img">
+                    <img src="/assets/chef.png" alt="no Image">
+                </div>
+            </div>
+
+            <section class="accessedElements">
+                <h1>Mais acessados</h1>
+
+                <div class="cards moreAccessed">
+
+                    {% for recipe in recipes %}
+
+                        {% if loop.index <= 6 %}
+                            <div class="card">
+
+                                <div class="card-img">
+                                    <a href="/recipes/{{recipe.id}}">
+                                        <img src="{{recipe.img}}" alt="Image of {{recipe.filename}}">
+                                    </a>
+                                </div>
+
+                                <div class="card-content">
+                                    <h3>{{recipe.title}}</h3>
+                                    <p>Por
+                                        {{recipe.chef_name}}</p>
+                                </div>
+
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </section>
+
+        </div>
+
+    </section>
+
+{% endblock %}
