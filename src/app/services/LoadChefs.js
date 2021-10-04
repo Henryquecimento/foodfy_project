@@ -2,7 +2,7 @@ const Chef = require('../models/Chef');
 const Recipe = require('../models/Recipe');
 
 async function getImages(ChefId) {
-  let files = await Chef.findFile(ChefId);
+  let files = await Chef.files(ChefId);
 
 
   files = files.map(file => ({
