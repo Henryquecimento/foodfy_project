@@ -28,12 +28,18 @@ module.exports = {
 
 			for (let key of keys) {
 				if (req.body[key] == "" && key != "removed_files") {
-					return res.send("Please, fill all the fields!");
+					return res.render('admin/chefs/create', {
+						user: req.body,
+						error: "Por favor, preencha todos os campos!"
+					});
 				}
 			}
 
 			if (req.files.length == 0) {
-				return res.send('Please, insert a avatar image!')
+				return res.render('admin/chefs/create', {
+					user: req.body,
+					error: "Por favor, insira ao menos uma imagem!"
+				});
 			}
 
 			let fileId = await File.create({
@@ -93,7 +99,7 @@ module.exports = {
 				if (req.body[key] == "" && key != "removed_files") {
 					return res.render(`admin/chefs/edit`, {
 						chef: req.body,
-						error: "Preencha todos os campos!"
+						error: "Por favor, preencha todos os campos!"
 					});
 				}
 			}
