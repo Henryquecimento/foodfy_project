@@ -3,9 +3,9 @@ const { date } = require('../../../lib/utils');
 const { unlinkSync } = require('fs');
 
 const { LoadChef } = require('../../services/LoadChefs');
+const { LoadRecipe } = require('../../services/LoadRecipes');
 
 const Chef = require("../../models/Chef");
-const Recipe = require("../../models/Recipe");
 const File = require("../../models/File");
 
 module.exports = {
@@ -65,26 +65,11 @@ module.exports = {
 		try {
 			const chef = await LoadChef.load('chef', { where: { id: req.params.id } });
 
-			let results = await Chef.findRecipe(req.params.id);
-
-			const recipesPromise = results.rows.map(async recipe => {
-
-				results = await Recipe.files(recipe.id);
-
-				let files = results.rows.map(file => ({
-					...file,
-					src: `${req.protocol}://${req.headers.host}${file.path.replace("public", "")}`
-				}));
-
-				recipe = {
-					...recipe,
-					files
+			const recipes = await LoadRecipe.load('recipes', {
+				where: {
+					chef_id: req.params.id
 				}
-
-				return recipe;
 			});
-
-			const recipes = await Promise.all(recipesPromise);
 
 			return res.render("admin/chefs/show", { chef, recipes });
 		} catch (err) {
