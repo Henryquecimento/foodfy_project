@@ -24,23 +24,6 @@ module.exports = {
 	},
 	async post(req, res) {
 		try {
-			const keys = Object.keys(req.body);
-
-			for (let key of keys) {
-				if (req.body[key] == "" && key != "removed_files") {
-					return res.render('admin/chefs/create', {
-						user: req.body,
-						error: "Por favor, preencha todos os campos!"
-					});
-				}
-			}
-
-			if (req.files.length == 0) {
-				return res.render('admin/chefs/create', {
-					user: req.body,
-					error: "Por favor, insira ao menos uma imagem!"
-				});
-			}
 
 			let fileId = await File.create({
 				name: req.files[0].filename,
@@ -93,16 +76,6 @@ module.exports = {
 	},
 	async put(req, res) {
 		try {
-			const keys = Object.keys(req.body);
-
-			for (let key of keys) {
-				if (req.body[key] == "" && key != "removed_files") {
-					return res.render(`admin/chefs/edit`, {
-						chef: req.body,
-						error: "Por favor, preencha todos os campos!"
-					});
-				}
-			}
 
 			const { id: chef_id, name, removed_files } = req.body;
 
@@ -127,11 +100,11 @@ module.exports = {
 				if (req.files.length === 0) {
 					return res.render(`admin/chefs/edit`, {
 						chef: req.body,
-						error: "Adicione pelo menos uma imagem!"
+						error: "Adicione pelo menos uma imagem!",
 					});
 				}
 
-				const removedFiles = req.body.removed_files.split(",");
+				const removedFiles = removed_files.split(",");
 				const file_id = removedFiles[0];
 
 				const file = await File.findOne({ where: { id: file_id } });
@@ -160,7 +133,10 @@ module.exports = {
 			const chef = await LoadChef.load('chef', { where: { id: req.body.id } })
 
 			if (chef.total_recipes != 0) {
-				return res.send("Chef possui receitas! Você não pode apagá-lo(a)!");
+				return res.render(`admin/chefs/edit`, {
+					chef,
+					error: "Chef possui receitas! Você não pode apagá-lo(a)!"
+				});
 			}
 
 			await Chef.delete(req.body.id);
