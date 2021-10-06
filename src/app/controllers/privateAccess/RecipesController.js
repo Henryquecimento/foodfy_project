@@ -51,7 +51,11 @@ module.exports = {
       }
 
       if (req.files.length == 0) {
-        return res.send('Please, send at least one image!');
+        return res.render("admin/recipes/create", {
+          recipe: req.body,
+          chefOptions: options,
+          error: "Adicione ao menos uma imagem!"
+        });
       }
 
       const { chef_id, title, ingredients, preparation, information } = req.body;
@@ -115,7 +119,7 @@ module.exports = {
         where: {
           id: req.params.id
         }
-      });
+      })
 
       if (!recipe) return res.send("Recipe not found!");
 
@@ -128,11 +132,24 @@ module.exports = {
         chefOptions: options,
       });
     } catch (err) {
-      throw new Error(err);
+      console.error(err)
     }
   },
   async put(req, res) {
     try {
+
+      const {
+        chef_id,
+        title,
+        ingredients,
+        preparation,
+        information,
+        id: recipe_id,
+        removed_files
+      } = req.body;
+
+      const results = await Recipe.chefSelectedOptions();
+      const options = results.rows;
 
       if (req.files.length != 0) {
         const newFilesPromise = req.files.map(async file => {
@@ -154,8 +171,9 @@ module.exports = {
         await Promise.all(newFilesPromise);
       }
 
-      if (req.body.removed_files) {
-        const removedFiles = req.body.removed_files.split(",");
+      if (removed_files) {
+
+        const removedFiles = removed_files.split(",");
         const lastIndex = removedFiles.length - 1;
 
         removedFiles.splice(lastIndex, 1);
@@ -173,9 +191,29 @@ module.exports = {
 
         await Promise.all(removedFilesPromises);
 
+        const recipeFiles = await RecipeFiles.findAll({
+          where: {
+            recipe_id
+          }
+        });
+
+        if (recipeFiles.length === 0) {
+          return res.render("admin/recipes/edit", {
+            recipe: req.body,
+            chefOptions: options,
+            error: "Adicione ao menos uma imagem!"
+          });
+        }
+
       }
 
-      await Recipe.update(req.body);
+      await Recipe.update(recipe_id, {
+        chef_id,
+        title,
+        ingredients: `{${ingredients}}`,
+        preparation: `{${preparation}}`,
+        information,
+      });
 
       return res.render("admin/recipes/index", {
         success: "Receita atualizada com sucesso!"
@@ -183,7 +221,12 @@ module.exports = {
     } catch (err) {
       console.error(err);
 
-      return res.render("admin/recipes/index", {
+      const results = await Recipe.chefSelectedOptions();
+      const options = results.rows;
+
+      return res.render("admin/recipes/edit", {
+        recipe: req.body,
+        chefOptions: options,
         error: "Erro ao atualizar receita. Tente novamente mais tarde!"
       });
     }
