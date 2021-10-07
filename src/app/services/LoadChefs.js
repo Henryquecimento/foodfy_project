@@ -25,7 +25,6 @@ async function format(chef) {
   }
 
   chef.img = files[0].src;
-  //avatarNamer-> para filename
   chef.filename = files[0].name;
   chef.filePath = files[0].path;
   chef.total_recipes = recipes.length;
