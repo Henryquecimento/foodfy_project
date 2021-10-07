@@ -9,13 +9,13 @@ const { post, update } = require('../app/validators/ChefsValidators');
 
 const ChefsController = require("../app/controllers/privateAccess/ChefsController");
 
-routes.get("/chefs", onlyUsers, ChefsController.index)
-  .get("/chefs/create", onlyUsers, onlyAdmin, ChefsController.create)
-  .get("/chefs/:id", onlyUsers, ChefsController.show)
-  .get("/chefs/:id/edit", onlyUsers, onlyAdmin, ChefsController.edit)
+routes.get("/chefs", onlyUsers, ChefsController.index);
+routes.get("/chefs/create", onlyUsers, onlyAdmin, ChefsController.create);
+routes.get("/chefs/:id", onlyUsers, ChefsController.show);
+routes.get("/chefs/:id/edit", onlyUsers, onlyAdmin, ChefsController.edit);
 
-  .post("/chefs", onlyUsers, onlyAdmin, multer.array("photos", 1), post, ChefsController.post)
-  .put("/chefs", onlyUsers, onlyAdmin, multer.array("photos", 1), update, ChefsController.put)
-  .delete("/chefs", onlyUsers, onlyAdmin, ChefsController.delete);
+routes.post("/chefs", onlyUsers, onlyAdmin, multer.array("photos", 1), post, ChefsController.post);
+routes.put("/chefs", onlyUsers, onlyAdmin, multer.array("photos", 1), update, ChefsController.put);
+routes.delete("/chefs", onlyUsers, onlyAdmin, ChefsController.delete);
 
 module.exports = routes;
