@@ -6,21 +6,15 @@ Base.init({ table: 'recipes' });
 
 module.exports = {
   ...Base,
-  async delete(id) {
-    await db.query(`
-    DELETE FROM files
-    WHERE files.id IN (SELECT recipe_files.file_id 
-    FROM recipe_files WHERE recipe_files.recipe_id = ${id});
+  async chefSelectedOptions() {
+
+    const results = await db.query(`
+      SELECT id, name 
+      FROM chefs
+      ORDER BY id
     `);
 
-    return db.query("DELETE FROM recipes WHERE id = $1", [id]);
-  },
-  chefSelectedOptions() {
-    return db.query(`
-        SELECT id, name 
-        FROM chefs
-        ORDER BY id
-    `);
+    return results.rows;
   },
   async files(id) {
     const results = await db.query(`
