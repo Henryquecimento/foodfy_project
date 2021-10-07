@@ -24,10 +24,9 @@ module.exports = {
   },
   async create(req, res) {
     try {
-      const results = await Recipe.chefSelectedOptions();
-      const options = results.rows;
+      const chefOptions = await Recipe.chefSelectedOptions();
 
-      return res.render("admin/recipes/create", { chefOptions: options });
+      return res.render("admin/recipes/create", { chefOptions });
     } catch (err) {
       throw new Error(err);
     }
@@ -35,17 +34,15 @@ module.exports = {
   async post(req, res) {
     try {
 
-      const results = await Recipe.chefSelectedOptions();
-      const options = results.rows;
-
+      const chefOptions = await Recipe.chefSelectedOptions();
       const keys = Object.keys(req.body);
 
       for (key of keys) {
         if (req.body[key] == "") {
           return res.render("admin/recipes/create", {
             recipe: req.body,
-            chefOptions: options,
-            error: "You must fill all the fields!"
+            chefOptions,
+            error: "Por favor, preencha todos os campos!"
           });
         }
       }
@@ -53,7 +50,7 @@ module.exports = {
       if (req.files.length == 0) {
         return res.render("admin/recipes/create", {
           recipe: req.body,
-          chefOptions: options,
+          chefOptions,
           error: "Adicione ao menos uma imagem!"
         });
       }
@@ -123,13 +120,11 @@ module.exports = {
 
       if (!recipe) return res.send("Recipe not found!");
 
-      results = await Recipe.chefSelectedOptions();
-      const options = results.rows;
-
+      const chefOptions = await Recipe.chefSelectedOptions();
 
       return res.render("admin/recipes/edit", {
         recipe,
-        chefOptions: options,
+        chefOptions,
       });
     } catch (err) {
       console.error(err)
@@ -148,8 +143,7 @@ module.exports = {
         removed_files
       } = req.body;
 
-      const results = await Recipe.chefSelectedOptions();
-      const options = results.rows;
+      const chefOptions = await Recipe.chefSelectedOptions();
 
       if (req.files.length != 0) {
         const newFilesPromise = req.files.map(async file => {
@@ -200,7 +194,7 @@ module.exports = {
         if (recipeFiles.length === 0) {
           return res.render("admin/recipes/edit", {
             recipe: req.body,
-            chefOptions: options,
+            chefOptions,
             error: "Adicione ao menos uma imagem!"
           });
         }
@@ -221,12 +215,11 @@ module.exports = {
     } catch (err) {
       console.error(err);
 
-      const results = await Recipe.chefSelectedOptions();
-      const options = results.rows;
+      const chefOptions = await Recipe.chefSelectedOptions();
 
       return res.render("admin/recipes/edit", {
         recipe: req.body,
-        chefOptions: options,
+        chefOptions,
         error: "Erro ao atualizar receita. Tente novamente mais tarde!"
       });
     }
@@ -234,7 +227,14 @@ module.exports = {
   async delete(req, res) {
     try {
       const results = await Recipe.files(req.body.id);
-      const FilesPromise = results.map(file => unlinkSync(file.path));
+      const FilesPromise = results.map(async file => {
+
+        await File.delete(file.id);
+
+        unlinkSync(file.path);
+
+        return file;
+      });
 
       await Promise.all(FilesPromise);
 
