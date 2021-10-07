@@ -1,8 +1,6 @@
 const User = require('../models/User');
 const Chef = require('../models/Chef');
-const File = require('../models/File');
 const Recipe = require('../models/Recipe');
-const RecipeFiles = require('../models/Recipe_File');
 
 async function getImages(RecipeId) {
 
