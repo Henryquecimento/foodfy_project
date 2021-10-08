@@ -19,7 +19,11 @@ module.exports = {
       return res.render("admin/recipes/index", { recipes });
 
     } catch (err) {
-      throw new Error(err);
+      console.error(err);
+
+      return res.render("admin/recipes/index", {
+        error: "Erro inesperado. Tente novamente mais tarde!"
+      });
     }
   },
   async create(req, res) {
@@ -28,32 +32,15 @@ module.exports = {
 
       return res.render("admin/recipes/create", { chefOptions });
     } catch (err) {
-      throw new Error(err);
+      console.error(err);
+
+      return res.render("admin/recipes/index", {
+        error: "Erro inesperado. Tente novamente mais tarde!"
+      });
     }
   },
   async post(req, res) {
     try {
-
-      const chefOptions = await Recipe.chefSelectedOptions();
-      const keys = Object.keys(req.body);
-
-      for (key of keys) {
-        if (req.body[key] == "") {
-          return res.render("admin/recipes/create", {
-            recipe: req.body,
-            chefOptions,
-            error: "Por favor, preencha todos os campos!"
-          });
-        }
-      }
-
-      if (req.files.length == 0) {
-        return res.render("admin/recipes/create", {
-          recipe: req.body,
-          chefOptions,
-          error: "Adicione ao menos uma imagem!"
-        });
-      }
 
       const { chef_id, title, ingredients, preparation, information } = req.body;
 
@@ -107,7 +94,11 @@ module.exports = {
 
       return res.render("admin/recipes/show", { recipe });
     } catch (err) {
-      throw new Error(err);
+      console.error(err);
+
+      return res.render("admin/recipes/index", {
+        error: "Receita não encontrada!"
+      });
     }
   },
   async edit(req, res) {
@@ -118,8 +109,6 @@ module.exports = {
         }
       })
 
-      if (!recipe) return res.send("Recipe not found!");
-
       const chefOptions = await Recipe.chefSelectedOptions();
 
       return res.render("admin/recipes/edit", {
@@ -127,7 +116,11 @@ module.exports = {
         chefOptions,
       });
     } catch (err) {
-      console.error(err)
+      console.error(err);
+
+      return res.render("admin/recipes/index", {
+        error: "Erro ao editar a receita. Tente novamente mais tarde!"
+      });
     }
   },
   async put(req, res) {
@@ -143,7 +136,7 @@ module.exports = {
         removed_files
       } = req.body;
 
-      const chefOptions = await Recipe.chefSelectedOptions();
+
 
       if (req.files.length != 0) {
         const newFilesPromise = req.files.map(async file => {
@@ -164,6 +157,8 @@ module.exports = {
 
         await Promise.all(newFilesPromise);
       }
+
+      const chefOptions = await Recipe.chefSelectedOptions();
 
       if (removed_files) {
 
