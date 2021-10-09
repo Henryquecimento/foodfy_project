@@ -190,7 +190,7 @@ module.exports = {
           return res.render("admin/recipes/edit", {
             recipe: req.body,
             chefOptions,
-            error: "Adicione ao menos uma imagem!"
+            error: "Por favor, adicione ao menos uma imagem!"
           });
         }
 
