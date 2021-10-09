@@ -79,8 +79,11 @@ module.exports = {
 
 			const { id: chef_id, name, removed_files } = req.body;
 
+			const chefFile = await Chef.files(chef_id);
+
 			//Add image
 			if (req.files.length != 0) {
+
 				const fileId = await File.create({
 					name: req.files[0].filename,
 					path: req.files[0].path
@@ -90,6 +93,14 @@ module.exports = {
 					name,
 					file_id: fileId
 				});
+
+				if (chefFile.length != 0) {
+					const oldFile = await File.findOne({ where: { id: chefFile[0].id } });
+
+					unlinkSync(oldFile.path);
+
+					await File.delete(chefFile[0].id);
+				}
 			}
 
 			//If not new image, update just the name
@@ -100,7 +111,7 @@ module.exports = {
 				if (req.files.length === 0) {
 					return res.render(`admin/chefs/edit`, {
 						chef: req.body,
-						error: "Adicione pelo menos uma imagem!",
+						error: "Por favor, adicione pelo menos uma imagem!",
 					});
 				}
 
