@@ -1,4 +1,5 @@
 const { hash } = require('bcrypt');
+const { date } = require('./src/lib/utils');
 
 const faker = require('faker');
 
@@ -37,6 +38,30 @@ async function CreateUser() {
 
 }
 
+async function CreateChef() {
+  let chefs = [];
+
+  while (chefs.length < TotalChefs) {
+
+    const fileId = await File.create({
+      name: faker.image.image(),
+      path: `public/images/placeholder.png`
+    });
+
+    chefs.push({
+      name: faker.name.firstName,
+      created_at: date(Date.now()).iso,
+      file_id: fileId
+    });
+  }
+
+  const chefsPromise = chefs.map(chef => Chef.create(chef));
+
+  chefsIds = await Promise.all(chefsPromise);
+
+}
+
 async function init() {
   await CreateUser();
+  await CreateChef();
 }
