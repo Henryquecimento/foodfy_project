@@ -15,7 +15,8 @@ let recipesIds = []
 let filesIds = []
 let TotalUsers = 3;
 let TotalChefs = 6;
-let TotalRecipes = 12;
+let TotalRecipes = 6;
+let TotalRecipeFiles = 35;
 
 async function CreateUser() {
   let users = [];
@@ -61,7 +62,61 @@ async function CreateChef() {
 
 }
 
+async function CreateRecipe() {
+  let recipes = [];
+  let files = [];
+  let recipesFiles = [];
+
+  while (files.length < TotalRecipeFiles) {
+
+    files.push({
+      name: faker.image.image(),
+      path: `public/images/placeholder.png`
+    });
+
+  }
+
+  const filesPromise = files.map(file => File.create(file));
+
+  filesIds = await Promise.all(filesPromise);
+
+  while (recipes.length < TotalRecipes) {
+
+    recipes.push({
+      chef_id: chefsIds[Math.floor(Math.random() * TotalChefs)],
+      title: faker.name.title,
+      ingredients: `{${faker.lorem.sentence(Math.ceil(Math.random() * 6))}}`,
+      preparation: `{${faker.lorem.sentence(Math.ceil(Math.random() * 6))}}`,
+      information: faker.lorem.paragraph(Math.ceil(Math.random() * 6)),
+      created_at: date(Date.now()).iso,
+      user_id: usersIds[Math.floor(Math.random() * TotalUsers)]
+    });
+
+  }
+
+  const recipesPromise = recipes.map(recipe => Recipe.create(recipe));
+
+  recipesIds = await Promise.all(recipesPromise);
+
+  while (recipesFiles.length < TotalRecipes) {
+
+    recipesFiles.push({
+      recipe_id: recipesIds[Math.floor(Math.random() * TotalRecipes)],
+      file_id: filesIds[Math.floor(Math.random() * TotalRecipeFiles)]
+    });
+
+  }
+
+  const recipesFilesPromise = recipesFiles.map(recipeFile => RecipeFile.create(recipeFile));
+
+  await Promise.all(recipesFilesPromise);
+
+}
+
 async function init() {
   await CreateUser();
   await CreateChef();
+  await CreateRecipe();
 }
+
+init();
