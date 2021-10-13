@@ -6,9 +6,10 @@ async function getImages(RecipeId) {
 
   let files = await Recipe.files(RecipeId);
 
+
   files = files.map(file => ({
     ...file,
-    path: file.path.replace(/\\/g, '/'),
+    path: file.name,
     src: `${file.path.replace('public', "").replace(/\\/g, '/')}`
   }));
 
@@ -27,7 +28,7 @@ async function format(recipe) {
   }
 
   recipe.files = files;
-  recipe.img = files[0].src;
+  recipe.img = files[0].path;
   recipe.filename = files[0].name;
   recipe.chef_name = chefs.name;
   recipe.user_admin = users.is_admin;

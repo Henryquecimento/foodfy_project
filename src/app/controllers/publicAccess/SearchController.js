@@ -25,6 +25,7 @@ module.exports = {
         recipe = {
           ...recipe,
           filename: file.name,
+          path: file.name,
           src: `${req.protocol}://${req.headers.host}${file.path.replace('public', "")}`
         }
 
