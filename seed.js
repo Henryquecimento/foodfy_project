@@ -16,7 +16,7 @@ let filesIds = []
 let TotalUsers = 3;
 let TotalChefs = 6;
 let TotalRecipes = 6;
-let TotalRecipeFiles = 35;
+let TotalRecipeFiles = 25;
 
 async function CreateUser() {
   let users = [];
@@ -29,8 +29,8 @@ async function CreateUser() {
       name: faker.name.firstName(),
       email: faker.internet.email(),
       password: password,
-      is_admin: Math.random() < 0.5, //50% probability of getting true
-    });
+      is_admin: Math.random() < 0.8,
+    });//80% probability of getting true
   }
 
   const usersPromise = users.map(user => User.create(user));
@@ -50,7 +50,7 @@ async function CreateChef() {
     });
 
     chefs.push({
-      name: faker.name.firstName,
+      name: faker.name.findName(),
       created_at: date(Date.now()).iso,
       file_id: fileId
     });
@@ -66,6 +66,8 @@ async function CreateRecipe() {
   let recipes = [];
   let files = [];
   let recipesFiles = [];
+  let ingredients = [];
+  let preparation = [];
 
   while (files.length < TotalRecipeFiles) {
 
@@ -80,14 +82,19 @@ async function CreateRecipe() {
 
   filesIds = await Promise.all(filesPromise);
 
+  for (i = 0; i < 6; i++) {
+    ingredients.push(faker.lorem.sentence(Math.ceil(Math.random() * 6)));
+    preparation.push(faker.lorem.sentence(Math.ceil(Math.random() * 6)));
+  }
+
   while (recipes.length < TotalRecipes) {
 
     recipes.push({
       chef_id: chefsIds[Math.floor(Math.random() * TotalChefs)],
-      title: faker.name.title,
-      ingredients: `{${faker.lorem.sentence(Math.ceil(Math.random() * 6))}}`,
-      preparation: `{${faker.lorem.sentence(Math.ceil(Math.random() * 6))}}`,
-      information: faker.lorem.paragraph(Math.ceil(Math.random() * 6)),
+      title: faker.commerce.productName(),
+      ingredients: `{${ingredients}}`,
+      preparation: `{${preparation}}`,
+      information: faker.lorem.paragraph(Math.ceil(Math.random() * 10)),
       created_at: date(Date.now()).iso,
       user_id: usersIds[Math.floor(Math.random() * TotalUsers)]
     });
@@ -98,7 +105,7 @@ async function CreateRecipe() {
 
   recipesIds = await Promise.all(recipesPromise);
 
-  while (recipesFiles.length < TotalRecipes) {
+  while (recipesFiles.length < TotalRecipeFiles) {
 
     recipesFiles.push({
       recipe_id: recipesIds[Math.floor(Math.random() * TotalRecipes)],
