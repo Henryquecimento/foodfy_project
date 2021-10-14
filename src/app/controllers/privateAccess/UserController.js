@@ -1,7 +1,11 @@
-const User = require("../../models/User");
 const mailer = require('../../../lib/mailer');
 const { hash } = require("bcrypt");
 const crypto = require('crypto');
+
+const User = require("../../models/User");
+const Recipe = require('../../models/Recipe');
+
+const { LoadRecipe } = require('../../services/LoadRecipes');
 
 module.exports = {
   async list(req, res) {
@@ -100,14 +104,27 @@ module.exports = {
   },
   async delete(req, res) {
     try {
+      const recipes = await LoadRecipe.load('recipes', {
+        where: {
+          user_id: req.body.id
+        }
+      });
+
+      const recipesPromise = recipes.map(recipe => Recipe.delete(recipe.id));
+
+      await Promise.all(recipesPromise);
+
       await User.delete(req.body.id);
 
       return res.render('admin/users/index', {
         success: 'Usuário removido com sucesso!'
       });
     } catch (err) {
+      const user = await User.findOne({ where: { id: req.body.id } });
+
       console.error(err);
       return res.render(`admin/users/index.njk`, {
+        user,
         error: "Erro ao remover usuário, tente novamente mais tarde!"
       });
     }
