@@ -1,4 +1,5 @@
 {% extends "publicAccess/layout.njk" %}
+{% import  'parts/cards.njk' as cards%}
 
 {% block head %}
 
@@ -31,9 +32,8 @@
 
             </div>
 
-            <div class="recipes container">
-                <h1>Receitas:
-                </h1>
+            {% call cards.render('recipe container') %}
+                <h1>Receitas:</h1>
 
                 <div class="recipes-grid">
                     {% for recipes in recipes %}
@@ -57,7 +57,7 @@
                     {% endfor %}
                 </div>
 
-            </div>
+            {% endcall %}
         </div>
     </section>
 

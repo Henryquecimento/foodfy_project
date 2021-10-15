@@ -39,9 +39,8 @@ footer {
 
 section.body.container,
 section.recipes.container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  /* display: flex;
+  align-items: center; */
   margin-bottom: 64px;
 }
 

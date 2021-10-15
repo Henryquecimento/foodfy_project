@@ -1,4 +1,5 @@
 {% extends "publicAccess/layout.njk" %}
+{% import  'parts/cards.njk' as cards%}
 
 {% block head %}
 
@@ -7,39 +8,38 @@
 {% endblock %}
 
 {% block content %}
+    {% call cards.render('recipe container') %}
+        {% if filter %}
+            <h1 class='filter'>Buscando por "{{filter}}"</h1>
+        {% endif %}
 
-    <section class='recipe container'>
-    {% if filter %}
-        <h1 class='filter'>Buscando por "{{filter}}"</h1>
-    {% endif %}
+            <div class="cards">
 
-        <div class="cards">
+                {% for recipe in recipes %}
+                    <div class="card">
 
-            {% for recipe in recipes %}
-                <div class="card">
+                        <div class="card-img">
+                            <a href="/recipes/{{recipe.id}}">
+                                <img src="{{recipe.path}}" alt="Image of {{recipe.filename}}">
+                            </a>
+                        </div>
 
-                    <div class="card-img">
-                        <a href="/recipes/{{recipe.id}}">
-                            <img src="{{recipe.path}}" alt="Image of {{recipe.filename}}">
-                        </a>
+                        <div class="card-content">
+                            <h3>{{recipe.title}}</h3>
+                            <p>Por
+                                {{recipe.chef_name}}</p>
+                        </div>
+
                     </div>
+                {% endfor %}
+            </div>
 
-                    <div class="card-content">
-                        <h3>{{recipe.title}}</h3>
-                        <p>Por
-                            {{recipe.chef_name}}</p>
-                    </div>
-
-                </div>
-            {% endfor %}
-        </div>
-
-        <div 
-            class="pagination"
-            data-page={{pagination.page}}
-            data-total={{pagination.total}}
-            data-filter={{filter}}
-        ></div>
-    </section>
+            <div 
+                class="pagination"
+                data-page={{pagination.page}}
+                data-total={{pagination.total}}
+                data-filter={{filter}}
+            ></div>
+    {% endcall %}
 
 {% endblock %}

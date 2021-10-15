@@ -1,17 +1,13 @@
 /*----FOOD PAGE -------*/
 .recipes.container {
   text-align: center;
-  /*   min-height: 1221.41px; */
 }
 
 .recipe-fields {
-  /* max-width: 1400px;
-  display: inline-block; */
   width: 100%;
 }
 
 .recipe-head {
-  /* width: 940px; */
   width: 100%;
   margin-top: 32px;
   margin-bottom: 32px;

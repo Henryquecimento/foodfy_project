@@ -1,15 +1,14 @@
 {% extends "publicAccess/layout.njk" %}
+{% import  'parts/cards.njk' as cards%}
 
 {% block head %}
 
-    <title>
-        {{recipe.title}}
-        | recipefy</title>
+    <title>| Foodfy  - {{recipe.title}}</title>
 
 {% endblock %}
 
 {% block content %}
-    <section class="recipes container">
+    {% call cards.render('recipe container') %}
 
         <div class="recipe-fields">
             
@@ -114,6 +113,6 @@
 
         </div>
 
-    </section>
+   {% endcall %}
 
 {% endblock %}

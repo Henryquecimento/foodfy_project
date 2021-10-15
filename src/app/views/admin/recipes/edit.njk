@@ -1,35 +1,39 @@
 {% extends "admin/layout.njk" %}
+{% import  'parts/cards.njk' as cards%}
 
 {% block head %}
 
-    <title>Foodfy Manager</title>
+    <title>Foodfy Manager - Edit Recipe</title>
 
 {% endblock %}
 
 {% block content %}
-    <div class="body container recipes_manager">
-            <form method='POST' action="/admin/recipes?_method=PUT" enctype="multipart/form-data">
 
-                <div class="create">
-                    <div class="create-grid">
-                        <h1>Editando receitas</h1>
-                        <div class="buttons">
-                            <button form='form-delete' class="delete" type="submit">Deletar receita</button>
-                            <button class="button edit" type="submit">Salvar receita</button>
-                        </div>
-                        
+    {% call cards.render('body container recipes_manager') %}
+
+        <form method='POST' action="/admin/recipes?_method=PUT" enctype="multipart/form-data">
+
+            <div class="create">
+                <div class="create-grid">
+                    <h1>Editando receitas</h1>
+                    <div class="buttons">
+                        <button form='form-delete' class="delete" type="submit">Deletar receita</button>
+                        <button class="button edit" type="submit">Salvar receita</button>
                     </div>
-
-                    {% include 'admin/recipes/fields.njk' %}
-
-                    <input type="hidden" name="id" value="{{ recipe.id }}">
+                    
                 </div>
 
-            </form>
+                {% include 'admin/recipes/fields.njk' %}
 
-            <form id='form-delete' method="POST" action="/admin/recipes?_method=DELETE">
                 <input type="hidden" name="id" value="{{ recipe.id }}">
-            </form>
-    </div>
+            </div>
+
+        </form>
+
+        <form id='form-delete' method="POST" action="/admin/recipes?_method=DELETE">
+            <input type="hidden" name="id" value="{{ recipe.id }}">
+        </form>
+
+   {% endcall %}
     {% include "admin/parts/confirm.njk"%}
 {% endblock %}

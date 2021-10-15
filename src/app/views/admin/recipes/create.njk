@@ -1,4 +1,5 @@
 {% extends "admin/layout.njk" %}
+{% import  'parts/cards.njk' as cards%}
 
 {% block head %}
 
@@ -7,7 +8,8 @@
 {% endblock %}
 
 {% block content %}
-<div class="body container recipes_manager">
+
+{% call cards.render('body container recipes_manager') %}
 
     <form method='POST' action="/admin/recipes" enctype="multipart/form-data">
 
@@ -23,7 +25,8 @@
         </div>
     </form>
 
-</div>
+{% endcall %}
+
 
 
 {% endblock %}
