@@ -12,7 +12,7 @@ module.exports = {
     }
   },
   about(req, res) {
-    return res.render("publicAccess/recipes/about");
+    return res.render("publicAccess/about");
   },
   async show(req, res) {
     try {
