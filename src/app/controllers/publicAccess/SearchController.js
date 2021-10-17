@@ -25,7 +25,7 @@ module.exports = {
         recipe = {
           ...recipe,
           filename: file.name,
-          path: file.name,
+          img: file.name,
           src: `${req.protocol}://${req.headers.host}${file.path.replace('public', "")}`
         }
 
@@ -39,7 +39,7 @@ module.exports = {
         page
       }
 
-      return res.render("publicAccess/recipes/recipes", { recipes, filter, pagination });
+      return res.render("publicAccess/recipes/index", { recipes, filter, pagination });
 
     } catch (err) {
       throw new Error(err);
