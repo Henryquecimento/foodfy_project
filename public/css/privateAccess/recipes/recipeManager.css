@@ -40,3 +40,9 @@
   cursor: pointer;
   background: none;
 }
+
+.recipe-content p:last-child a:hover {
+  color: #4336a5;
+  text-decoration: underline;
+  transition: color 300ms;
+}

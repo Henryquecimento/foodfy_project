@@ -6,12 +6,9 @@
   grid-template-columns: 1fr 1fr;
 }
 
-.bodyIntro-texts {
-  text-align: left;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+.bodyIntro-texts,
+.bodyIntro-img {
+  margin: auto;
 }
 
 .bodyIntro h1 {

@@ -72,38 +72,5 @@
 }
 
 .body.container.chefs_manager div.recipe {
-  display: inline-flex;
-}
-
-.body.container.chefs_manager div.recipe-img img {
-  width: 172px;
-  height: 80px;
-  border-radius: 8.57px;
-}
-
-.body.container.chefs_manager div.recipe-content {
-  text-align: left;
-  padding: 0 8px 0 8px;
-}
-
-.body.container.chefs_manager div.recipe-content h3 {
-  font-size: 18px;
-  line-height: 21px;
-  font-weight: bold;
-  padding-top: 5px;
-}
-
-.body.container.chefs_manager div.recipe-content p {
-  font-size: 14px;
-  line-height: 16px;
-  color: #777777;
-  padding-top: 5px;
-}
-
-.body.container.chefs_manager div.recipe-content p:last-child a {
-  text-decoration: none;
-  color: #6558c3;
-  font-weight: Bold;
-  cursor: pointer;
-  background: none;
+  display: flex;
 }

@@ -39,6 +39,12 @@
   background: none;
 }
 
+.body.container.chefs_manager div.chef-content:last-child a.visualization:hover {
+  color: #4336a5;
+  text-decoration: underline;
+  transition: color 300ms;
+}
+
 .body.container.chefs_manager div.chef-content:last-child a {
   font-size: 14px;
   line-height: 16px;
