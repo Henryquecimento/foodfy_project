@@ -1,5 +1,6 @@
 {% extends "admin/layout.njk" %}
-{% import  'parts/cards.njk' as cards%}
+{% import 'parts/cards.njk' as cards %}
+{% import 'parts/section-recipes.njk' as section %}
 
 {% block head %}
 
@@ -19,28 +20,8 @@
             </button>
         </div>
 
-        <div class="recipes-grid">
+        {{ section.recipes('recipes-grid', 'recipe', recipes, session) }}
 
-            {% for recipe in recipes %}
-                <div class="recipe">
-
-                    <div class="recipe-img">
-                        <img src="{{recipe.img}}" alt="Image of {{recipe.files[0].name}}">
-                    </div>
-
-                    <div class="recipe-content">
-                        <h3>{{recipe.title}}</h3>
-                        <p>Por
-                            {{recipe.chef_name}}</p>
-                        <p>
-                            <a href="recipes/{{ recipe.id }}">Visualizar</a>
-                        </p>
-
-                    </div>
-
-                </div>
-            {% endfor %}
-        </div>
     {% endcall %}
 
 {% endblock %}

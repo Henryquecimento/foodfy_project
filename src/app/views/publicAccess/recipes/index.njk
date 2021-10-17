@@ -1,0 +1,27 @@
+{% extends "publicAccess/layout.njk" %}
+{% import 'parts/cards.njk' as cards %}
+{% import 'parts/section-recipes.njk' as section %}
+
+{% block head %}
+
+    <title>Receitas | Foodfy</title>
+
+{% endblock %}
+
+{% block content %}
+    {% call cards.render('recipe container') %}
+        {% if filter %}
+            <h1 class='filter'>Buscando por "{{filter}}"</h1>
+        {% endif %}
+
+        {{ section.recipes('cards', 'card', recipes, '') }}
+        
+        <div 
+            class="pagination"
+            data-page={{pagination.page}}
+            data-total={{pagination.total}}
+            data-filter={{filter}}
+        ></div>
+    {% endcall %}
+
+{% endblock %}
