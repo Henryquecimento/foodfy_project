@@ -1,4 +1,4 @@
-.body.container.chefs_manager div.chefs-grid {
+.body.container.chefs_manager .chefs-grid {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   row-gap: 16px;

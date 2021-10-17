@@ -5,7 +5,7 @@
   margin: 34px 0 34px 0;
 }
 
-.recipe {
+.recipes-grid.admin .recipe {
   display: flex;
 }
 

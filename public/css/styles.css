@@ -39,8 +39,6 @@ footer {
 
 section.body.container,
 section.recipes.container {
-  /* display: flex;
-  align-items: center; */
   margin-bottom: 64px;
 }
 
@@ -86,8 +84,8 @@ header {
 }
 
 .filter {
-  display: grid;
-  grid-template-columns: 1fr 130px;
+  display: flex;
+  gap: 10px;
 }
 
 .filter input {
@@ -110,6 +108,9 @@ button.header_filter {
   border-radius: 6px;
   box-sizing: border-box;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 button.header_filter:hover {

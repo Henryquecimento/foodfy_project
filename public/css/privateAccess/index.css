@@ -1,32 +1,36 @@
-header {
+header.header {
   background-color: #111111;
   margin: 0 0 16px 0;
 }
-.header.container {
+.container.admin {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.links .logo {
+.container.admin .links .active {
+  color: #ffffff;
+}
+
+.container.admin .links .logo {
   position: initial;
 }
 
-.links .path {
+.container.admin .links .path {
   margin-right: 0;
 }
 
-.links .path a:last-child {
+.container.admin .links .path a:last-child {
   margin-left: 16px;
 }
 
-.links a,
+.container.admin .links a,
 button.logout-button {
   color: #999999;
   font-weight: bold;
 }
 
-.links a:hover {
+.container.admin .links a:hover {
   color: #ffffff;
   transition: color 300ms;
 }
@@ -71,7 +75,7 @@ button.delete:hover {
   transition: background-color 300ms;
 }
 
-button.logout-button {
+.container.admin button.logout-button {
   text-align: initial;
   background-color: initial;
   padding: 0;
@@ -82,16 +86,12 @@ button.logout-button {
   color: #dc4747;
 }
 
-button.logout-button:hover {
+.container.admin button.logout-button:hover {
   color: #eb628d;
 }
 
 /* RECIPES AND CHEFS GLOBAL CONFIG */
 
-/* .body.container {
-  display: block;
-}
- */
 .body.container h1 {
   text-align: left;
   font-size: 24px;
