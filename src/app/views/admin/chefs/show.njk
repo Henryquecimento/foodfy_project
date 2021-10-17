@@ -4,44 +4,44 @@
 
 {% block head %}
 
-    <title>{{ chef.name }}
-        | Foodfy</title>
+    <title>Foodfy Manager - {{ chef.name }}</title>
     
 {% endblock %}
 
 {% block content %}
-    <section class="body container chefs_manager">
+{% call cards.render('body container chefs_manager') %}
 
-        <div class="body-fields">
-            <div class="body-header">
-                <h1>Chef:
-                    {{ chef.name }}</h1>
-                <button>
-                    <a class="edit-button" href="/admin/chefs/{{chef.id}}/edit">Editar chef</a>
-                </button>
-            </div>
-
-            <div class="chef">
-
-                <div class="chef_avatar show">
-                    <img src="{{chef.img}}" alt="Image of {{chef.filename}}">
-                </div>
-
-                <div class="chef-content show">
-                    <h1>{{ chef.name }}</h1>
-                    <p>{{ chef.total_recipes }}
-                        Receitas</p>
-                </p>
-
-            </div>
-            
-            {% call cards.render('recipe container') %}
-                <h1>Receitas:</h1>
-
-                {{ section.recipes('recipes-grid', 'recipe', recipes, session) }}
-                
-            {% endcall %}
+    <div class="body-fields">
+        <div class="body-header">
+            <h1>Chef:
+                {{ chef.name }}</h1>
+            <button>
+                <a class="edit-button" href="/admin/chefs/{{chef.id}}/edit">Editar chef</a>
+            </button>
         </div>
-    </section>
+
+        <div class="chef">
+
+            <div class="chef_avatar show">
+                <img src="{{chef.img}}" alt="Image of {{chef.filename}}">
+            </div>
+
+            <div class="chef-content show">
+                <h1>{{ chef.name }}</h1>
+                <p>{{ chef.total_recipes }}
+                    Receitas</p>
+            </p>
+
+        </div>
+        
+        {% call cards.render('recipe container') %}
+            <h1>Receitas:</h1>
+
+            {{ section.recipes('recipes-grid', 'recipe', recipes, session) }}
+            
+        {% endcall %}
+    </div>
+
+{% endcall %}
 
 {% endblock %}

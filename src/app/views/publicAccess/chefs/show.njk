@@ -1,64 +1,65 @@
 {% extends "publicAccess/layout.njk" %}
 {% import  'parts/cards.njk' as cards%}
+{% import 'parts/section-recipes.njk' as section %}
 
 {% block head %}
 
-    <title>{{chef.name}}
-        | Foodfy</title>
-
+    <title>Foodfy Manager - {{ chef.name }}</title>
+    
 {% endblock %}
 
 {% block content %}
-    <section class="body container chefs_manager">
+{% call cards.render('body container chefs_manager') %}
 
-        <div class="body-fields">
 
-            <div class="body-header">
-                <h1>Chef:
-                    {{ chef.name }}</h1>
+    <div class="body-fields">
+
+        <div class="body-header">
+            <h1>Chef:
+                {{ chef.name }}</h1>
+        </div>
+
+        <div class="chef">
+
+            <div class="chef_avatar show">
+                <img src="{{chef.img}}" alt="Image of {{chef.filename}}">
             </div>
 
-            <div class="chef">
+            <div class="chef-content show">
+                <h1>{{ chef.name }}</h1>
+                <p>{{ chef.total_recipes }}
+                    Receitas</p>
+            </p>
 
-                <div class="chef_avatar show">
-                    <img src="{{chef.img}}" alt="Image of {{chef.filename}}">
-                </div>
+        </div>
 
-                <div class="chef-content show">
-                    <h1>{{ chef.name }}</h1>
-                    <p>{{ chef.total_recipes }}
-                        Receitas</p>
-                </p>
+        {% call cards.render('recipe container') %}
+            <h1>Receitas:</h1>
 
-            </div>
+            <div class="recipes-grid">
+                {% for recipes in recipes %}
+                    <div class="recipe">
 
-            {% call cards.render('recipe container') %}
-                <h1>Receitas:</h1>
+                        <div class="recipe-img">
+                            <img src="{{recipes.img}}" alt="Image of {{recipes.filename}}">
+                        </div>
 
-                <div class="recipes-grid">
-                    {% for recipes in recipes %}
-                        <div class="recipe">
-
-                            <div class="recipe-img">
-                                <img src="{{recipes.img}}" alt="Image of {{recipes.filename}}">
-                            </div>
-
-                            <div class="recipe-content">
-                                <h3>{{recipes.title}}</h3>
-                                <p>Por
-                                    {{recipes.chef_name}}</p>
-                                <p>
-                                    <a href="/recipes/{{ recipes.id }}">Visualizar</a>
-                                </p>
-
-                            </div>
+                        <div class="recipe-content">
+                            <h3>{{recipes.title}}</h3>
+                            <p>Por
+                                {{recipes.chef_name}}</p>
+                            <p>
+                                <a href="/recipes/{{ recipes.id }}">Visualizar</a>
+                            </p>
 
                         </div>
-                    {% endfor %}
-                </div>
 
-            {% endcall %}
-        </div>
-    </section>
+                    </div>
+                {% endfor %}
+            </div>
 
+        {% endcall %}
+    </div>
+
+{% endcall %}
 {% endblock %}

@@ -1,4 +1,6 @@
 {% extends "publicAccess/layout.njk" %}
+{% import 'parts/cards.njk' as cards%}
+{% import 'parts/section-chefs.njk' as section%}
 
 {% block head %}
 
@@ -7,31 +9,10 @@
 {% endblock %}
 
 {% block content %}
-    <div class="body container chefs_manager">
+{% call cards.render('body container chefs_manager') %}
 
-        <div class="chefs-grid">
-
-            {% for chef in chefs %}
-
-                <div class="chef index">
-
-                    <div class="chef_avatar">
-                        <img src="{{chef.img}}" alt="Image of {{chef.filename}}">
-                    </div>
-
-                    <div class="chef-content">
-                        <a href="/chefs/{{ chef.id }}">
-                            <h3>{{ chef.name }}</h3>
-                        </a>
-                        <p>{{ chef.total_recipes }}
-                            Receitas</p>
-                    </div>
-
-                </div>
-
-            {% endfor %}
-        </div>
-
-    </div>
+    {{ section.chefs('', chefs) }}
+  
+{% endcall %}
 
 {% endblock %}

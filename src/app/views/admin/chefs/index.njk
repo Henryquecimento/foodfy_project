@@ -1,43 +1,26 @@
 {% extends "admin/layout.njk" %}
+{% import  'parts/cards.njk' as cards%}
+{% import 'parts/section-chefs.njk' as section%}
 
 {% block head %}
 
-    <title>Foodfy Manager</title>
+    <title>Foodfy Manager - Home</title>
 
 {% endblock %}
 
 {% block content %}
+{% call cards.render('body container chefs_manager') %}
 
-    <div class="body container chefs_manager">
+    <div class="title-grid">
+        <h1>Gerenciar chefs</h1>
 
-        <div class="title-grid">
-            <h1>Gerenciar chefs</h1>
-
-            <button>
-                <a class="button" href="/admin/chefs/create">Criar Chef</a>
-            </button>
-        </div>
-
-        <div class="chefs-grid">
-
-            {% for chef in chefs %}
-
-                <div class="chef index">
-
-                    <div class="chef_avatar">
-                        <img src="{{chef.img}}" alt="Image of {{chef.filename}}">
-                    </div>
-
-                    <div class="chef-content">
-                        <h3>{{chef.name}}</h3>
-                        <a class='visualization' href="/admin/chefs/{{ chef.id }}">Visualizar</a>
-                    </div>
-
-                </div>
-
-            {% endfor %}
-        </div>
-
+        <button>
+            <a class="button" href="/admin/chefs/create">Criar Chef</a>
+        </button>
     </div>
+
+    {{ section.chefs('', chefs, session) }}
+
+{% endcall %}
 
 {% endblock %}

@@ -1,0 +1,31 @@
+ {% macro chefs(classes, chefs, session) %}
+
+ <section class="chefs-grid {{classes}}">
+
+  {% for chef in chefs %}
+
+      <div class="chef index">
+
+          <div class="chef_avatar">
+              <img src="{{chef.img}}" alt="Image of {{chef.filename}}">
+          </div>
+
+          <div class="chef-content">
+            {% if session.userId %}
+                <h3>{{chef.name}}</h3>
+                <a class='visualization' href="/admin/chefs/{{ chef.id }}">Visualizar</a>
+            {% else %}
+                <a href="/chefs/{{ chef.id }}">
+                    <h3>{{ chef.name }}</h3>
+                </a>
+                <p>{{ chef.total_recipes }} Receitas
+                </p>
+            {%endif%}
+          </div>
+
+      </div>
+
+  {% endfor %}
+</section>
+
+{% endmacro%}

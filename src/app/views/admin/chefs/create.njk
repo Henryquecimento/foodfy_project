@@ -1,14 +1,17 @@
 {% extends "admin/layout.njk" %}
+{% import  'parts/cards.njk' as cards%}
 
 {% block head %}
 
-    <title>Foodfy Manager</title>
+    <title>Foodfy Manager - Create Chef</title>
     
 
 {% endblock %}
 
 {% block content %}
-<div class="body container chefs_manager">
+
+{% call cards.render('body container chefs_manager') %}
+    
     <form method='POST' action="/admin/chefs" enctype="multipart/form-data">
             <div class="create">
                 <div class="create-grid">
@@ -16,12 +19,12 @@
                     <button class="button" type="submit">Salvar</button>
                 </div>
                 
-
                 {% include 'admin/chefs/fields.njk' %}
 
             </div>
         </div>
     </form>
-</div>
+
+{% endcall %}
 
 {% endblock %}

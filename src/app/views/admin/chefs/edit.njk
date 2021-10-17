@@ -1,35 +1,39 @@
 {% extends "admin/layout.njk" %}
+{% import  'parts/cards.njk' as cards%}
 
 {% block head %}
 
-    <title>Foodfy Manager</title>
+    <title>Foodfy Manager - Edit Chef</title>
+    
 
 {% endblock %}
 
 {% block content %}
-    <div class="body container chefs_manager">
-            <form method='POST' action="/admin/chefs?_method=PUT" enctype="multipart/form-data">
 
-                <div class="create">
-                    <div class="create-grid">
-                        <h1>Editando chef</h1>
-                        <div class="buttons">
-                            <button form="form-delete" class="delete edit" type="submit">Deletar chef</button>
-                            <button class="button edit" type="submit">Salvar chef</button>
-                        </div>
-                    </div>
+{% call cards.render('body container chefs_manager') %}
+    
+    <form method='POST' action="/admin/chefs?_method=PUT" enctype="multipart/form-data">
 
-                    {% include 'admin/chefs/fields.njk' %}
-
-                    <input type="hidden" name="id" value="{{ chef.id }}">
+        <div class="create">
+            <div class="create-grid">
+                <h1>Editando chef</h1>
+                <div class="buttons">
+                    <button form="form-delete" class="delete edit" type="submit">Deletar chef</button>
+                    <button class="button edit" type="submit">Salvar chef</button>
                 </div>
+            </div>
 
-            </form>
+            {% include 'admin/chefs/fields.njk' %}
 
-            <form id='form-delete' method="POST" action="/admin/chefs?_method=DELETE">
-                <input type="hidden" name="id" value="{{ chef.id }}">
-            </form>
-    </div>
+            <input type="hidden" name="id" value="{{ chef.id }}">
+        </div>
 
+    </form>
+
+    <form id='form-delete' method="POST" action="/admin/chefs?_method=DELETE">
+        <input type="hidden" name="id" value="{{ chef.id }}">
+    </form>
+   
+{% endcall %}
     {% include "admin/parts/confirm.njk"%}
 {% endblock %}
