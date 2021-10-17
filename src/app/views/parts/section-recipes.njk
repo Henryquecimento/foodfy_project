@@ -1,0 +1,34 @@
+{% macro recipes(classes, name, recipes, session) %}
+
+  <section class="{{classes}}">
+
+    {% for recipe in recipes %}
+        <div class="{{name}}">
+
+            <div class="{{name}}-img">
+              {% if session.userId %}
+                <img src="{{recipe.img}}" alt="Image of {{recipe.filename}}">
+              {% else %}
+                <a href="/recipes/{{recipe.id}}">
+                  <img src="{{recipe.img}}" alt="Image of {{recipe.filename}}">
+                </a>
+              {% endif %}
+            </div>
+
+            <div class="{{name}}-content">
+                <h3>{{recipe.title}}</h3>
+                <p>Por {{recipe.chef_name}}</p>
+
+                {% if session.userId %}
+                <p>
+                    <a href="/admin/recipes/{{ recipe.id }}">Visualizar</a>
+                </p>
+                {% endif %}
+
+            </div>
+
+        </div>
+    {% endfor %}
+  </section>
+
+{% endmacro%}
