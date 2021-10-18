@@ -9,7 +9,7 @@ async function getImages(RecipeId) {
 
   files = files.map(file => ({
     ...file,
-    path: file.name,
+    path: file.path.replace(/\\/g, '/'),
     src: `${file.path.replace('public', "").replace(/\\/g, '/')}`
   }));
 
@@ -28,7 +28,7 @@ async function format(recipe) {
   }
 
   recipe.files = files;
-  recipe.img = files[0].path;
+  recipe.img = files[0].src;
   recipe.filename = files[0].name;
   recipe.chef_name = chefs.name;
   recipe.user_admin = users.is_admin;
