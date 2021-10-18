@@ -1,14 +1,15 @@
 {% extends "admin/layout.njk" %}
+{% import  'parts/cards.njk' as cards%}
 
 {% block head %}
 
-    <title>Foodfy | Criar Usuário</title>
+    <title>Gerenciador Foodfy - Criar Usuário</title>
 
 {% endblock %}
 
 {% block content %}
+{% call cards.render('body container users_manager') %}
 
-  <div class="body container users_maneger">
       <form method='POST' action="/admin/users">
             <div class="create">
                 <div class="create-grid">
@@ -25,6 +26,6 @@
         </div>
     </form>
       
-  </div>
+{% endcall %}
 
 {% endblock %}

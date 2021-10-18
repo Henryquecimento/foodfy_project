@@ -18,15 +18,15 @@
                     <img src="http://placehold.it/940x280?text=NO PHOTO" />
                     {% else %}
                     <img 
-                    src="{{ recipe.files[0].path }}" 
-                    alt="Image of {{recipe.files[0].src}}"
+                    src="{{ recipe.img }}" 
+                    alt="Image of {{recipe.filename}}"
                     onclick = 'Lightbox.open()'
                     >
                     {% endif%}
                     
                     
                     <div class="lightbox-target">
-                        <img src="{{ recipe.files[0].path }}" alt="Image of {{recipe.files[0].src}}" />
+                        <img src="{{ recipe.img }}" alt="Image of {{recipe.filename}}" />
                     
                         <a 
                         href="#"
@@ -42,7 +42,7 @@
                 <div class="gallery-preview">
                 {% for file in recipe.files %}
                     <img 
-                    src="{{ file.path }}"
+                    src="{{ file.src }}"
                     alt="{{ file.name }}"
                     {% if loop.index0 == 0 %}
                     class="active"

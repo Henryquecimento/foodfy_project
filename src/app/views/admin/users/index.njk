@@ -1,14 +1,15 @@
 {% extends "admin/layout.njk" %}
+{% import  'parts/cards.njk' as cards%}
 
 {% block head %}
 
-    <title>Foodfy Manager</title>
+    <title>Gerenciador Foodfy - Home</title>
 
 {% endblock %}
 
 {% block content %}
+{% call cards.render('body container users_manager') %}
 
-    <div class="body container users_manager">
 
         <div class="title-grid">
             <h1>Usuários</h1>
@@ -50,6 +51,6 @@
             {% endfor %}
         </div>
 
-    </div>
-
+ 
+{% endcall %}
 {% endblock %}

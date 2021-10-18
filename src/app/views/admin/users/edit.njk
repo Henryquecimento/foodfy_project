@@ -1,36 +1,39 @@
 {% extends "admin/layout.njk" %}
+{% import  'parts/cards.njk' as cards%}
 
 {% block head %}
 
-    <title>Foodfy Manager</title>
+    <title>Gerenciador Foodfy - Editar Usuário</title>
 
 {% endblock %}
 
 {% block content %}
-    <div class="body container users_manager">
-            <form method='POST' action="/admin/users?_method=PUT">
 
-                <div class="create">
-                    <div class="create-grid">
-                        <h1>Atualizar Usuário</h1>
-                        <div class="buttons">
-                            <button form='form-delete' class="delete edit" type="submit">Deletar</button>
-                            <button class="button edit" type="submit">Salvar</button>
-                        </div>
-                        
-                    </div>
+{% call cards.render('body container users_manager') %}
 
-                    {% include 'admin/users/fields.njk' %}
+    <form method='POST' action="/admin/users?_method=PUT">
 
-                    <input type="hidden" name="id" value="{{ user.id }}">
+        <div class="create">
+            <div class="create-grid">
+                <h1>Atualizar Usuário</h1>
+                <div class="buttons">
+                    <button form='form-delete' class="delete edit" type="submit">Deletar</button>
+                    <button class="button edit" type="submit">Salvar</button>
                 </div>
+                
+            </div>
 
-            </form>
+            {% include 'admin/users/fields.njk' %}
 
-            <form id='form-delete' method="POST" action="/admin/users?_method=DELETE">
-                <input type="hidden" name="id" value="{{ user.id }}">
-            </form>
-    </div>
+            <input type="hidden" name="id" value="{{ user.id }}">
+        </div>
 
+    </form>
+
+    <form id='form-delete' method="POST" action="/admin/users?_method=DELETE">
+        <input type="hidden" name="id" value="{{ user.id }}">
+    </form>
+
+{% endcall %}
     {% include "admin/parts/confirm.njk"%}
 {% endblock %}

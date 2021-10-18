@@ -55,12 +55,6 @@ header.session-header {
   }
 }
 
-/* @keyframes inputMessage {
-  to {
-    border-color: #dc4747;
-  }
-} */
-
 .messages {
   display: flex;
   align-items: center;
@@ -90,10 +84,6 @@ header.session-header {
   background-color: #01b12a;
 }
 
-/* .input input {
-  animation: inputMessage 800ms 2s ease-out forwards;
-}
- */
 /* ERRORS - INPUT */
 .input .error {
   color: #eeee;

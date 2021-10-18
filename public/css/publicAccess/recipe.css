@@ -142,8 +142,11 @@
 }
 
 .top_info {
-  margin: 5% 0;
+  margin: 30px 0px;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .top_info h3 {
@@ -221,6 +224,13 @@ button.hide-button {
   text-align: left;
   outline: none;
 }
+
+button.hide-button:hover {
+  background-color: initial;
+  text-decoration: underline;
+  transition: all 300ms;
+}
+
 .content.hide {
   display: none;
 }
