@@ -7,7 +7,7 @@ async function getImages(ChefId) {
 
   files = files.map(file => ({
     ...file,
-    path: file.name,
+    path: file.path.replace(/\\/g, '/'),
     src: `${file.path.replace('public', "").replace(/\\/g, '/')}`
   }));
 
@@ -24,7 +24,7 @@ async function format(chef) {
     chef.img = null
   }
 
-  chef.img = files[0].path; //.src
+  chef.img = files[0].src
   chef.filename = files[0].name;
   chef.filePath = files[0].path;
   chef.total_recipes = recipes.length;
