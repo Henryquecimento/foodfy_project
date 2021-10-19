@@ -1,0 +1,30 @@
+{% extends "admin/layout.njk" %}
+{% import  'parts/cards.njk' as cards%}
+
+{% block content %}
+
+{% call cards.render('action-error container') %}
+    <div class="error-lottie"></div>
+    <div class="text-message">
+      <h2>Erro! Tente novamente mais tarde!</h2>
+      <a class="action" onclick='history.back()' href="#">Retornar</a>
+    </div>
+    
+{% endcall %}
+
+<script src="/animations/lottie.min.js"></script>
+
+<script>
+  const element = document.querySelector('.error-lottie');
+
+  lottie.loadAnimation({
+    container: element,
+    renderer: 'svg',
+    loop: false,
+    autoplay: true,
+    path: '/animations/56132-error.json'
+  });
+
+</script>
+
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends "admin/layout.njk" %}
+{% import  'parts/cards.njk' as cards%}
+
+{% block content %}
+
+{% call cards.render('action-success container') %}
+    <div class="success-lottie"></div>
+    <div class="text-message">
+      <h2>Procedimento realizado com sucesso!</h2>
+      <a class="action" href="/admin/users">Continue Navegando!</a>
+    </div>
+    
+{% endcall %}
+
+<script src="/animations/lottie.min.js"></script>
+
+<script>
+  const element = document.querySelector('.success-lottie');
+
+  lottie.loadAnimation({
+    container: element,
+    renderer: 'svg',
+    loop: false,
+    autoplay: true,
+    path: '/animations/63268-success-lottie-icons.json'
+  });
+
+</script>
+
+{% endblock %}

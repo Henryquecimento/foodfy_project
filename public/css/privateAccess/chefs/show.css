@@ -4,9 +4,7 @@
 }
 
 .body.container.chefs_manager div.body-fields {
-  width: 940px;
   max-width: 1400px;
-/*   display: inline-block; */
 }
 
 .body.container.chefs_manager div.body-header {

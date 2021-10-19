@@ -16,7 +16,11 @@ module.exports = {
 
 			return res.render("admin/chefs/index", { chefs });
 		} catch (err) {
-			throw new Error(err);
+			console.error(err);
+
+			return res.render("admin/message/error", {
+				error: "Erro inesperado. Por favor, tente novamente mais tarde!"
+			});
 		}
 	},
 	create(req, res) {
@@ -38,7 +42,7 @@ module.exports = {
 				file_id: fileId
 			});
 
-			return res.render("admin/chefs/index", {
+			return res.render("admin/message/success", {
 				success: "Chefe criado com sucesso!"
 			});
 		} catch (err) {
@@ -62,16 +66,24 @@ module.exports = {
 
 			return res.render("admin/chefs/show", { chef, recipes });
 		} catch (err) {
-			throw new Error(err);
+			console.error(err);
+
+			return res.render("admin/message/error", {
+				error: "Erro inesperado. Por favor, tente novamente mais tarde!"
+			});
 		}
 	},
 	async edit(req, res) {
 		try {
-			const chef = await LoadChef.load('chef', { where: { id: req.params.id } })
+			const chef = await LoadChef.load('chef', { where: { id: req.params.id } });
 
 			return res.render("admin/chefs/edit", { chef });
 		} catch (err) {
-			throw new Error(err);
+			console.error(err);
+
+			return res.render("admin/message/error", {
+				error: "Erro inesperado. Por favor, tente novamente mais tarde!"
+			});
 		}
 	},
 	async put(req, res) {
@@ -126,7 +138,7 @@ module.exports = {
 
 			}
 
-			return res.render("admin/chefs/index", {
+			return res.render("admin/message/success", {
 				success: "Chefe atualizado com sucesso!"
 			});
 		} catch (err) {
@@ -141,7 +153,7 @@ module.exports = {
 	async delete(req, res) {
 		try {
 
-			const chef = await LoadChef.load('chef', { where: { id: req.body.id } })
+			const chef = await LoadChef.load('chef', { where: { id: req.body.id } });
 
 			if (chef.total_recipes != 0) {
 				return res.render(`admin/chefs/edit`, {
@@ -156,7 +168,7 @@ module.exports = {
 
 			await File.delete(chef.file_id);
 
-			return res.render("admin/chefs/index", {
+			return res.render("admin/message/success", {
 				success: "Chefe removido com sucesso!"
 			});
 		} catch (err) {

@@ -9,22 +9,22 @@
 {% block content %}
 
     <section class="body container">
-        <div class="bodyIndex">
+        <div class="home">
 
-            <div class="bodyIntro">
-                <div class="bodyIntro-texts">
+            <div class="home-box">
+                <div class="texts">
                     <h1>As melhores receitas</h1>
                     <p>Aprenda a construir os melhores pratos com receitas criadas por profissionais do mundo inteiro.</p>
                 </div>
-                <div class="bodyIntro-img">
+                <div class="img">
                     <img src="/assets/chef.png" alt="no Image">
                 </div>
             </div>
 
-            <section class="accessedElements">
+            <section class="moreAccessed">
                 <h1>Mais acessados</h1>
 
-                <div class="cards moreAccessed">
+                <div class="cards">
 
                     {% for recipe in recipes %}
 

@@ -103,6 +103,13 @@ form .create div.admin {
   box-sizing: border-box;
 }
 
+@media screen and (max-width: 1020px) {
+  form .create div.admin {
+    display: initial;
+  }
+  
+}
+
 form .create div.admin input {
   width: 450px;
 }
