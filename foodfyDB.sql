@@ -6,6 +6,7 @@ CREATE TABLE chefs (
 	id SERIAL PRIMARY KEY,
   name TEXT NOT NULL,
   created_at TIMESTAMP DEFAULT (now())
+  updated_at TIMESTAMP DEFAULT (now())
 );
 
 CREATE TABLE recipes (
