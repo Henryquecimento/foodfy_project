@@ -9,9 +9,18 @@ const { LoadRecipe } = require('../../services/LoadRecipes');
 
 module.exports = {
   async list(req, res) {
-    const users = await User.findAll();
+    try {
+      const users = await User.findAll();
 
-    return res.render('admin/users/index.njk', { users });
+      return res.render('admin/users/index.njk', { users });
+
+    } catch (err) {
+      console.error(err);
+
+      return res.render("admin/message/error", {
+        error: "Erro ao criar um novo usuário, tente novamente mais tarde!"
+      });
+    }
   },
   create(req, res) {
     return res.render('admin/users/create.njk');
@@ -57,26 +66,35 @@ module.exports = {
         is_admin
       });
 
-      return res.render(`admin/users/index.njk`, {
+      return res.render("admin/message/success", {
         success: "Usuário criado com sucesso!"
       });
 
     } catch (err) {
       console.error(err);
-      return res.render(`admin/users/index.njk`, {
+
+      return res.render("admin/message/error", {
         error: "Erro ao criar um novo usuário, tente novamente mais tarde!"
       });
     }
   },
   async edit(req, res) {
+    try {
+      const user = await User.findOne({
+        where: {
+          id: req.params.id
+        }
+      });
 
-    const user = await User.findOne({
-      where: {
-        id: req.params.id
-      }
-    });
+      return res.render(`admin/users/edit`, { user });
 
-    return res.render(`admin/users/edit`, { user });
+    } catch (err) {
+      console.error(err);
+
+      return res.render("admin/message/error", {
+        error: "Erro ao editar usuário, tente novamente mais tarde!"
+      });
+    }
   },
   async put(req, res) {
     try {
@@ -90,13 +108,14 @@ module.exports = {
         is_admin
       });
 
-      return res.render('admin/users/edit', {
+      return res.render("admin/message/success", {
         user: req.body,
         success: 'Dados do usuário atualizado com sucesso!'
       });
     } catch (err) {
       console.error(err);
-      return res.render(`admin/users/index.njk`, {
+
+      return res.render("admin/message/error", {
         error: "Erro ao atualizar usuário, tente novamente mais tarde!"
       });
     }
@@ -116,15 +135,13 @@ module.exports = {
 
       await User.delete(req.body.id);
 
-      return res.render('admin/users/index', {
+      return res.render("admin/message/success", {
         success: 'Usuário removido com sucesso!'
       });
     } catch (err) {
-      const user = await User.findOne({ where: { id: req.body.id } });
-
       console.error(err);
-      return res.render(`admin/users/index.njk`, {
-        user,
+
+      return res.render("admin/message/error", {
         error: "Erro ao remover usuário, tente novamente mais tarde!"
       });
     }

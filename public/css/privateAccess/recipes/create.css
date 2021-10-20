@@ -32,8 +32,9 @@
   line-height: 14px;
 }
 
-.recipes_manager div.create button.button.save {
-  margin-left: 814px;
+.recipes_manager div.button {
+  display: flex;
+  justify-content: end;
 }
 
 textarea.text {

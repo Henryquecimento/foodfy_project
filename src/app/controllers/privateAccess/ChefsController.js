@@ -48,8 +48,7 @@ module.exports = {
 		} catch (err) {
 			console.error(err);
 
-			return res.render('admin/chefs/create', {
-				user: req.body,
+			return res.render("admin/message/error", {
 				error: "Erro ao criar um novo chef. Por favor, tente novamente mais tarde!"
 			});
 		}
@@ -93,7 +92,6 @@ module.exports = {
 
 			const chefFile = await Chef.files(chef_id);
 
-			//Add image
 			if (req.files.length != 0) {
 
 				const fileId = await File.create({
@@ -115,10 +113,8 @@ module.exports = {
 				}
 			}
 
-			//If not new image, update just the name
 			await Chef.update(chef_id, { name });
 
-			// removed files
 			if (removed_files) {
 				if (req.files.length === 0) {
 					return res.render(`admin/chefs/edit`, {
@@ -130,10 +126,6 @@ module.exports = {
 				const removedFiles = removed_files.split(",");
 				const file_id = removedFiles[0];
 
-				const file = await File.findOne({ where: { id: file_id } });
-
-				unlinkSync(file.path);
-
 				await File.delete(file_id);
 
 			}
@@ -144,8 +136,7 @@ module.exports = {
 		} catch (err) {
 			console.error(err);
 
-			return res.render(`admin/chefs/edit`, {
-				chef: req.body,
+			return res.render("admin/message/error", {
 				error: "Erro ao editar o chef. Por favor, tente novamente mais tarde!"
 			});
 		}
@@ -174,10 +165,7 @@ module.exports = {
 		} catch (err) {
 			console.error(err);
 
-			const chef = await LoadChef.load('chef', { where: { id: req.body.id } })
-
-			return res.render(`admin/chefs/edit`, {
-				chef,
+			return res.render("admin/message/error", {
 				error: "Erro ao remover o chef. Por favor, tente novamente mais tarde!"
 			});
 		}

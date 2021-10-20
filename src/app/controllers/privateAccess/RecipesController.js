@@ -21,7 +21,7 @@ module.exports = {
     } catch (err) {
       console.error(err);
 
-      return res.render("admin/recipes/index", {
+      return res.render("admin/message/error", {
         error: "Erro inesperado. Tente novamente mais tarde!"
       });
     }
@@ -34,7 +34,7 @@ module.exports = {
     } catch (err) {
       console.error(err);
 
-      return res.render("admin/recipes/index", {
+      return res.render("admin/message/error", {
         error: "Erro inesperado. Tente novamente mais tarde!"
       });
     }
@@ -72,13 +72,13 @@ module.exports = {
 
       await Promise.all(FilesPromise);
 
-      return res.render("admin/recipes/index", {
+      return res.render("admin/message/success", {
         success: "Receita criada com sucesso!"
       });
     } catch (err) {
       console.error(err);
 
-      return res.render("admin/recipes/index", {
+      return res.render("admin/message/error", {
         error: "Erro ao criar nova receita. Tente novamente mais tarde!"
       });
     }
@@ -96,7 +96,7 @@ module.exports = {
     } catch (err) {
       console.error(err);
 
-      return res.render("admin/recipes/index", {
+      return res.render("admin/message/error", {
         error: "Receita não encontrada!"
       });
     }
@@ -118,7 +118,7 @@ module.exports = {
     } catch (err) {
       console.error(err);
 
-      return res.render("admin/recipes/index", {
+      return res.render("admin/message/error", {
         error: "Erro ao editar a receita. Tente novamente mais tarde!"
       });
     }
@@ -135,8 +135,6 @@ module.exports = {
         id: recipe_id,
         removed_files
       } = req.body;
-
-
 
       if (req.files.length != 0) {
         const newFilesPromise = req.files.map(async file => {
@@ -204,17 +202,13 @@ module.exports = {
         information,
       });
 
-      return res.render("admin/recipes/index", {
+      return res.render("admin/message/success", {
         success: "Receita atualizada com sucesso!"
       });
     } catch (err) {
       console.error(err);
 
-      const chefOptions = await Recipe.chefSelectedOptions();
-
-      return res.render("admin/recipes/edit", {
-        recipe: req.body,
-        chefOptions,
+      return res.render("admin/message/error", {
         error: "Erro ao atualizar receita. Tente novamente mais tarde!"
       });
     }
@@ -235,13 +229,13 @@ module.exports = {
 
       await Recipe.delete(req.body.id);
 
-      return res.render("admin/recipes/index", {
+      return res.render("admin/message/success", {
         success: "Receita removida com sucesso!"
       });
     } catch (err) {
       console.error(err);
 
-      return res.render("admin/recipes/index", {
+      return res.render("admin/message/error", {
         error: "Erro ao remover receita. Tente novamente mais tarde!"
       });
     }
