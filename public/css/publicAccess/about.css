@@ -1,8 +1,9 @@
 /*ABOUT - Content*/
 
-.page-content {
-  display: inline-block;
-  max-width: 940px;
+@media screen and (max-width: 752px) {
+  .page-content {
+    margin: 0 5px;
+  }
 }
 
 .about h1 {

@@ -2,7 +2,13 @@
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   row-gap: 16px;
-  margin: 34px 0 34px 0;
+  margin: 34px 0;
+}
+
+@media screen and (max-width: 752px) {
+  .body.container.chefs_manager .chefs-grid {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
 .body.container.chefs_manager div.chef.index {
@@ -39,7 +45,9 @@
   background: none;
 }
 
-.body.container.chefs_manager div.chef-content:last-child a.visualization:hover {
+.body.container.chefs_manager
+  div.chef-content:last-child
+  a.visualization:hover {
   color: #4336a5;
   text-decoration: underline;
   transition: color 300ms;

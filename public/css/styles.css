@@ -53,12 +53,12 @@ header {
   justify-content: space-between;
 }
 
-@media screen and (max-width: 752px){
+@media screen and (max-width: 752px) {
   .header.container {
     display: flex;
     flex-direction: column;
     align-items: center;
-  }  
+  }
 }
 
 .links {
@@ -84,7 +84,6 @@ header {
 .links .path {
   min-width: 256px;
   display: flex;
-  align-items: center;
 }
 
 .links .path a {
@@ -139,4 +138,10 @@ footer h2 {
   line-height: 16px;
   color: #999999;
   text-align: center;
+}
+
+/* SECTION CARD - CALL */
+
+section.card {
+  margin: 8px auto;
 }

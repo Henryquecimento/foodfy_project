@@ -1,4 +1,5 @@
 {% extends "publicAccess/layout.njk" %}
+{% import  'parts/cards.njk' as cards%}
 
 {% block head %}
 
@@ -8,7 +9,7 @@
 
 {% block content %}
 
-    <section class="body container">
+    {% call cards.render("body container") %}
         <div class="home">
 
             <div class="home-box">
@@ -51,6 +52,6 @@
 
         </div>
 
-    </section>
+   {% endcall %}
 
 {% endblock %}
