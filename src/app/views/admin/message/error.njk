@@ -4,10 +4,13 @@
 {% block content %}
 
 {% call cards.render('action-error container') %}
-    <div class="error-lottie"></div>
-    <div class="text-message">
-      <h2>Erro! Tente novamente mais tarde!</h2>
-      <a class="action" onclick='history.back()' href="#">Retornar</a>
+    
+    <div class='message-content'>
+      <div class="error-lottie"></div>
+      <div class="text-message">
+        <h2>Erro! Tente novamente mais tarde!</h2>
+        <a class="action" onclick='history.back()' href="#">Retornar</a>
+      </div>
     </div>
     
 {% endcall %}

@@ -18,7 +18,7 @@ module.exports = {
       console.error(err);
 
       return res.render("admin/message/error", {
-        error: "Erro ao criar um novo usuário, tente novamente mais tarde!"
+        error: "Erro inesperado, tente novamente mais tarde!"
       });
     }
   },

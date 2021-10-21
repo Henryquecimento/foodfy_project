@@ -1,0 +1,28 @@
+.message-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.success-lottie,
+.error-lottie {
+  width: 400px;
+  height: 400px;
+}
+
+.text-message {
+  text-align: center;
+}
+
+.text-message a {
+  font-size: 18px;
+  line-height: 20px;
+  font-weight: bold;
+  color: #6558c3;
+}
+
+.text-message a:hover {
+  color: #9389e2;
+  text-decoration: underline;
+  transition: all 300ms;
+}

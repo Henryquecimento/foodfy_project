@@ -4,11 +4,15 @@
 {% block content %}
 
 {% call cards.render('action-success container') %}
-    <div class="success-lottie"></div>
-    <div class="text-message">
-      <h2>Procedimento realizado com sucesso!</h2>
-      <a class="action" href="/admin/users">Continue Navegando!</a>
+    
+    <div class='message-content'>
+      <div class="success-lottie"></div>
+      <div class="text-message">
+        <h2>Procedimento realizado com sucesso!</h2>
+        <a class="action" href="/admin/users">Continue Navegando!</a>
+      </div>
     </div>
+    
     
 {% endcall %}
 
