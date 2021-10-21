@@ -6,6 +6,18 @@
   grid-template-columns: 1fr 1fr;
 }
 
+@media screen and (max-width: 752px) {
+  .home-box {
+    display: flex;
+    height: 300px;
+    margin: 0 5px;
+  }
+
+  .home-box .img {
+    display: none;
+  }
+}
+
 .home-box .texts,
 .home-box .img {
   margin: auto;
@@ -36,6 +48,14 @@
 /* -- MORE ACCESSED --  */
 .moreAccessed {
   text-align: left;
+}
+
+@media screen and (max-width: 940px) {
+  .moreAccessed {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
 .moreAccessed h1 {

@@ -41,3 +41,25 @@ section.recipe.container h1.filter {
   color: #777777;
   padding-top: 5px;
 }
+
+@media screen and (max-width: 940px) and (min-width: 752px) {
+  .cards {
+    grid-template-columns: 1fr 1fr;
+    text-align: center;
+  }
+
+  .card-content {
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 752px) {
+  .cards {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .card-content {
+    text-align: center;
+  }
+}

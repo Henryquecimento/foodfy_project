@@ -34,7 +34,7 @@ footer {
   width: 100%;
   max-width: 940px;
 
-  margin: 0 auto; /*  to align in the center */
+  margin: 0 auto;
 }
 
 section.body.container,
@@ -49,8 +49,16 @@ header {
 }
 
 .header.container {
-  display: inline-grid;
-  grid-template-columns: 1fr 380px;
+  display: flex;
+  justify-content: space-between;
+}
+
+@media screen and (max-width: 752px){
+  .header.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }  
 }
 
 .links {
@@ -75,6 +83,8 @@ header {
 
 .links .path {
   min-width: 256px;
+  display: flex;
+  align-items: center;
 }
 
 .links .path a {
