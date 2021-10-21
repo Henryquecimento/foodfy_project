@@ -13,7 +13,14 @@ header.session-header {
 
 .session.body.container,
 .password.body.container {
-  width: 500px;
+  max-width: 500px;
+}
+
+@media screen and (max-width: 752px) {
+  .session.body.container,
+  .password.body.container {
+    max-width: 420px;
+  }
 }
 
 .session div.create,
@@ -107,7 +114,6 @@ form .create div.admin {
   form .create div.admin {
     display: initial;
   }
-  
 }
 
 form .create div.admin input {
