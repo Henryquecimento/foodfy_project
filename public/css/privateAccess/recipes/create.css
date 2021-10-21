@@ -58,6 +58,14 @@ form .item #photos-preview {
   gap: 8px;
 }
 
+@media screen and (max-width: 940px) {
+  form .item #photos-preview {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+}
+
 /* Photos Upload */
 form .item #photos-upload {
   position: relative;

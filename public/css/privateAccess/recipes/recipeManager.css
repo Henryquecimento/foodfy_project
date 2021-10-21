@@ -2,7 +2,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 16px;
-  margin: 34px 0 34px 0;
+  margin: 34px 0;
 }
 
 .recipes-grid.admin .recipe {
@@ -45,4 +45,10 @@
   color: #4336a5;
   text-decoration: underline;
   transition: color 300ms;
+}
+
+@media screen and (max-width: 752px) {
+  .recipes-grid {
+    grid-template-columns: 1fr;
+  }
 }

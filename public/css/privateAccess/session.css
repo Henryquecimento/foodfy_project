@@ -110,14 +110,14 @@ form .create div.admin {
   box-sizing: border-box;
 }
 
-@media screen and (max-width: 1020px) {
+@media screen and (max-width: 940px) {
   form .create div.admin {
     display: initial;
   }
 }
 
 form .create div.admin input {
-  width: 450px;
+  max-width: 450px;
 }
 
 .create .buttons {
@@ -164,7 +164,13 @@ div.users-grid {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   row-gap: 16px;
-  margin: 34px 0 34px 0;
+  margin: 34px 0;
+}
+
+@media screen and (max-width: 752px) {
+  div.users-grid {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
 div.user-content h3 {

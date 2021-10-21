@@ -145,3 +145,9 @@ footer h2 {
 section.card {
   margin: 8px auto;
 }
+
+@media screen and (max-width: 940px) {
+  .cards-content {
+    padding: 0 5px;
+  }
+}

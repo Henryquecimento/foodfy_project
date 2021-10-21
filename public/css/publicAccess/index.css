@@ -10,7 +10,6 @@
   .home-box {
     display: flex;
     height: 300px;
-    margin: 0 5px;
   }
 
   .home-box .img {

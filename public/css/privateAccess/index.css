@@ -103,6 +103,16 @@ button.delete:hover {
   margin-bottom: 20px;
 }
 
+@media screen and (max-width: 940px) {
+  .container.admin {
+    width: 97%;
+  }
+
+  .title-grid {
+    margin: 0 5px 20px 5px;
+  }
+}
+
 .title-grid,
 div.create-grid {
   display: flex;
