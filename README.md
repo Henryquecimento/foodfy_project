@@ -8,25 +8,22 @@
 <p align="justify">
 Foodfy é uma aplicação MVP focada em apresentar, criar e gerenciar receitas e seus respectivos Chefs. Esta aplicação tem duas sessões, uma pública e outra administrativa. A primeira é uma apresentação das receitas e dos chefs e a segunda é onde as receitas, chefs e usuários são criados e gerenciados.
 </p>
-</br> 
+:us:
 <p align="justify">
 Foodfy is a MVP application focused on presenting, creating and managing recipes and it's respectively Chefs. This application has two sessions, public and administrative. The fist one is the recipes and chefs presentation and the second one is where the recipes, chefs and Users are created and managed.
 </p>
 
 <p>&nbsp;</p>
 
-<h3>SESSÃO PÚBLICA / PUBLIC SESSION</h3>
+<h3><strong>SESSÃO PÚBLICA / PUBLIC SESSION</strong></h3>
 <h1 align="center">
-  <img src=".github/" >
+  <img src=".github/PublicSession.gif" >
 </h1>
 
-<p>&nbsp;</p>
+<h><strong>SESSÃO PRIVADA / PRIVATE SESSION</strong></h3>
 
-<p>&nbsp;</p>
-
-<h3>SESSÃO PRIVADA / PRIVATE SESSION</h3>
 <h1 align="center">
-  <img src=".github/" >
+  <img src=".github/PrivateSession.gif" >
 </h1>
 
 <p>&nbsp;</p>
@@ -62,15 +59,11 @@ Foodfy is a MVP application focused on presenting, creating and managing recipes
 $ git clone https://github.com/Henryquecimento/foodfy_project.git
 ```
 
-  <p>&nbsp;</p>
-
 > INSTALANDO DEPENDÊNCIAS NECESSÁRIAS / INSTALLING NECESSARY DEPENDENCIES:
 
 ```bash
 npm install
 ```
-
-  <p>&nbsp;</p>
 
 **:gear: CONFIGURAÇÃO DO BANCO DE DADOS /DATABASE CONFIGURATION**
 
@@ -84,9 +77,9 @@ First of all, you must've been installed [PostgreSQL] and [Postbird][postbird] t
 Obs / Disclaimer: </br>
 Minha versão do Postgres é a 13, atenção na versão do seu.
 </br>
+:us:
+</br>
 My Postgres version is 13, pay attention to yours.
-
-  <p>&nbsp;</p>
 
 #### WINDOWS OS
 
@@ -136,23 +129,17 @@ pg_ctl -D /usr/local/var/postgres stop
 
 [Documentação Oficial para instalar e usar Postgres no Linux OS / Official Documentation to install and use Postgres on Linus OS][postgres-linux]
 
-<p>&nbsp;</p>
-
-#### USANDO O POSTBIRD / USING POSTBIRD
-
-</br>
+#### :birthday: USANDO O POSTBIRD / USING POSTBIRD
 
 <p align="justify">Primeiro, após ligar o Postgres, você pode acessar o Postbird e criar um banco de dados para o Foodfy. Você pode estar copiando as informações do BD no arquivo `foodfyDB`, na raiz do projeto, e utilizando a Query do Postbird para adicionar as tabelas.
 </p>
-</br>
+:us:
 <p align="justify">First, after you turn on Postgres, you can access Postbird and create a database to Foodfy. You can copying the DB's information in the file `foodfyDB`, at the root of the project, and using the Postbird's Query to add the tables.
 </p>
 
 <p>&nbsp;</p>
 
-### NO PROJETO / IN THE PROJECT
-
-</br>
+### :cherries: NO PROJETO / IN THE PROJECT
 
 Você deve modificar as configurações do BD para seu USER e PASSWORD. Acesse o arquivo `src/config/db.js`.
 </br>
@@ -198,6 +185,8 @@ $ npm start
 OBS/DISCLAIMER: </br>
 
 Você precisará ter uma conta no [MAILTRAP][mailtrap]. Após criar sua conta e criar um inbox de email, selecione a opção `nodemailer` para integração com sua aplicação, será fornecido um objeto com sua auteticação com USER e PASSWORD.
+
+:us:
 
 You'll need to have an account in [MAILTRAP][mailtrap]. After the account and the email inbox have been created, select the option `nodemailer` to integrate with your application, it'll be provided an authentication with USER and PASSWORD.
 
