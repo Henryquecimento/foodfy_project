@@ -131,11 +131,11 @@ pg_ctl -D /usr/local/var/postgres stop
 
 #### :birthday: USANDO O POSTBIRD / USING POSTBIRD
 
-<p align="justify">Primeiro, após ligar o Postgres, você pode acessar o Postbird e criar um banco de dados para o Foodfy. Você pode estar copiando as informações do BD no arquivo `foodfyDB`, na raiz do projeto, e utilizando a Query do Postbird para adicionar as tabelas.
-</p>
+Primeiro, após ligar o Postgres, você pode acessar o Postbird e criar um banco de dados para o Foodfy. Você pode estar copiando as informações do BD no arquivo `foodfyDB`, na raiz do projeto, e utilizando a Query do Postbird para adicionar as tabelas.
+
 :us:
-<p align="justify">First, after you turn on Postgres, you can access Postbird and create a database to Foodfy. You can copying the DB's information in the file `foodfyDB`, at the root of the project, and using the Postbird's Query to add the tables.
-</p>
+
+First, after you turn on Postgres, you can access Postbird and create a database to Foodfy. You can copying the DB's information in the file `foodfyDB`, at the root of the project, and using the Postbird's Query to add the tables.
 
 <p>&nbsp;</p>
 
