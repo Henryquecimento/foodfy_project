@@ -157,7 +157,7 @@ module.exports = new Pool({
 
 <p>&nbsp;</p>
 
-**EXECUTANDO A APLICAÇÃO / EXECUTANDO A APLICAÇÃO**
+**:computer: EXECUTANDO A APLICAÇÃO / EXECUTANDO A APLICAÇÃO**
 </br>
 
 1. Acesse o repositório do Foodfy / Access the Foodfy repository:
@@ -179,7 +179,7 @@ $ node seed.js
 $ npm start
 ```
 
-### PARA USAR O EMAIL PARA RECUPERAR A SENHA (DURANTE O USO DA APLICAÇÃO)/ TO USE THE EMAIL TO RECOVER PASSWORD (DURING THE APPLICATION USAGE)
+### :wrench: PARA USAR O EMAIL PARA RECUPERAR A SENHA (DURANTE O USO DA APLICAÇÃO)/ TO USE THE EMAIL TO RECOVER PASSWORD (DURING THE APPLICATION USAGE)
 
 </br>
 OBS/DISCLAIMER: </br>
@@ -206,7 +206,7 @@ module.exports = nodemailer.createTransport({
 });
 ```
 
-## LICENÇA / LICENCE:
+## :key: LICENÇA / LICENCE:
 
 Este Projeto está sob licença MIT, para saber mais acesse [LICENCE][licence].
 
