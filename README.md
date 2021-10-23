@@ -190,10 +190,9 @@ Você precisará ter uma conta no [MAILTRAP][mailtrap]. Após criar sua conta e 
 
 You'll need to have an account in [MAILTRAP][mailtrap]. After the account and the email inbox have been created, select the option `nodemailer` to integrate with your application, it'll be provided an authentication with USER and PASSWORD.
 
-<p align="justify">Após conseguir sua autenticação, você pode copiar e colar no arquivo `src/lib/mailer.js`, como mostrado abaixo:
-</p>
-<p align="justify">After you get your authentication, you can copy and paste in the file `src/lib/mailer.js`, as shown down below:
-</p>
+Após conseguir sua autenticação, você pode copiar e colar no arquivo `src/lib/mailer.js`, como mostrado abaixo:
+
+After you get your authentication, you can copy and paste in the file `src/lib/mailer.js`, as shown down below:
 
 ```
 module.exports = nodemailer.createTransport({
