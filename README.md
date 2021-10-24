@@ -205,6 +205,14 @@ module.exports = nodemailer.createTransport({
 });
 ```
 
+## ACESSANDO A SESSÃO PRIVADA / ACCESSING PRIVATE SESSION
+
+Após utilizar o `seed.js`, você pode pegar o e-mail de um usuário cadastado no banco de dados. A senha é **padrão** para todos os usuários, a **SENHA PADRÃO** é `101010` (você pode checar no arquivo `seed.js`).
+
+:us:
+
+Após utilizar o `seed.js`, you can take the user email registred in the database. The password is **default** to all users, the **DEFAULT PASSWORD** is `101010` (you can check in the file `seed.js`).
+
 ## :key: LICENÇA / LICENCE:
 
 Este Projeto está sob licença MIT, para saber mais acesse [LICENCE][licence].
