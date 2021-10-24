@@ -211,7 +211,7 @@ Após utilizar o `seed.js`, você pode pegar o e-mail de um usuário cadastado n
 
 :us:
 
-Após utilizar o `seed.js`, you can take the user email registred in the database. The password is **default** to all users, the **DEFAULT PASSWORD** is `101010` (you can check in the file `seed.js`).
+After using `seed.js`, you can take the user email registred in the database. The password is **default** to all users, the **DEFAULT PASSWORD** is `101010` (you can check in the file `seed.js`).
 
 ## :key: LICENÇA / LICENCE:
 
