@@ -6,11 +6,11 @@
 **:hamburger: O QUE É ESTE PROJETO? / WHAT IS THIS PROJECT?**
 
 <p align="justify">
-Foodfy é uma aplicação MVP focada em apresentar, criar e gerenciar receitas e seus respectivos Chefs. Esta aplicação tem duas sessões, uma pública e outra administrativa. A primeira é uma apresentação das receitas e dos chefs e a segunda é onde as receitas, chefs e usuários são criados e gerenciados.
+Foodfy é uma aplicação MVC focada em apresentar, criar e gerenciar receitas e seus respectivos Chefs. Esta aplicação tem duas sessões, uma pública e outra administrativa. A primeira é uma apresentação das receitas e dos chefs e a segunda é onde as receitas, chefs e usuários são criados e gerenciados.
 </p>
 :us:
 <p align="justify">
-Foodfy is a MVP application focused on presenting, creating and managing recipes and it's respectively Chefs. This application has two sessions, public and administrative. The fist one is the recipes and chefs presentation and the second one is where the recipes, chefs and Users are created and managed.
+Foodfy is a MVC application focused on presenting, creating and managing recipes and it's respectively Chefs. This application has two sessions, public and administrative. The fist one is the recipes and chefs presentation and the second one is where the recipes, chefs and Users are created and managed.
 </p>
 
 <p>&nbsp;</p>
