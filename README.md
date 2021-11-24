@@ -157,7 +157,7 @@ module.exports = new Pool({
 
 <p>&nbsp;</p>
 
-**:computer: EXECUTANDO A APLICAÇÃO / EXECUTANDO A APLICAÇÃO**
+**:computer: EXECUTANDO A APLICAÇÃO / EXECUTING THE APPLICATION**
 </br>
 
 1. Acesse o repositório do Foodfy / Access the Foodfy repository:
@@ -205,7 +205,7 @@ module.exports = nodemailer.createTransport({
 });
 ```
 
-## ACESSANDO A SESSÃO PRIVADA / ACCESSING PRIVATE SESSION
+## :lock: ACESSANDO A SESSÃO PRIVADA / ACCESSING PRIVATE SESSION
 
 Após utilizar o `seed.js`, você pode pegar o e-mail de um usuário cadastado no banco de dados. A senha é **padrão** para todos os usuários, a **SENHA PADRÃO** é `101010` (você pode checar no arquivo `seed.js`).
 
