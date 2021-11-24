@@ -117,7 +117,7 @@ $ .\pg_ctl.exe -D "C:\Program Files\PostgreSQL\13\data" stop
 pg_ctl -D /usr/local/var/postgres start
 ```
 
-2. Desligar o Postgresql with
+2. Desligar o Postgresql com
    </br>
    Shut down Postgres with:
 
